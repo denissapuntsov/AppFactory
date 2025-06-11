@@ -15,10 +15,11 @@ public class CustomerUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     }
     #endregion
     
-    public GameObject customerSelectIcon;
+    public GameObject customerIconParent;
+    public SpriteRenderer emotionIcon;
     private void Start()
     {
-        customerSelectIcon.SetActive(false);
+        customerIconParent.SetActive(false);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -27,15 +28,15 @@ public class CustomerUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         GameManager.CurrentGameState = GameState.Drag;
         
         Debug.Log("Begin Drag " + gameObject.name);
-        customerSelectIcon.SetActive(true);
-        customerSelectIcon.transform.position = eventData.position;
+        customerIconParent.SetActive(true);
+        customerIconParent.transform.position = eventData.pointerCurrentRaycast.worldPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
         
-        customerSelectIcon.transform.position = eventData.position;
+        customerIconParent.transform.position = eventData.pointerCurrentRaycast.worldPosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -43,7 +44,7 @@ public class CustomerUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (GameManager.CurrentGameState != GameState.Drag) return;
         
         Debug.Log("End Drag " + gameObject.name);
-        customerSelectIcon.SetActive(false);
+        customerIconParent.SetActive(false);
 
         GameManager.CurrentGameState = GameState.Idle;
     }

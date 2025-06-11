@@ -1,16 +1,16 @@
 using System;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
-using UnityEditor.Tilemaps;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public enum CustomerType
 {
     Common,
-    Deep,
-    Precise,
-    Avoidant
+     Deep,
+     Precise,
+     Avoidant
 }
 
 public class Customer : MonoBehaviour
@@ -21,6 +21,10 @@ public class Customer : MonoBehaviour
     [Range(1, 9)] public int targetCircle;
 
     [SerializeField] private TextMeshProUGUI customerDebugInfoText;
+
+    [SerializeField] private SpriteRenderer currentEyes, currentMouth, currentHorns, currentHat;
+    [SerializeField] private List<Sprite> eyes, mouths, horns, hats;
+    [SerializeField] private Sprite deepHat, commonHat;
 
     private void OnEnable()
     {
@@ -44,6 +48,20 @@ public class Customer : MonoBehaviour
         
         customerDebugInfoText.text = $"Target Circle: {targetCircle}\nCustomer Type: {currentType}";
         GameManager.CurrentGameState = GameState.Idle;
+        
+        currentEyes.sprite = eyes[Random.Range(0, eyes.Count)];
+        currentMouth.sprite = mouths[Random.Range(0, mouths.Count)];
+        currentHorns.sprite = horns[Random.Range(0, horns.Count)];
+
+        switch (currentType)
+        {
+            case CustomerType.Common:
+                currentHat.sprite = Random.Range(0, 2) == 1 ? commonHat : null;
+                break;
+            case CustomerType.Deep:
+                currentHat.sprite = Random.Range(0, 2) == 1 ? deepHat : null;
+                break;
+        }
     }
 
     private void OnDisable()
