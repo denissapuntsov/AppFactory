@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GameState
@@ -9,13 +10,48 @@ public enum GameState
     Select,
     Drag,
     Place,
-    Exit
+    Exit,
+    Dialogue
 }
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
-    public static GameState CurrentGameState = GameState.Enter;
+
+    private static GameState _currentGameState = GameState.Enter;
+    
+    public static GameState CurrentGameState
+    {
+        get => _currentGameState;
+        set
+        {
+            _currentGameState = value;
+            switch (_currentGameState)
+            {
+                case GameState.Enter:
+                    OnEnter?.Invoke();
+                    break;
+                case GameState.Idle:
+                    OnIdle?.Invoke();
+                    break;
+                case GameState.Select:
+                    OnSelect?.Invoke();
+                    break;
+                case GameState.Drag:
+                    OnDrag?.Invoke();
+                    break;
+                case GameState.Place:
+                    OnPlace?.Invoke();
+                    break;
+                case GameState.Exit:
+                    OnExit?.Invoke();
+                    break;
+                case GameState.Dialogue:
+                    OnDialogue?.Invoke();
+                    break;
+            }
+        }
+    }
 
     #region Events
 
@@ -36,6 +72,9 @@ public class GameManager : MonoBehaviour
     
     public delegate void OnExitHandler();
     public static event OnExitHandler OnExit;
+    
+    public delegate void OnDialogueHandler();
+    public static event OnDialogueHandler OnDialogue;
 
     #endregion
     
@@ -52,34 +91,5 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CurrentGameState = GameState.Idle;
-    }
-
-    private void Update()
-    {
-        #if UNITY_EDITOR
-        debugStateText.text = $"GameState: {CurrentGameState.ToString()}";
-        #endif
-        
-        switch (CurrentGameState)
-        {
-            case GameState.Enter:
-                OnEnter?.Invoke();
-                break;
-            case GameState.Idle:
-                OnIdle?.Invoke();
-                break;
-            case GameState.Select:
-                OnSelect?.Invoke();
-                break;
-            case GameState.Drag:
-                OnDrag?.Invoke();
-                break;
-            case GameState.Place:
-                OnPlace?.Invoke();
-                break;
-            case GameState.Exit:
-                OnExit?.Invoke();
-                break;
-        }
     }
 }

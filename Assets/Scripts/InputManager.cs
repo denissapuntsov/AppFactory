@@ -1,6 +1,3 @@
-using System;
-using NUnit.Framework.Internal.Filters;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

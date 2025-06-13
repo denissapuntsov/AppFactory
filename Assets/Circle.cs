@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,10 +7,24 @@ using UnityEngine.UI;
 public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
     [SerializeField] private TextMeshProUGUI indexText;
+    [SerializeField] private GameObject popup;
     private int _index;
     private bool _isOverlappingCustomerIcon;
+    private Image _emotionIcon;
+
+    private int _capacity;
     
-    [SerializeField] private Sprite customerIconNeutral, customerIconGood, customerIconBad;
+    public int Capacity
+    {
+        get => _capacity;
+        private set
+        {
+            _capacity = value;
+            Debug.Log($"set capacity of {value} on circle {_index}");
+        }
+    }
+
+    [SerializeField] private Sprite customerIconEmpty, customerIconNeutral, customerIconGood, customerIconBad;
 
     private void OnEnable()
     {
@@ -20,8 +35,14 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     {
         _index = transform.GetSiblingIndex();
         indexText.text = _index.ToString();
+        Capacity = 9 - _index;
     }
-    
+
+    private void Start()
+    {
+        _emotionIcon = CustomerUI.Instance.emotionIcon;
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
@@ -34,6 +55,8 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        //popup.SetActive(true);
+        
         if (GameManager.CurrentGameState != GameState.Drag) return;
 
         switch (Customer.Instance.currentType)
@@ -55,52 +78,47 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     private void OnEnterCommon()
     {
-        // any circle gives equal points
-        //SpriteRenderer  = CustomerUI.Instance.customerSelectParent;
-        //_customerImage.color = Color.green;
+        _emotionIcon.sprite = customerIconGood;
     }
 
     private void OnEnterDeep()
     {
-        SpriteRenderer emotionIcon = CustomerUI.Instance.emotionIcon;
         // circles above 4 take points away, below give points; the lower the better
         if (_index < 5)
         {
             // negative
             
-            emotionIcon.sprite = customerIconBad;
+            _emotionIcon.sprite = customerIconBad;
             return;
         }
-        emotionIcon.sprite = Mathf.Abs(_index - 9) == 0 ? customerIconGood : customerIconNeutral;
+        _emotionIcon.sprite = Mathf.Abs(_index - 8) == 0 ? customerIconGood : customerIconNeutral;
     }
 
     private void OnEnterAvoidant()
     {
-        SpriteRenderer emotionIcon = CustomerUI.Instance.emotionIcon;
         // the closer to a target circle the fewer points given
         int distanceFromTargetCircle = Mathf.Abs(Customer.Instance.targetCircle - _index);
 
-        if (distanceFromTargetCircle > 1) emotionIcon.sprite = customerIconGood;
-        else if (distanceFromTargetCircle == 1) emotionIcon.sprite = customerIconNeutral;
-        else emotionIcon.sprite = customerIconBad;
+        if (distanceFromTargetCircle > 1) _emotionIcon.sprite = customerIconGood;
+        else if (distanceFromTargetCircle == 1) _emotionIcon.sprite = customerIconNeutral;
+        else _emotionIcon.sprite = customerIconBad;
     }
 
     private void OnEnterPrecise()
     {
-        SpriteRenderer emotionIcon = CustomerUI.Instance.emotionIcon;
         // the closer to a target circle the more points given
         int distanceFromTargetCircle = Mathf.Abs(Customer.Instance.targetCircle - _index);
 
-        if (distanceFromTargetCircle > 1) emotionIcon.sprite = customerIconBad;
-        else if (distanceFromTargetCircle == 1) emotionIcon.sprite = customerIconNeutral;
-        else emotionIcon.sprite = customerIconGood;
+        if (distanceFromTargetCircle > 1) _emotionIcon.sprite = customerIconBad;
+        else if (distanceFromTargetCircle == 1) _emotionIcon.sprite = customerIconNeutral;
+        else _emotionIcon.sprite = customerIconGood;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        SpriteRenderer emotionIcon = CustomerUI.Instance.emotionIcon;
+        //popup.SetActive(false);
         if (GameManager.CurrentGameState != GameState.Drag) return;
         
-        emotionIcon.sprite = customerIconNeutral;
+        _emotionIcon.sprite = customerIconEmpty;
     }
 }
