@@ -8,6 +8,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 {
     [SerializeField] private TextMeshProUGUI indexText;
     [SerializeField] private GameObject popup;
+    
     private int _index;
     private bool _isOverlappingCustomerIcon;
     private Image _emotionIcon;
@@ -20,21 +21,16 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         private set
         {
             _capacity = value;
+            indexText.text = $"Index: {_index}\nCapacity: {_capacity}";
             Debug.Log($"set capacity of {value} on circle {_index}");
         }
     }
 
     [SerializeField] private Sprite customerIconEmpty, customerIconNeutral, customerIconGood, customerIconBad;
 
-    private void OnEnable()
-    {
-        return;
-    }
-
     private void Awake()
     {
         _index = transform.GetSiblingIndex();
-        indexText.text = _index.ToString();
         Capacity = 9 - _index;
     }
 
@@ -46,10 +42,15 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public void OnDrop(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
+        if (Capacity == 0)
+        {
+            Debug.Log($"Circle {_index} at 0 capacity; cannot add another demon");
+            return;
+        }
         
         eventData.pointerDrag = null;
         CustomerUI.Instance.customerIconParent.SetActive(false);
-        
+        Capacity--; 
         GameManager.CurrentGameState = GameState.Place;
     }
 

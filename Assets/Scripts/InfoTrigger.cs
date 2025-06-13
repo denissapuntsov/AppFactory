@@ -9,11 +9,10 @@ public class InfoTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject infoFieldUI;
     [SerializeField] private RectTransform infoFieldUITarget;
+    [SerializeField] private float duration = 0.2f;
 
     private Vector3 _defaultPosition;
     private CanvasGroup _canvasGroup;
-    
-    private bool _canRewind = false;
 
     private Sequence _popupSequence;
 
@@ -27,24 +26,21 @@ public class InfoTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Idle) return;
-
-        Debug.Log("lkjjhgfjgk");
+        
         _canvasGroup.alpha = 0.5f;
         
-        //if (_canRewind) return;
-        
-        infoFieldUI.transform.DOMove(_defaultPosition, 0.2f).OnComplete(() => _canRewind = true);
+        infoFieldUI.transform.DOMove(_defaultPosition, duration);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         _canvasGroup.alpha = 1f;
-        StartCoroutine(routine: WaitForTween());
+        infoFieldUI.transform.DOMove(infoFieldUITarget.position, duration);
     }
 
-    private IEnumerator WaitForTween()
+    /*private IEnumerator WaitForTween()
     {
         yield return new WaitUntil(() => _canRewind);
-        infoFieldUI.transform.DOMove(infoFieldUITarget.position, 0.2f).OnComplete(() => _canRewind = false);
-    }
+        infoFieldUI.transform.DOMove(infoFieldUITarget.position, duration).OnComplete(() => _canRewind = false);
+    }*/
 }

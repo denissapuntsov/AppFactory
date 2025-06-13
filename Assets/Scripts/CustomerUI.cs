@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class CustomerUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Singleton Pattern
     
@@ -16,7 +17,7 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     #endregion
     
     public GameObject customerIconParent;
-    [SerializeField] private CanvasGroup _canvasGroup;
+    [SerializeField] private CanvasGroup canvasGroup;
     public Image emotionIcon;
     private void Start()
     {
@@ -44,7 +45,7 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
 
-        _canvasGroup.alpha = 0;
+        canvasGroup.alpha = 1f;
         customerIconParent.SetActive(false);
 
         GameManager.CurrentGameState = GameState.Idle;
@@ -52,6 +53,14 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _canvasGroup.alpha = 0.5f;
+        canvasGroup.alpha = 0.5f;
+        customerIconParent.SetActive(true);
+        customerIconParent.transform.position = eventData.pointerCurrentRaycast.screenPosition;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        canvasGroup.alpha = 1f;
+        customerIconParent.SetActive(false);
     }
 }
