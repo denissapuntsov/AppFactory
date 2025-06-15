@@ -1,8 +1,11 @@
 using System;
 using TMPro;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
@@ -13,8 +16,9 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     private bool _isOverlappingCustomerIcon;
     private Image _emotionIcon;
 
+    private Canvas _canvas;
+
     private int _capacity;
-    
     public int Capacity
     {
         get => _capacity;
@@ -28,10 +32,16 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     [SerializeField] private Sprite customerIconEmpty, customerIconNeutral, customerIconGood, customerIconBad;
 
+    private void OnEnable()
+    {
+        GetComponentInParent<ScrollRect>().onValueChanged.AddListener(ScaleRelatively);
+    }
+
     private void Awake()
     {
         _index = transform.GetSiblingIndex();
         Capacity = 9 - _index;
+        _canvas = GetComponentInParent<Canvas>();
     }
 
     private void Start()
@@ -121,5 +131,18 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         if (GameManager.CurrentGameState != GameState.Drag) return;
         
         _emotionIcon.sprite = customerIconEmpty;
+    }
+
+    private void ScaleRelatively(Vector2 vector)
+    {
+        var proportionalScale =
+            Mathf.Abs(transform.position.y - _canvas.GetComponent<RectTransform>().anchorMin.y) / 1000;
+        var clampedScale = Mathf.Clamp(proportionalScale, 0.5f, 1f);
+        transform.localScale = new Vector3(clampedScale, clampedScale, clampedScale);
+    }
+
+    private void OnDisable()
+    {
+        GetComponentInParent<ScrollRect>().onValueChanged.RemoveListener(ScaleRelatively);
     }
 }

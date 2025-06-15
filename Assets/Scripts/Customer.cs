@@ -41,7 +41,7 @@ public class Customer : MonoBehaviour
         else Instance = this;
     }
 
-    public void Randomise()
+    private void Randomise()
     {
         Debug.Log("Randomised");
         currentType = (CustomerType)Random.Range(0, Enum.GetNames(typeof(CustomerType)).Length);
