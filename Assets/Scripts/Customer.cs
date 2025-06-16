@@ -19,17 +19,15 @@ public class Customer : MonoBehaviour
     public static Customer Instance;
     
     public CustomerType currentType;
-    [Range(1, 9)] public int targetCircle;
+    [Range(0, 8)] public int targetCircle;
 
     [SerializeField] private TextMeshProUGUI customerDebugInfoText;
 
     [SerializeField] private Image currentEyes, currentMouth, currentHorns, currentHat;
-    [SerializeField] private List<Sprite> eyes, mouths, horns, hats;
-    [SerializeField] private Sprite deepHat, commonHat, noHat;
+    private CustomerAvatar _avatar;
 
     private void OnEnable()
     {
-        Randomise();
         GameManager.OnPlace += Randomise;
     }
 
@@ -41,6 +39,12 @@ public class Customer : MonoBehaviour
         else Instance = this;
     }
 
+    private void Start()
+    {
+        _avatar = GetComponent<CustomerAvatar>();
+        Randomise();
+    }
+
     private void Randomise()
     {
         Debug.Log("Randomised");
@@ -49,10 +53,14 @@ public class Customer : MonoBehaviour
         
         customerDebugInfoText.text = $"Target Circle: {targetCircle}\nCustomer Type: {currentType}";
         GameManager.CurrentGameState = GameState.Idle;
+
         
-        currentEyes.sprite = eyes[Random.Range(0, eyes.Count)];
-        currentMouth.sprite = mouths[Random.Range(0, mouths.Count)];
-        currentHorns.sprite = horns[Random.Range(0, horns.Count)];
+        // Visual randomisation
+        List<Sprite> sprites = _avatar.GetRandomAvatar();
+        
+        currentEyes.sprite = sprites[0];
+        currentMouth.sprite = sprites[1];
+        currentHorns.sprite = sprites[2];
 
         currentHat.gameObject.SetActive(true);
         
@@ -60,15 +68,15 @@ public class Customer : MonoBehaviour
         {
             case CustomerType.Common:
                 currentHat.GetComponent<CanvasGroup>().alpha = 1;
-                currentHat.sprite = Random.Range(0, 2) == 1 ? commonHat : noHat;
+                currentHat.sprite = Random.Range(0, 2) == 1 ? _avatar.commonHat.sprite : _avatar.noHat.sprite;
                 break;
             case CustomerType.Deep:
                 currentHat.GetComponent<CanvasGroup>().alpha = 1;
-                currentHat.sprite = Random.Range(0, 2) == 1 ? deepHat : noHat;
+                currentHat.sprite = Random.Range(0, 2) == 1 ? _avatar.deepHat.sprite : _avatar.noHat.sprite;
                 break;
             default:
                 currentHat.GetComponent<CanvasGroup>().alpha = 0;
-                currentHat.sprite = noHat;
+                currentHat.sprite = _avatar.noHat.sprite;
                 break;
         }
     }

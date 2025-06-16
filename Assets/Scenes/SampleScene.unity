@@ -1455,28 +1455,6 @@ MonoBehaviour:
   currentMouth: {fileID: 1092638681}
   currentHorns: {fileID: 536623718}
   currentHat: {fileID: 1569743241}
-  eyes:
-  - {fileID: 21300000, guid: 2b62057512134b245b42aae9644688be, type: 3}
-  - {fileID: 21300000, guid: 40a4e2994133f0a4f85c7f2c9da9132a, type: 3}
-  - {fileID: 21300000, guid: 6274a34bd2b22f64499e3db71021f09a, type: 3}
-  - {fileID: 21300000, guid: 04369d09ac2cf944eb41a13953291e87, type: 3}
-  mouths:
-  - {fileID: 21300000, guid: c16224a3cddc5b9428f456a4314abe61, type: 3}
-  - {fileID: 21300000, guid: 967fef830d3385544b1475735e794d0d, type: 3}
-  - {fileID: 21300000, guid: a40a4b6697471454b8fda0b38af5d3be, type: 3}
-  - {fileID: 21300000, guid: 90fd3e09c6f17fe4a9894754497b8647, type: 3}
-  - {fileID: 21300000, guid: a754976cee7ae8f44bd08110adcafd03, type: 3}
-  horns:
-  - {fileID: 21300000, guid: fc0cb50dc5f32bf4888dbd8356274b92, type: 3}
-  - {fileID: 21300000, guid: ee0bc3ec4d8694048a4dc1f6549b43db, type: 3}
-  - {fileID: 21300000, guid: 4dd3d3bcdc2d23d4695f037e534d6716, type: 3}
-  - {fileID: 21300000, guid: 19e870200b2eefa4699ed991f966b1d7, type: 3}
-  - {fileID: 21300000, guid: fc0cb50dc5f32bf4888dbd8356274b92, type: 3}
-  - {fileID: 21300000, guid: fc0cb50dc5f32bf4888dbd8356274b92, type: 3}
-  hats: []
-  deepHat: {fileID: 21300000, guid: 250db9d99df58b642ad8eace99a2e248, type: 3}
-  commonHat: {fileID: 21300000, guid: 661fabdab3ddf864f91d320753c9c360, type: 3}
-  noHat: {fileID: 7260238485232048600, guid: d42e0af43e0352a4ea9075b5bf833c4e, type: 3}
 --- !u!4 &1086235016
 Transform:
   m_ObjectHideFlags: 0
@@ -1526,21 +1504,24 @@ MonoBehaviour:
     weight: 1
   - sprite: {fileID: 21300000, guid: 4d7ca3def04513547a666bfbc0b01209, type: 3}
     weight: 1
-  horns: []
-  hats: []
+  horns:
+  - sprite: {fileID: 21300000, guid: fc0cb50dc5f32bf4888dbd8356274b92, type: 3}
+    weight: 4
+  - sprite: {fileID: 21300000, guid: ee0bc3ec4d8694048a4dc1f6549b43db, type: 3}
+    weight: 1
+  - sprite: {fileID: 21300000, guid: 4dd3d3bcdc2d23d4695f037e534d6716, type: 3}
+    weight: 1
+  - sprite: {fileID: 21300000, guid: 19e870200b2eefa4699ed991f966b1d7, type: 3}
+    weight: 1
   deepHat:
-    sprite: {fileID: 0}
-    weight: 0
+    sprite: {fileID: 21300000, guid: 250db9d99df58b642ad8eace99a2e248, type: 3}
+    weight: 1
   commonHat:
-    sprite: {fileID: 0}
-    weight: 0
+    sprite: {fileID: 21300000, guid: 661fabdab3ddf864f91d320753c9c360, type: 3}
+    weight: 1
   noHat:
-    sprite: {fileID: 0}
-    weight: 0
-  _weightedEyes: []
-  _weightedMouths: []
-  _weightedHorns: []
-  _weightedHats: []
+    sprite: {fileID: 7260238485232048600, guid: d42e0af43e0352a4ea9075b5bf833c4e, type: 3}
+    weight: 1
 --- !u!1001 &1087852875
 PrefabInstance:
   m_ObjectHideFlags: 0
