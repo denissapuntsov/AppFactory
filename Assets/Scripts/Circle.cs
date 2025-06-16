@@ -14,7 +14,6 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     
     private int _index;
     private bool _isOverlappingCustomerIcon;
-    private Image _emotionIcon;
 
     private Canvas _canvas;
 
@@ -44,11 +43,6 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         _canvas = GetComponentInParent<Canvas>();
     }
 
-    private void Start()
-    {
-        _emotionIcon = CustomerUI.Instance.emotionIcon;
-    }
-
     public void OnDrop(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
@@ -59,7 +53,6 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         }
         
         eventData.pointerDrag = null;
-        CustomerUI.Instance.customerIconParent.SetActive(false);
         Capacity--; 
         GameManager.CurrentGameState = GameState.Place;
     }
@@ -89,7 +82,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     private void OnEnterCommon()
     {
-        _emotionIcon.sprite = customerIconGood;
+        return;
     }
 
     private void OnEnterDeep()
@@ -99,10 +92,10 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         {
             // negative
             
-            _emotionIcon.sprite = customerIconBad;
             return;
         }
-        _emotionIcon.sprite = Mathf.Abs(_index - 8) == 0 ? customerIconGood : customerIconNeutral;
+        //positive
+        return;
     }
 
     private void OnEnterAvoidant()
@@ -110,9 +103,9 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         // the closer to a target circle the fewer points given
         int distanceFromTargetCircle = Mathf.Abs(Customer.Instance.targetCircle - _index);
 
-        if (distanceFromTargetCircle > 1) _emotionIcon.sprite = customerIconGood;
-        else if (distanceFromTargetCircle == 1) _emotionIcon.sprite = customerIconNeutral;
-        else _emotionIcon.sprite = customerIconBad;
+        if (distanceFromTargetCircle > 1) return;
+        else if (distanceFromTargetCircle == 1) return;
+        else return;
     }
 
     private void OnEnterPrecise()
@@ -120,17 +113,17 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         // the closer to a target circle the more points given
         int distanceFromTargetCircle = Mathf.Abs(Customer.Instance.targetCircle - _index);
 
-        if (distanceFromTargetCircle > 1) _emotionIcon.sprite = customerIconBad;
-        else if (distanceFromTargetCircle == 1) _emotionIcon.sprite = customerIconNeutral;
-        else _emotionIcon.sprite = customerIconGood;
+        if (distanceFromTargetCircle > 1) return;
+        else if (distanceFromTargetCircle == 1) return;
+        else return;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         //popup.SetActive(false);
         if (GameManager.CurrentGameState != GameState.Drag) return;
-        
-        _emotionIcon.sprite = customerIconEmpty;
+
+        return;
     }
 
     private void ScaleRelatively(Vector2 vector)
@@ -143,6 +136,6 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     private void OnDisable()
     {
-        GetComponentInParent<ScrollRect>().onValueChanged.RemoveListener(ScaleRelatively);
+        GetComponentInParent<ScrollRect>()?.onValueChanged.RemoveListener(ScaleRelatively);
     }
 }

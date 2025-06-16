@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -16,12 +17,15 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     }
     #endregion
     
-    public GameObject customerIconParent;
-    [SerializeField] private CanvasGroup canvasGroup;
-    public Image emotionIcon;
+    public GameObject customerParent;
+    private Vector3 _defaultPosition;
+    private Vector3 _defaultScale;
+    
     private void Start()
     {
-        customerIconParent.SetActive(false);
+        customerParent.SetActive(true);
+        _defaultPosition = customerParent.transform.position;
+        _defaultScale = customerParent.transform.localScale;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -30,37 +34,35 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         GameManager.CurrentGameState = GameState.Drag;
         
         Debug.Log("Begin Drag " + gameObject.name);
-        customerIconParent.SetActive(true);
-        customerIconParent.transform.position = eventData.pointerCurrentRaycast.screenPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
         
-        customerIconParent.transform.position = eventData.pointerCurrentRaycast.screenPosition;
+        customerParent.transform.position = eventData.pointerCurrentRaycast.screenPosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
 
-        canvasGroup.alpha = 1f;
-        customerIconParent.SetActive(false);
-
         GameManager.CurrentGameState = GameState.Idle;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        canvasGroup.alpha = 0.5f;
-        customerIconParent.SetActive(true);
-        customerIconParent.transform.position = eventData.pointerCurrentRaycast.screenPosition;
+        Sequence focusSequence = DOTween.Sequence();
+
+        focusSequence.Join(customerParent.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.2f));
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        canvasGroup.alpha = 1f;
-        customerIconParent.SetActive(false);
+        Sequence unfocusSequence = DOTween.Sequence();
+
+        unfocusSequence
+            .Join(customerParent.transform.DOScale(_defaultScale, 0.2f))
+            .Join(customerParent.transform.DOMove(_defaultPosition, 0.2f));
     }
 }
