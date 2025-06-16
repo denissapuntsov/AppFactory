@@ -135,10 +135,10 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     private void ScaleRelatively(Vector2 vector)
     {
-        var proportionalScale =
-            Mathf.Abs(transform.position.y - _canvas.GetComponent<RectTransform>().anchorMin.y) / 1000;
-        var clampedScale = Mathf.Clamp(proportionalScale, 0.5f, 1f);
-        transform.localScale = new Vector3(clampedScale, clampedScale, clampedScale);
+        var distanceFromCenter = Mathf.Abs(transform.position.y - _canvas.GetComponent<RectTransform>().position.y);
+        var proportionalScale = distanceFromCenter * -0.00025f + 1;
+        
+        transform.localScale = new Vector3(proportionalScale, proportionalScale, proportionalScale);
     }
 
     private void OnDisable()
