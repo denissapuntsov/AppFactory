@@ -37,10 +37,4 @@ public class InfoTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _canvasGroup.alpha = 1f;
         infoFieldUI.transform.DOMove(infoFieldUITarget.position, duration);
     }
-
-    /*private IEnumerator WaitForTween()
-    {
-        yield return new WaitUntil(() => _canRewind);
-        infoFieldUI.transform.DOMove(infoFieldUITarget.position, duration).OnComplete(() => _canRewind = false);
-    }*/
 }
