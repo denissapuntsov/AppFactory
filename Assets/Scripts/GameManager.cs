@@ -18,6 +18,31 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
 
+    #region Events
+
+    public delegate void OnEnterHandler();
+    public static event OnEnterHandler OnEnter;
+
+    public delegate void OnIdleHandler();
+    public static event OnIdleHandler OnIdle;
+    
+    public delegate void OnSelectHandler();
+    public static event OnSelectHandler OnSelect;
+    
+    public delegate void OnDragHandler();
+    public static event OnDragHandler OnDrag;
+    
+    public delegate void OnPlaceHandler();
+    public static event OnPlaceHandler OnPlace;
+    
+    public delegate void OnExitHandler();
+    public static event OnExitHandler OnExit;
+    
+    public delegate void OnDialogueHandler();
+    public static event OnDialogueHandler OnDialogue;
+
+    #endregion
+    
     private static GameState _currentGameState = GameState.Enter;
     
     public static GameState CurrentGameState
@@ -52,31 +77,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    #region Events
-
-    public delegate void OnEnterHandler();
-    public static event OnEnterHandler OnEnter;
-
-    public delegate void OnIdleHandler();
-    public static event OnIdleHandler OnIdle;
-    
-    public delegate void OnSelectHandler();
-    public static event OnSelectHandler OnSelect;
-    
-    public delegate void OnDragHandler();
-    public static event OnDragHandler OnDrag;
-    
-    public delegate void OnPlaceHandler();
-    public static event OnPlaceHandler OnPlace;
-    
-    public delegate void OnExitHandler();
-    public static event OnExitHandler OnExit;
-    
-    public delegate void OnDialogueHandler();
-    public static event OnDialogueHandler OnDialogue;
-
-    #endregion
     
     [SerializeField] private TextMeshProUGUI debugStateText;
 

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -16,7 +17,8 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         else Instance = this;
     }
     #endregion
-    
+
+    [SerializeField] private TextMeshProUGUI customerFlavorText;
     public GameObject customerParent;
     private Vector3 _defaultPosition;
     private Vector3 _defaultScale;
