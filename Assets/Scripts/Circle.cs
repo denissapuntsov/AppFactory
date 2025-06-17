@@ -11,11 +11,13 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 {
     [SerializeField] private TextMeshProUGUI indexText;
     [SerializeField] private GameObject popup;
+
+    private ScoreManager _scoreManager;
     
     private int _index;
     private bool _isOverlappingCustomerIcon;
 
-    private Canvas _canvas;
+    private RectTransform _circleReferenceTransform;
 
     private int _capacity;
     public int Capacity
@@ -40,17 +42,21 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     {
         _index = transform.GetSiblingIndex();
         Capacity = 9 - _index;
-        _canvas = GetComponentInParent<Canvas>();
+        _scoreManager = FindAnyObjectByType<ScoreManager>();
+        _circleReferenceTransform = GameObject.FindWithTag("CircleReferenceTransform").GetComponent<RectTransform>();
     }
 
     public void OnDrop(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
+        
         if (Capacity == 0)
         {
             Debug.Log($"Circle {_index} at 0 capacity; cannot add another demon");
             return;
         }
+
+        _scoreManager.AddPoints(Customer.Instance, _index);
         
         eventData.pointerDrag = null;
         Capacity--; 
@@ -128,8 +134,8 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     private void ScaleRelatively(Vector2 vector)
     {
-        var distanceFromCenter = Mathf.Abs(transform.position.y - _canvas.GetComponent<RectTransform>().position.y);
-        var proportionalScale = distanceFromCenter * -0.00025f + 1;
+        var distanceFromCenter = Mathf.Abs(transform.position.y - _circleReferenceTransform.position.y);
+        var proportionalScale = distanceFromCenter * -0.00035f + 1;
         
         transform.localScale = new Vector3(proportionalScale, proportionalScale, proportionalScale);
     }

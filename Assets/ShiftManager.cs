@@ -9,7 +9,8 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] private Canvas endShiftCanvas;
 
     private int _currentCustomerIndex;
-
+    
+    public static ShiftManager Instance;
     public int CurrentCustomerIndex
     {
         get => _currentCustomerIndex;
@@ -33,6 +34,8 @@ public class ShiftManager : MonoBehaviour
     
     private void OnEnable()
     {
+        Instance = this;
+        
         GameManager.OnEnter += RandomizeShiftLength;
         GameManager.OnPlace += GetNextCustomer;
     }
