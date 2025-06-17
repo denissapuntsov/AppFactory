@@ -54,6 +54,7 @@ public class ShiftManager : MonoBehaviour
             endShiftCanvas.gameObject.SetActive(true);
             return;
         }
+        
         CurrentCustomerIndex++;
     }
 

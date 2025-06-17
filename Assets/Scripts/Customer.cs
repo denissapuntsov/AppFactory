@@ -52,7 +52,6 @@ public class Customer : MonoBehaviour
         targetCircle = currentType == CustomerType.Deep ? 8 : Random.Range(0, 9);
         
         customerDebugInfoText.text = $"Target Circle: {targetCircle}\nCustomer Type: {currentType}";
-        GameManager.CurrentGameState = GameState.Idle;
 
         
         // Visual randomisation

@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum GameState
@@ -16,6 +15,8 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI stateText;
+    
     private static GameManager _instance;
 
     #region Events
@@ -77,8 +78,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
-    [SerializeField] private TextMeshProUGUI debugStateText;
 
     private void Awake()
     {
@@ -90,6 +89,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CurrentGameState = GameState.Idle;
+        CurrentGameState = GameState.Enter;
+    }
+
+    private void Update()
+    {
+        stateText.text = $"GameState: {_currentGameState.ToString()}";
     }
 }

@@ -20,10 +20,10 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     private RectTransform _circleReferenceTransform;
 
     private int _capacity;
-    public int Capacity
+    private int Capacity
     {
         get => _capacity;
-        private set
+        set
         {
             _capacity = value;
             indexText.text = $"Index: {_index}\nCapacity: {_capacity}";
@@ -69,61 +69,9 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         
         if (GameManager.CurrentGameState != GameState.Drag) return;
 
-        switch (Customer.Instance.currentType)
-        {
-               case CustomerType.Common:
-                   OnEnterCommon();
-                   break;
-               case CustomerType.Deep:
-                   OnEnterDeep();
-                   break;
-               case CustomerType.Avoidant:
-                   OnEnterAvoidant();
-                   break;
-               case CustomerType.Precise:
-                   OnEnterPrecise();
-                   break;
-        }
+        // if dragging, show demons?
     }
-
-    private void OnEnterCommon()
-    {
-        return;
-    }
-
-    private void OnEnterDeep()
-    {
-        // circles above 4 take points away, below give points; the lower the better
-        if (_index < 5)
-        {
-            // negative
-            
-            return;
-        }
-        //positive
-        return;
-    }
-
-    private void OnEnterAvoidant()
-    {
-        // the closer to a target circle the fewer points given
-        int distanceFromTargetCircle = Mathf.Abs(Customer.Instance.targetCircle - _index);
-
-        if (distanceFromTargetCircle > 1) return;
-        else if (distanceFromTargetCircle == 1) return;
-        else return;
-    }
-
-    private void OnEnterPrecise()
-    {
-        // the closer to a target circle the more points given
-        int distanceFromTargetCircle = Mathf.Abs(Customer.Instance.targetCircle - _index);
-
-        if (distanceFromTargetCircle > 1) return;
-        else if (distanceFromTargetCircle == 1) return;
-        else return;
-    }
-
+    
     public void OnPointerExit(PointerEventData eventData)
     {
         //popup.SetActive(false);

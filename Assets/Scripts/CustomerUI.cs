@@ -54,6 +54,8 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (GameManager.CurrentGameState != GameState.Idle) return;
+        
         Sequence focusSequence = DOTween.Sequence();
 
         focusSequence.Join(customerParent.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.2f));
@@ -61,6 +63,8 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (GameManager.CurrentGameState != GameState.Drag) return;
+        
         Sequence unfocusSequence = DOTween.Sequence();
 
         unfocusSequence
