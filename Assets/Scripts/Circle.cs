@@ -20,10 +20,10 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     private RectTransform _circleReferenceTransform;
 
     private int _capacity;
-    private int Capacity
+    public int Capacity
     {
         get => _capacity;
-        set
+        private set
         {
             _capacity = value;
             indexText.text = $"Index: {_index}\nCapacity: {_capacity}";
@@ -59,7 +59,8 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         _scoreManager.AddPoints(Customer.Instance, _index);
         
         eventData.pointerDrag = null;
-        Capacity--; 
+        Capacity--;
+        
         GameManager.CurrentGameState = GameState.Place;
     }
 

@@ -19,22 +19,24 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     #endregion
 
     [SerializeField] private TextMeshProUGUI customerFlavorText;
+
+    [SerializeField] private Transform officeParent, dragParent, hiddenTransform;
     public GameObject customerParent;
     private Vector3 _defaultPosition;
     private Vector3 _defaultScale;
     
     private void Start()
     {
-        customerParent.SetActive(true);
         _defaultPosition = customerParent.transform.position;
         _defaultScale = customerParent.transform.localScale;
+        Appear();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Idle) return;
-        GameManager.CurrentGameState = GameState.Drag;
         
+        GameManager.CurrentGameState = GameState.Drag;
         Debug.Log("Begin Drag " + gameObject.name);
     }
 
@@ -48,7 +50,7 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public void OnEndDrag(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
-
+        
         GameManager.CurrentGameState = GameState.Idle;
     }
 
@@ -56,19 +58,28 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     {
         if (GameManager.CurrentGameState != GameState.Idle) return;
         
+        customerParent.transform.SetParent(dragParent);
         Sequence focusSequence = DOTween.Sequence();
-
         focusSequence.Join(customerParent.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.2f));
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
+
+        Appear();
+    }
+
+    private void Appear()
+    {
+        customerParent.transform.SetParent(officeParent);
+        customerParent.transform.SetSiblingIndex(1);
+        customerParent.transform.position = hiddenTransform.position;
         
         Sequence unfocusSequence = DOTween.Sequence();
-
         unfocusSequence
-            .Join(customerParent.transform.DOScale(_defaultScale, 0.2f))
-            .Join(customerParent.transform.DOMove(_defaultPosition, 0.2f));
+            .Join(customerParent.transform.DOScale(_defaultScale, 0.4f))
+            .Join(customerParent.transform.DOMove(_defaultPosition, 0.4f))
+            .OnComplete(() => GameManager.CurrentGameState = GameState.Idle);
     }
 }

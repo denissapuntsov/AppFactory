@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,6 +9,8 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shiftInfoField;
     [SerializeField] private Canvas endShiftCanvas;
 
+    [SerializeField] private int _currentShiftIndex = -1;
+    
     private int _currentCustomerIndex;
     
     public static ShiftManager Instance;
@@ -35,13 +38,15 @@ public class ShiftManager : MonoBehaviour
     private void OnEnable()
     {
         Instance = this;
-        
-        GameManager.OnEnter += RandomizeShiftLength;
+
+        GameManager.OnEnter += InitializeShift;
         GameManager.OnPlace += GetNextCustomer;
     }
 
-    private void Start()
+    private void InitializeShift()
     {
+        _currentShiftIndex++;
+        CurrentCustomerIndex = 0;
         RandomizeShiftLength();
     }
 
@@ -60,8 +65,7 @@ public class ShiftManager : MonoBehaviour
 
     private void RandomizeShiftLength()
     {
-        //ShiftLength = Random.Range(5, 9);
-        ShiftLength = 6;
+        ShiftLength = Random.Range(5, 9);
     }
 
     private void OnDisable()

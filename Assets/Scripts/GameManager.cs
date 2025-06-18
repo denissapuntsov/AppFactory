@@ -1,6 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
+using UnityEngine.UI;
 
 public enum GameState
 {
@@ -16,6 +18,8 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI stateText;
+
+    [SerializeField] private Button resetButton;
     
     private static GameManager _instance;
 
@@ -79,6 +83,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        if (!resetButton) return;
+        resetButton.onClick.AddListener(() => CurrentGameState = GameState.Enter);
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -95,5 +105,16 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         stateText.text = $"GameState: {_currentGameState.ToString()}";
+    }
+
+    public void SetState(GameState newState)
+    {
+        _currentGameState = newState;
+    }
+
+    private void OnDisable()
+    {
+        if (!resetButton) return;
+        resetButton.onClick.RemoveListener(() => CurrentGameState = GameState.Enter);
     }
 }
