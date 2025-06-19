@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Timer : MonoBehaviour
 {
@@ -13,18 +15,39 @@ public class Timer : MonoBehaviour
         get => _time;
         set
         {
-            // set hours and minutes
-            // $"{hours}:{minutes}{time_indicator};
+            _time = value;
+            
+            string halfOfDay = "AM";
+            if (Mathf.Floor(value) >= 12) halfOfDay = "PM";
+            
+            string minutes = value * 10 % 10 == 0 ? "00" : "30";
+            
+            string hours;
+            if (Mathf.Floor(value) > 12) value -= 12;
+            hours = $"{Mathf.Floor(value)}";
+            
+            timerText.text = $"{hours}:{minutes} {halfOfDay}";
         }
     }
     
     private void OnEnable()
     {
-        GameManager.OnEnter += (() => Time = 9.0f);
+        GameManager.OnEnter += (() =>
+        {
+            Time = 9.0f;
+            StartCoroutine(CountTime());
+        });
     }
 
     private void AddHalfHour()
     {
-        Time += Time % 2 == 0 ? 0.5f : 1f;
+        Time += 0.5f;
+    }
+
+    private IEnumerator CountTime()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+        AddHalfHour();
+        StartCoroutine(CountTime());
     }
 }
