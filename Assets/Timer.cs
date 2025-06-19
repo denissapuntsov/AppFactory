@@ -1,14 +1,13 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
 
     private float _time;
+    private bool _isRunning;
 
     private float Time
     {
@@ -32,11 +31,14 @@ public class Timer : MonoBehaviour
     
     private void OnEnable()
     {
-        GameManager.OnEnter += (() =>
-        {
-            Time = 9.0f;
-            StartCoroutine(CountTime());
-        });
+        GameManager.OnEnter += () => Time = 9.0f;
+        DialoguePanel.OnEndDialogue += () => StartCoroutine(CountTime());
+    }
+
+    private void Reset()
+    {
+        StopCoroutine(CountTime());
+        Time = 9.0f;
     }
 
     private void AddHalfHour()
@@ -46,8 +48,13 @@ public class Timer : MonoBehaviour
 
     private IEnumerator CountTime()
     {
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(4f);
         AddHalfHour();
+        if (Time >= 17.0f)
+        {
+            StopCoroutine(CountTime());
+            
+        }
         StartCoroutine(CountTime());
     }
 }

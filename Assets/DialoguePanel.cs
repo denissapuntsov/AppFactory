@@ -5,12 +5,16 @@ using UnityEngine.EventSystems;
 
 public class DialoguePanel : MonoBehaviour, IPointerClickHandler
 {
+    public delegate void OnEndDialogueHandler();
+    public static event OnEndDialogueHandler OnEndDialogue;
+    
     [SerializeField] private RectTransform zeroTransform, exitTransform;
-    private RectTransform startTransform;
+    private RectTransform _startTransform;
     
     private void OnEnable()
     {
         GameManager.OnEnter += Enter;
+        _startTransform = GetComponent<RectTransform>();
     }
 
     private void Enter()
@@ -26,7 +30,12 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
         Sequence exitSequence = DOTween.Sequence();
         exitSequence 
             .Append(transform.DOMove(exitTransform.position, 0.5f))
-            .OnComplete(() => GameManager.CurrentGameState = GameState.Idle);
+            .OnComplete(() =>
+            {
+                transform.position = _startTransform.position;
+                OnEndDialogue?.Invoke();
+                GameManager.CurrentGameState = GameState.Idle;
+            });
     }
 
     private void OnDisable()

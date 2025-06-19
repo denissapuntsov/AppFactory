@@ -9,41 +9,49 @@ using Image = UnityEngine.UI.Image;
 
 public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
+
+    #region Fields and Properties
+
     [SerializeField] private TextMeshProUGUI indexText;
-    [SerializeField] private GameObject popup;
-
-    private ScoreManager _scoreManager;
+    //[SerializeField] private GameObject popup;
+    //[SerializeField] private Sprite customerIconEmpty, customerIconNeutral, customerIconGood, customerIconBad;
     
-    private int _index;
+    private ScoreManager _scoreManager;
     private bool _isOverlappingCustomerIcon;
-
     private RectTransform _circleReferenceTransform;
 
     private int _capacity;
-    public int Capacity
+    private int Capacity
     {
         get => _capacity;
-        private set
+        set
         {
             _capacity = value;
-            indexText.text = $"Index: {_index}\nCapacity: {_capacity}";
-            Debug.Log($"set capacity of {value} on circle {_index}");
-        }
+            Debug.Log($"set capacity of {value} on circle {Index}");
+        }  
     }
 
-    [SerializeField] private Sprite customerIconEmpty, customerIconNeutral, customerIconGood, customerIconBad;
+    public int Index { get; private set; }
+    public CircleEnvironment environment;
+    public CircleTemperature temperature;
 
-    private void OnEnable()
+    #endregion
+
+    /*private void OnEnable()
     {
         GetComponentInParent<ScrollRect>().onValueChanged.AddListener(ScaleRelatively);
-    }
+    }*/
 
-    private void Awake()
+    private void Start()
     {
-        _index = transform.GetSiblingIndex();
-        Capacity = 9 - _index;
+        Index = transform.GetSiblingIndex();
+        Capacity = 9 - Index;
         _scoreManager = FindAnyObjectByType<ScoreManager>();
         _circleReferenceTransform = GameObject.FindWithTag("CircleReferenceTransform").GetComponent<RectTransform>();
+        
+        temperature = Index <= 3 ? CircleTemperature.Cold : CircleTemperature.Hot; 
+        
+        indexText.text = $"Index: {Index}, Capacity: {_capacity}\nEnvironment: {environment}\nTemperature: {temperature}";
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -52,11 +60,11 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         
         if (Capacity == 0)
         {
-            Debug.Log($"Circle {_index} at 0 capacity; cannot add another demon");
+            Debug.Log($"Circle {Index} at 0 capacity; cannot add another demon");
             return;
         }
 
-        _scoreManager.AddPoints(Customer.Instance, _index);
+        _scoreManager.AddPoints(Customer.Instance, circle: this);
         
         eventData.pointerDrag = null;
         Capacity--;
@@ -81,16 +89,16 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         return;
     }
 
-    private void ScaleRelatively(Vector2 vector)
+    /*private void ScaleRelatively(Vector2 vector)
     {
         var distanceFromCenter = Mathf.Abs(transform.position.y - _circleReferenceTransform.position.y);
         var proportionalScale = distanceFromCenter * -0.00035f + 1;
         
         transform.localScale = new Vector3(proportionalScale, proportionalScale, proportionalScale);
-    }
+    }*/
 
-    private void OnDisable()
+    /*private void OnDisable()
     {
         GetComponentInParent<ScrollRect>()?.onValueChanged.RemoveListener(ScaleRelatively);
-    }
+    }*/
 }

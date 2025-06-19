@@ -8,10 +8,11 @@ using Random = UnityEngine.Random;
 
 public enum CustomerType
 {
-    Common,
-     Deep,
-     Precise,
-     Avoidant
+    Neutral,
+    Positive,
+    Negative,
+    PositiveComplex,
+    NegativeComplex
 }
 
 public class Customer : MonoBehaviour
@@ -19,7 +20,10 @@ public class Customer : MonoBehaviour
     public static Customer Instance;
     
     public CustomerType currentType;
-    [Range(0, 8)] public int targetCircle;
+
+    public CircleEnvironment targetEnvironment;
+    public CircleTemperature targetTemperature;
+    public int targetIndex; // 1 = environment, 2 = temperature
 
     [SerializeField] private TextMeshProUGUI customerDebugInfoText;
 
@@ -49,10 +53,19 @@ public class Customer : MonoBehaviour
     {
         Debug.Log("Randomised");
         currentType = (CustomerType)Random.Range(0, Enum.GetNames(typeof(CustomerType)).Length);
-        targetCircle = currentType == CustomerType.Deep ? 8 : Random.Range(0, 9);
+        if (currentType == CustomerType.Negative || currentType == CustomerType.Positive)
+        {
+            targetIndex = Random.Range(0, 2);
+        }
         
-        customerDebugInfoText.text = $"Target Circle: {targetCircle}\nCustomer Type: {currentType}";
-
+        // randomize preferred temperature, environment
+        
+        targetTemperature = (CircleTemperature)Random.Range(0, Enum.GetNames(typeof(CircleTemperature)).Length);
+        targetEnvironment = (CircleEnvironment)Random.Range(0, Enum.GetNames(typeof(CircleEnvironment)).Length);
+        
+        //targetCircle = currentType == CustomerType.Deep ? 8 : Random.Range(0, 9);
+        
+        customerDebugInfoText.text = $"Targets: {targetEnvironment}, {targetTemperature}\nCustomer Type: {currentType}";
         
         // Visual randomisation
         List<Sprite> sprites = _avatar.GetRandomAvatar();
@@ -61,7 +74,7 @@ public class Customer : MonoBehaviour
         currentMouth.sprite = sprites[1];
         currentHorns.sprite = sprites[2];
 
-        currentHat.gameObject.SetActive(true);
+        /*currentHat.gameObject.SetActive(true);
         
         switch (currentType)
         {
@@ -73,11 +86,7 @@ public class Customer : MonoBehaviour
                 currentHat.GetComponent<CanvasGroup>().alpha = 1;
                 currentHat.sprite = Random.Range(0, 2) == 1 ? _avatar.deepHat.sprite : _avatar.noHat.sprite;
                 break;
-            default:
-                currentHat.GetComponent<CanvasGroup>().alpha = 0;
-                currentHat.sprite = _avatar.noHat.sprite;
-                break;
-        }
+        }*/
     }
 
     private void OnDisable()

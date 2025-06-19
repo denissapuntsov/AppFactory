@@ -94,8 +94,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -198,11 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indexText: {fileID: 6444346132642354212}
-  popup: {fileID: 0}
-  customerIconEmpty: {fileID: 7260238485232048600, guid: d42e0af43e0352a4ea9075b5bf833c4e, type: 3}
-  customerIconNeutral: {fileID: 21300000, guid: f13034d16a2e8ec4d9fe5ea073e0e17c, type: 3}
-  customerIconGood: {fileID: 21300000, guid: 6c5bcfa23a167fe4092d3e64ad37bdd1, type: 3}
-  customerIconBad: {fileID: 21300000, guid: b294185dd6bcb494b8366de00ea77664, type: 3}
+  environment: 0
+  temperature: 0
 --- !u!114 &2632250308289156845
 MonoBehaviour:
   m_ObjectHideFlags: 0

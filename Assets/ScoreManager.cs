@@ -21,14 +21,47 @@ public class ScoreManager : MonoBehaviour
         }
     }
     
-    public void AddPoints(Customer customer, int circleIndex)
+    public void AddPoints(Customer customer, Circle circle)
     {
         CustomerType customerType = customer.currentType;
-        int distance;
         
         switch (customerType)
         {
-            case CustomerType.Common:
+            case CustomerType.Positive:
+                switch (customer.targetIndex)
+                {
+                    case 1:
+                        Score += customer.targetEnvironment == circle.environment ? 1f : 0;
+                        break;
+                    case 2:
+                        Score += customer.targetTemperature == circle.temperature ? 1f : 0;
+                        break;
+                }
+                break;
+            case CustomerType.Negative:
+                switch (customer.targetIndex)
+                {
+                    case 1:
+                        Score += customer.targetEnvironment == circle.environment ? 0 : 1f;
+                        break;
+                    case 2:
+                        Score += customer.targetTemperature == circle.temperature ? 0 : 1f;
+                        break;
+                }
+                break;
+            case CustomerType.Neutral:
+                Score += 1;
+                break;
+            case CustomerType.PositiveComplex:
+                Score += customer.targetEnvironment == circle.environment ? 0.5f : 0;
+                Score += customer.targetTemperature == circle.temperature ? 0.5f : 0;
+                break;
+            case CustomerType.NegativeComplex:
+                Score += customer.targetEnvironment == circle.environment ? 0 : 0.5f;
+                Score += customer.targetTemperature == circle.temperature ? 0 : 0.5f;
+                break;
+            
+            /*case CustomerType.Common:
                 Score += 1;
                 break;
             case CustomerType.Deep:
@@ -47,7 +80,7 @@ public class ScoreManager : MonoBehaviour
             case CustomerType.Precise:
                 distance = Mathf.Abs(circleIndex - customer.targetCircle);
                 Score += distance > 2.0f ? 0 : distance / 2.0f;
-                break;
+                break;*/
         }
     }
 }
