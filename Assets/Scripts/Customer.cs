@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -25,7 +25,7 @@ public class Customer : MonoBehaviour
     public CircleTemperature targetTemperature;
     public int targetIndex; // 1 = environment, 2 = temperature
 
-    [SerializeField] private TextMeshProUGUI customerDebugInfoText;
+    [SerializeField] private TextMeshProUGUI customerInfoText;
 
     [SerializeField] private Image currentEyes, currentMouth, currentHorns, currentHat;
     private CustomerAvatar _avatar;
@@ -53,40 +53,52 @@ public class Customer : MonoBehaviour
     {
         Debug.Log("Randomised");
         currentType = (CustomerType)Random.Range(0, Enum.GetNames(typeof(CustomerType)).Length);
-        if (currentType == CustomerType.Negative || currentType == CustomerType.Positive)
+        
+        // 1 -> environment, 2 -> temperature
+        if (currentType is CustomerType.Negative or CustomerType.Positive)
         {
-            targetIndex = Random.Range(0, 2);
+            targetIndex = Random.Range(1, 3);
         }
+        else targetIndex = 0;
         
         // randomize preferred temperature, environment
         
         targetTemperature = (CircleTemperature)Random.Range(0, Enum.GetNames(typeof(CircleTemperature)).Length);
         targetEnvironment = (CircleEnvironment)Random.Range(0, Enum.GetNames(typeof(CircleEnvironment)).Length);
-        
-        //targetCircle = currentType == CustomerType.Deep ? 8 : Random.Range(0, 9);
-        
-        customerDebugInfoText.text = $"Targets: {targetEnvironment}, {targetTemperature}\nCustomer Type: {currentType}";
-        
-        // Visual randomisation
+
+
+        if (currentType == CustomerType.Neutral)
+        {
+            customerInfoText.text = "Target is any circle";
+        }
+
+        switch (currentType)
+        {
+            case CustomerType.Neutral:
+                customerInfoText.text = "Wants: anything";
+                break;
+            case CustomerType.Positive:
+                customerInfoText.text = "Wants: ";
+                customerInfoText.text += targetIndex == 1 ? $"{targetEnvironment}" : $"{targetTemperature}";
+                break;
+            case CustomerType.PositiveComplex:
+                customerInfoText.text = $"Wants: {targetTemperature} and {targetEnvironment}";
+                break;
+            case CustomerType.Negative:
+                customerInfoText.text = "Doesn't want: ";
+                customerInfoText.text += targetIndex == 1 ? $"{targetEnvironment}" : $"{targetTemperature}";
+                break;
+            case CustomerType.NegativeComplex:
+                customerInfoText.text = $"Doesn't want: ";
+                customerInfoText.text += $"{targetEnvironment} or {targetTemperature}";
+                break;
+        }
+
         List<Sprite> sprites = _avatar.GetRandomAvatar();
         
         currentEyes.sprite = sprites[0];
         currentMouth.sprite = sprites[1];
         currentHorns.sprite = sprites[2];
-
-        /*currentHat.gameObject.SetActive(true);
-        
-        switch (currentType)
-        {
-            case CustomerType.Common:
-                currentHat.GetComponent<CanvasGroup>().alpha = 1;
-                currentHat.sprite = Random.Range(0, 2) == 1 ? _avatar.commonHat.sprite : _avatar.noHat.sprite;
-                break;
-            case CustomerType.Deep:
-                currentHat.GetComponent<CanvasGroup>().alpha = 1;
-                currentHat.sprite = Random.Range(0, 2) == 1 ? _avatar.deepHat.sprite : _avatar.noHat.sprite;
-                break;
-        }*/
     }
 
     private void OnDisable()

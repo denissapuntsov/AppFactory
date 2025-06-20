@@ -48,7 +48,7 @@ public class Timer : MonoBehaviour
 
     private IEnumerator CountTime()
     {
-        yield return new WaitForSecondsRealtime(4f);
+        yield return new WaitForSecondsRealtime(7.5f);
         AddHalfHour();
         if (Time >= 17.0f)
         {

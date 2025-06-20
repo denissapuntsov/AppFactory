@@ -9,12 +9,12 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
     public static event OnEndDialogueHandler OnEndDialogue;
     
     [SerializeField] private RectTransform zeroTransform, exitTransform;
-    private RectTransform _startTransform;
+    private Vector3 _startPosition;
     
     private void OnEnable()
     {
         GameManager.OnEnter += Enter;
-        _startTransform = GetComponent<RectTransform>();
+        _startPosition = GetComponent<RectTransform>().position;
     }
 
     private void Enter()
@@ -32,7 +32,7 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
             .Append(transform.DOMove(exitTransform.position, 0.5f))
             .OnComplete(() =>
             {
-                transform.position = _startTransform.position;
+                transform.position = _startPosition;
                 OnEndDialogue?.Invoke();
                 GameManager.CurrentGameState = GameState.Idle;
             });

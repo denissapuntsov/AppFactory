@@ -1,14 +1,24 @@
 using System;
+using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText, customerSatisfactionCoefficientText;
+    [SerializeField] private Slider scoreSlider;
+    [SerializeField] private Image sliderFace; 
+    [SerializeField] private Sprite faceNeutral, faceHappy, faceSad;
+
+    private int _customersServed = 0;
     
     private float _customerSatisfactionCoefficient;
 
     private float _score;
+
     public float Score
     {
         get => _score;
@@ -16,14 +26,41 @@ public class ScoreManager : MonoBehaviour
         {
             _score = value;
             scoreText.text = $"Score: {value}";
-            _customerSatisfactionCoefficient = _score / (ShiftManager.Instance.CurrentCustomerIndex + 1) * 100;
-            customerSatisfactionCoefficientText.text = $"Customer satisfaction: {_customerSatisfactionCoefficient}%";
+            UpdateScoreValues();
         }
     }
-    
+
+    private void UpdateScoreValues()
+    {
+        _customerSatisfactionCoefficient = _score / _customersServed * 100;
+        customerSatisfactionCoefficientText.text = $"Customer satisfaction: {_customerSatisfactionCoefficient}%";
+        UpdateSliderVisual(_customerSatisfactionCoefficient);
+        scoreSlider.DOValue(_customerSatisfactionCoefficient, 1f);
+    }
+
+    private void UpdateSliderVisual(float csc)
+    {
+        if (csc < 50)
+        {
+            sliderFace.sprite = faceSad;
+        }
+        else if (csc is > 50 and < 75)
+        {
+            sliderFace.sprite = faceNeutral;
+        }
+        else if (csc is > 75 and < 100)
+        {
+            sliderFace.sprite = faceHappy;
+        }
+    }
+
+
     public void AddPoints(Customer customer, Circle circle)
     {
+        _customersServed++;
         CustomerType customerType = customer.currentType;
+
+        float scoreToAdd = 0f;
         
         switch (customerType)
         {
@@ -31,10 +68,10 @@ public class ScoreManager : MonoBehaviour
                 switch (customer.targetIndex)
                 {
                     case 1:
-                        Score += customer.targetEnvironment == circle.environment ? 1f : 0;
+                        scoreToAdd += customer.targetEnvironment == circle.environment ? 1f : 0;
                         break;
                     case 2:
-                        Score += customer.targetTemperature == circle.temperature ? 1f : 0;
+                        scoreToAdd += customer.targetTemperature == circle.temperature ? 1f : 0;
                         break;
                 }
                 break;
@@ -42,45 +79,28 @@ public class ScoreManager : MonoBehaviour
                 switch (customer.targetIndex)
                 {
                     case 1:
-                        Score += customer.targetEnvironment == circle.environment ? 0 : 1f;
+                        scoreToAdd += customer.targetEnvironment == circle.environment ? 0 : 1f;
                         break;
                     case 2:
-                        Score += customer.targetTemperature == circle.temperature ? 0 : 1f;
+                        scoreToAdd += customer.targetTemperature == circle.temperature ? 0 : 1f;
                         break;
                 }
                 break;
             case CustomerType.Neutral:
-                Score += 1;
+                scoreToAdd += 1;
                 break;
             case CustomerType.PositiveComplex:
-                Score += customer.targetEnvironment == circle.environment ? 0.5f : 0;
-                Score += customer.targetTemperature == circle.temperature ? 0.5f : 0;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 0.5f : 0;
+                scoreToAdd += customer.targetTemperature == circle.temperature ? 0.5f : 0;
                 break;
             case CustomerType.NegativeComplex:
-                Score += customer.targetEnvironment == circle.environment ? 0 : 0.5f;
-                Score += customer.targetTemperature == circle.temperature ? 0 : 0.5f;
+                scoreToAdd += customer.targetEnvironment != circle.environment ? 0.5f : 0f;
+                scoreToAdd += customer.targetTemperature != circle.temperature ? 0.5f : 0f;
                 break;
-            
-            /*case CustomerType.Common:
-                Score += 1;
-                break;
-            case CustomerType.Deep:
-                if (circleIndex < 4) break;
-                if (circleIndex == 4)
-                {
-                    Score += 0.5f;
-                    break;
-                }
-                Score += 0.5f + (circleIndex - 4) * 0.125f;
-                break;
-            case CustomerType.Avoidant:
-                distance = Mathf.Abs(circleIndex - customer.targetCircle);
-                Score += Mathf.Clamp(distance / 2f, min: 0f, max: 1f);
-                break;
-            case CustomerType.Precise:
-                distance = Mathf.Abs(circleIndex - customer.targetCircle);
-                Score += distance > 2.0f ? 0 : distance / 2.0f;
-                break;*/
         }
+        
+        Debug.Log($"Added {scoreToAdd} points");
+        Score += scoreToAdd;
+        GameManager.CurrentGameState = GameState.Place; 
     }
 }
