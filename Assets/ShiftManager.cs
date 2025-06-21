@@ -9,7 +9,7 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shiftInfoField;
     [SerializeField] private Canvas endShiftCanvas;
 
-    [SerializeField] private int _currentShiftIndex = -1;
+    private int _currentShiftIndex = -1;
     
     private int _currentCustomerIndex;
     
@@ -46,6 +46,9 @@ public class ShiftManager : MonoBehaviour
     private void InitializeShift()
     {
         _currentShiftIndex++;
+        {
+            
+        }
         CurrentCustomerIndex = 0;
         RandomizeShiftLength();
     }
@@ -55,8 +58,7 @@ public class ShiftManager : MonoBehaviour
         if (_currentCustomerIndex + 1 == _shiftLength)
         {
             Debug.Log("Lest customer served; transitioning to scoring");
-            GameManager.CurrentGameState = GameState.Exit;
-            endShiftCanvas.gameObject.SetActive(true);
+            GameManager.CurrentGameState = GameState.Score;
             return;
         }
         

@@ -6,13 +6,13 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
 
-    private float _time;
+    private static float _time;
     private bool _isRunning;
 
-    private float Time
+    public float Time
     {
         get => _time;
-        set
+        private set
         {
             _time = value;
             
@@ -41,19 +41,15 @@ public class Timer : MonoBehaviour
         Time = 9.0f;
     }
 
-    private void AddHalfHour()
-    {
-        Time += 0.5f;
-    }
-
     private IEnumerator CountTime()
     {
         yield return new WaitForSecondsRealtime(7.5f);
-        AddHalfHour();
+        Time += 0.5f;
         if (Time >= 17.0f)
         {
+            GameManager.CurrentGameState = GameState.Score;
             StopCoroutine(CountTime());
-            
+            yield break;
         }
         StartCoroutine(CountTime());
     }

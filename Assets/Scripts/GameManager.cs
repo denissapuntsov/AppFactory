@@ -11,8 +11,8 @@ public enum GameState
     Select,
     Drag,
     Place,
-    Exit,
-    Dialogue
+    Dialogue,
+    Score
 }
 
 public class GameManager : MonoBehaviour
@@ -40,11 +40,11 @@ public class GameManager : MonoBehaviour
     public delegate void OnPlaceHandler();
     public static event OnPlaceHandler OnPlace;
     
-    public delegate void OnExitHandler();
-    public static event OnExitHandler OnExit;
-    
     public delegate void OnDialogueHandler();
     public static event OnDialogueHandler OnDialogue;
+    
+    public delegate void OnScoreHandler();
+    public static event OnScoreHandler OnScore;
 
     #endregion
     
@@ -72,12 +72,12 @@ public class GameManager : MonoBehaviour
                     break;
                 case GameState.Place:
                     OnPlace?.Invoke();
-                    break;
-                case GameState.Exit:
-                    OnExit?.Invoke();
-                    break;
+                    break; 
                 case GameState.Dialogue:
                     OnDialogue?.Invoke();
+                    break;
+                case GameState.Score:
+                    OnScore?.Invoke();
                     break;
             }
         }
