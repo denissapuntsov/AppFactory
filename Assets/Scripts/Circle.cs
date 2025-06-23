@@ -49,7 +49,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         
         if (GameManager.CurrentGameState != GameState.Drag) return;
 
-        // if dragging, show demons?
+        CircleManager.CurrentCircle = this;
     }
     
     public void OnPointerExit(PointerEventData eventData)
@@ -57,6 +57,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         //popup.SetActive(false);
         if (GameManager.CurrentGameState != GameState.Drag) return;
 
+        CircleManager.CurrentCircle = null;
         return;
     }
 }

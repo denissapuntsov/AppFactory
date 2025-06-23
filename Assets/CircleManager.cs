@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class CircleManager : MonoBehaviour
 {
     private List<Circle> _circles = new List<Circle>();
+    public static Circle CurrentCircle;
     
     private void Awake()
     {

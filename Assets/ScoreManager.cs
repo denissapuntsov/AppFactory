@@ -54,11 +54,11 @@ public class ScoreManager : MonoBehaviour
         {
             sliderFace.sprite = faceSad;
         }
-        else if (csc is > 50 and < 75)
+        else if (csc is >= 50 and < 75)
         {
             sliderFace.sprite = faceNeutral;
         }
-        else if (csc is > 75 and < 100)
+        else if (csc is >= 75 and <= 100)
         {
             sliderFace.sprite = faceHappy;
         }
@@ -117,36 +117,36 @@ public class ScoreManager : MonoBehaviour
     private void DisplayScore()
     {
         endShiftCanvas.SetActive(true);
-        
+
         string scoreString = "Customer satisfaction: \n";
-        string numberString = $"{_customerSatisfactionCoefficient}\n";
+        string numberString = $"{_customerSatisfactionCoefficient} %\n";
 
         string earlyBonusText = "Early bonus: \n";
         string consistencyBonusText = "Consistency bonus: \n";
 
         float earlyBonus = 1f;
         float consistencyBonus = 1f;
-        
+
         float time = FindAnyObjectByType<Timer>().Time;
-        
+
         if (time <= 15.0f)
         {
             scoreString += earlyBonusText;
             earlyBonus = 1 + (17.0f - time) / 16f;
             numberString += $"{(int)(earlyBonus * 100)}%\n";
         }
-        
+
         if (_lastShiftSatisfaction >= 75 && _customerSatisfactionCoefficient >= 75)
         {
             scoreString += consistencyBonusText;
             consistencyBonus = _lastShiftSatisfaction + _customerSatisfactionCoefficient / 200f;
             numberString += $"{(int)(100 + consistencyBonus * 100)}%\n";
         }
-        
+
         bonusesText.text = scoreString;
         bonusesValue.text = numberString;
         _totalScore += Score * earlyBonus * consistencyBonus;
-        
-        totalScoreText.text = $"SCORE: {_totalScore:.1f}";
-    }
+
+        totalScoreText.text = $"SCORE: {(int)_totalScore}";
+}
 }

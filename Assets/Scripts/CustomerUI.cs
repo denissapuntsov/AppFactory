@@ -82,4 +82,11 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             .Join(customerParent.transform.DOMove(_defaultPosition, 0.4f))
             .OnComplete(() => GameManager.CurrentGameState = GameState.Idle);
     }
+
+    private void Disappear()
+    {
+        // go into the circle mask object
+        // go down
+        // on complete set game state to idle
+    }
 }
