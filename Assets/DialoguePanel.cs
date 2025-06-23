@@ -5,7 +5,9 @@ using UnityEngine.EventSystems;
 
 public class DialoguePanel : MonoBehaviour, IPointerClickHandler
 {
-    public delegate void OnEndDialogueHandler();
+    public delegate void OnClickHandler();
+    public static event OnClickHandler OnClick;
+    public delegate void OnEndDialogueHandler(); 
     public static event OnEndDialogueHandler OnEndDialogue;
     
     [SerializeField] private RectTransform zeroTransform, exitTransform;
@@ -25,7 +27,7 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
             .OnComplete(() => GameManager.CurrentGameState = GameState.Dialogue);
     }
 
-    private void Exit()
+    public void Exit()
     {
         Sequence exitSequence = DOTween.Sequence();
         exitSequence 
@@ -45,8 +47,6 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (GameManager.CurrentGameState != GameState.Dialogue) return;
-        // TODO: either skip to next dialogue line or transition to game
-        Exit();
+        if (GameManager.CurrentGameState == GameState.Dialogue) OnClick?.Invoke();
     }
 }

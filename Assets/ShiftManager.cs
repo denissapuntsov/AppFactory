@@ -8,6 +8,8 @@ public class ShiftManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI shiftInfoField;
     [SerializeField] private Canvas endShiftCanvas;
+    
+    private DialogueManager _dialogueManager;
 
     private int _currentShiftIndex = -1;
     
@@ -38,6 +40,7 @@ public class ShiftManager : MonoBehaviour
     private void OnEnable()
     {
         Instance = this;
+        _dialogueManager = FindAnyObjectByType<DialogueManager>();
 
         GameManager.OnEnter += InitializeShift;
         GameManager.OnPlace += GetNextCustomer;
@@ -45,10 +48,8 @@ public class ShiftManager : MonoBehaviour
 
     private void InitializeShift()
     {
+        _dialogueManager.SetRegularBlock();
         _currentShiftIndex++;
-        {
-            
-        }
         CurrentCustomerIndex = 0;
         RandomizeShiftLength();
     }
