@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -24,12 +25,43 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     public GameObject customerParent;
     private Vector3 _defaultPosition;
     private Vector3 _defaultScale;
-    
+
+    [SerializeField] private GameObject customerBackground, officeBackground;
+
     private void Start()
     {
+        customerBackground.SetActive(true);
+        GetComponent<CanvasGroup>().alpha = 0;
+        officeBackground.SetActive(false);
         _defaultPosition = customerParent.transform.position;
         _defaultScale = customerParent.transform.localScale;
-        Appear();
+        HideCustomer();
+
+        ShrinkBackground();
+    }
+
+    private void HideCustomer()
+    {
+        customerParent.transform.SetParent(officeParent);
+        customerParent.transform.SetSiblingIndex(1);
+        customerParent.transform.position = hiddenTransform.position;
+    }
+
+    private void ShrinkBackground()
+    {
+        Sequence shrinkBackgroundSequence = DOTween.Sequence();
+        shrinkBackgroundSequence.SetEase(Ease.Linear)
+            .Join(customerBackground.transform.DOScale(officeBackground.transform.localScale, 1f))
+            .Join(customerBackground.transform.DOMove(officeBackground.transform.position, 1f))
+            .AppendInterval(0.5f)
+            .OnComplete(() =>
+            {
+                customerBackground.SetActive(false);
+                officeBackground.SetActive(true);
+                GameManager.CurrentGameState = GameState.Enter;
+                GetComponent<CanvasGroup>().alpha = 1;
+                Appear();
+            });
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -65,16 +97,14 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (GameManager.CurrentGameState != GameState.Drag) return;
+        if (GameManager.CurrentGameState is not GameState.Drag and not GameState.Idle) return;
 
         Appear();
     }
 
     private void Appear()
     {
-        customerParent.transform.SetParent(officeParent);
-        customerParent.transform.SetSiblingIndex(1);
-        customerParent.transform.position = hiddenTransform.position;
+        HideCustomer();
         
         Sequence unfocusSequence = DOTween.Sequence();
         unfocusSequence

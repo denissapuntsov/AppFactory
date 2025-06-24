@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public enum GameState
 {
+    Start,
     Enter,
     Idle,
     Select,
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour
 
     #region Events
 
+    public delegate void OnStartHandler();
+    public static event OnStartHandler OnStart;
+    
     public delegate void OnEnterHandler();
     public static event OnEnterHandler OnEnter;
 
@@ -47,8 +51,8 @@ public class GameManager : MonoBehaviour
     public static event OnScoreHandler OnScore;
 
     #endregion
-    
-    private static GameState _currentGameState = GameState.Enter;
+
+    private static GameState _currentGameState;
     
     public static GameState CurrentGameState
     {
@@ -58,6 +62,9 @@ public class GameManager : MonoBehaviour
             _currentGameState = value;
             switch (_currentGameState)
             {
+                case GameState.Start:
+                    OnStart?.Invoke();
+                    break;
                 case GameState.Enter:
                     OnEnter?.Invoke();
                     break;
@@ -99,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CurrentGameState = GameState.Enter;
+        CurrentGameState = GameState.Start;
     }
 
     private void Update()
