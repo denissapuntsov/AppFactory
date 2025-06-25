@@ -14,5 +14,6 @@ EditorBuildSettings:
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: eeae88a01b34ce543bdbb1a9d1feada5, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: e1f743d73aad18c47a39b7126d05b9b3, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 83429e481ed2d0a4d939275f35a85cbd, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 3d2db89868094704391e27b399e67e82, type: 3}
   m_UseUCBPForAssetBundles: 0

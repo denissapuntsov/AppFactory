@@ -27,7 +27,7 @@ public class Customer : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI customerInfoText;
 
-    [SerializeField] private Image currentEyes, currentMouth, currentHorns, currentHat;
+    [SerializeField] private Image body, currentEyes, currentMouth, currentHorns, currentHat;
     private CustomerAvatar _avatar;
 
     private void OnEnable()
@@ -99,6 +99,30 @@ public class Customer : MonoBehaviour
         currentEyes.sprite = sprites[0];
         currentMouth.sprite = sprites[1];
         currentHorns.sprite = sprites[2];
+        currentHorns.color = _avatar.HornColor;
+
+        switch (targetTemperature)
+        {
+            case CircleTemperature.Cold:
+                if (currentType is CustomerType.Positive or CustomerType.PositiveComplex)
+                {
+                    body.color = _avatar.ColdColor;
+                    break;
+                }
+                body.color = _avatar.HotColor;
+                break;
+
+            case CircleTemperature.Hot:
+                if (currentType is CustomerType.Positive or CustomerType.PositiveComplex)
+                {
+                    body.color = _avatar.HotColor;
+                    break;
+                }
+                body.color = _avatar.HotColor;
+                break;
+        }
+        
+        if (targetIndex == 1 || currentType == CustomerType.Neutral) body.color = _avatar.NeutralColor;
     }
 
     private void OnDisable()

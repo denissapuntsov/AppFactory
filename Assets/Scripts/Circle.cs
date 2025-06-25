@@ -1,11 +1,8 @@
-using System;
+using DG.Tweening;
 using TMPro;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
-using Image = UnityEngine.UI.Image;
 
 public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDropHandler
 {
@@ -13,10 +10,15 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     #region Fields and Properties
 
     [SerializeField] private TextMeshProUGUI indexText;
+    [SerializeField] private GameObject startRef, endRef;
     
     private ScoreManager _scoreManager;
     private bool _isOverlappingCustomerIcon;
     private RectTransform _circleReferenceTransform;
+    private CustomerUI _customerUI;
+    private GameObject _customerPortrait;
+
+    private Vector3 _defaultScale;
 
     public int Index { get; private set; }
     public CircleEnvironment environment;
@@ -26,9 +28,13 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     private void Start()
     {
+        _defaultScale = transform.localScale;
+        
         Index = transform.GetSiblingIndex();
         _scoreManager = FindAnyObjectByType<ScoreManager>();
         _circleReferenceTransform = GameObject.FindWithTag("CircleReferenceTransform").GetComponent<RectTransform>();
+        _customerUI = FindAnyObjectByType<CustomerUI>();
+        _customerPortrait = _customerUI.customerParent;
         
         temperature = Index <= 3 ? CircleTemperature.Cold : CircleTemperature.Hot; 
         
@@ -39,23 +45,26 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
         
+        transform.DOScale(_defaultScale, 0.2f);
         eventData.pointerDrag = null;
         _scoreManager.AddPoints(Customer.Instance, circle: this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //popup.SetActive(true);
-        
         if (GameManager.CurrentGameState != GameState.Drag) return;
+
+        _customerPortrait.transform.SetParent(transform.GetComponentInChildren<Mask>().transform, true);
+        _customerPortrait.transform.SetAsLastSibling();
 
         CircleManager.CurrentCircle = this;
     }
     
     public void OnPointerExit(PointerEventData eventData)
     {
-        //popup.SetActive(false);
         if (GameManager.CurrentGameState != GameState.Drag) return;
+
+        _customerUI.SetCustomerLayerToDrag();
 
         CircleManager.CurrentCircle = null;
         return;

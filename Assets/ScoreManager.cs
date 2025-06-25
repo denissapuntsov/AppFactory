@@ -100,12 +100,12 @@ public class ScoreManager : MonoBehaviour
                 scoreToAdd += 1;
                 break;
             case CustomerType.PositiveComplex:
-                scoreToAdd += customer.targetEnvironment == circle.environment ? 0.5f : 0;
-                scoreToAdd += customer.targetTemperature == circle.temperature ? 0.5f : 0;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 0.75f : 0;
+                scoreToAdd += customer.targetTemperature == circle.temperature ? 0.25f : 0;
                 break;
             case CustomerType.NegativeComplex:
-                scoreToAdd += customer.targetEnvironment != circle.environment ? 0.5f : 0f;
-                scoreToAdd += customer.targetTemperature != circle.temperature ? 0.5f : 0f;
+                scoreToAdd += customer.targetEnvironment != circle.environment ? 0.75f : 0f;
+                scoreToAdd += customer.targetTemperature != circle.temperature ? 0.25f : 0f;
                 break;
         }
         
@@ -140,7 +140,7 @@ public class ScoreManager : MonoBehaviour
         {
             scoreString += consistencyBonusText;
             consistencyBonus = _lastShiftSatisfaction + _customerSatisfactionCoefficient / 200f;
-            numberString += $"{(int)(100 + consistencyBonus * 100)}%\n";
+            numberString += $"{(int)(100 + consistencyBonus)}%\n";
         }
 
         bonusesText.text = scoreString;

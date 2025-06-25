@@ -10,10 +10,18 @@ public class CustomerAvatar : MonoBehaviour
     [SerializeField] private List<AvatarElement> mouths;
     [SerializeField] private List<AvatarElement> horns;
 
-    [Header("Type-Specific Hats")] 
-    public AvatarElement deepHat;
-    public AvatarElement commonHat;
-    public AvatarElement noHat;
+    [Header("Colors")] 
+    [SerializeField] private Color neutralColor;
+    public Color NeutralColor => neutralColor;
+    
+    [SerializeField] private Color hotColor;
+    public Color HotColor => hotColor;
+    
+    [SerializeField] private Color coldColor;
+    public Color ColdColor => coldColor;
+    
+    [SerializeField] private List<Color> hornColors;
+    public Color HornColor => hornColors[Random.Range(0, hornColors.Count)];
 
     private List<Sprite> _weightedEyes, _weightedMouths, _weightedHorns; 
 

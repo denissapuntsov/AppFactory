@@ -9,16 +9,16 @@ public class InfoTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject infoFieldUI;
     [SerializeField] private RectTransform infoFieldUITarget;
-    [SerializeField] private float duration = 0.2f;
+    [SerializeField] private float duration = 0.4f;
 
-    private Vector3 _defaultPosition;
+   [SerializeField] private Transform startPosition, endPosition;
     private CanvasGroup _canvasGroup;
 
     private Sequence _popupSequence;
 
     private void Start()
     {
-        _defaultPosition = infoFieldUI.transform.position;
+        infoFieldUI.transform.position = startPosition.position;
         _canvasGroup = GetComponent<CanvasGroup>();
         infoFieldUI.transform.position = infoFieldUITarget.position;
     }
@@ -29,12 +29,12 @@ public class InfoTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         
         _canvasGroup.alpha = 0.5f;
         
-        infoFieldUI.transform.DOMove(_defaultPosition, duration);
+        infoFieldUI.transform.DOMove(endPosition.position, duration);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         _canvasGroup.alpha = 1f;
-        infoFieldUI.transform.DOMove(infoFieldUITarget.position, duration);
+        infoFieldUI.transform.DOMove(startPosition.position, duration);
     }
 }
