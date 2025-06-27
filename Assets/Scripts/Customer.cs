@@ -118,7 +118,7 @@ public class Customer : MonoBehaviour
                     body.color = _avatar.HotColor;
                     break;
                 }
-                body.color = _avatar.HotColor;
+                body.color = _avatar.ColdColor;
                 break;
         }
         

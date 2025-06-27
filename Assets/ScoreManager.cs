@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
@@ -9,19 +12,27 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private GameObject endShiftCanvas;
-
-    //[SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI bonusesText, bonusesValue, totalScoreText;
+    
+    [SerializeField] private TextMeshProUGUI stateText, scoresText, bonusesText, bonusesValue, totalScoreText;
     [SerializeField] private Slider scoreSlider;
     [SerializeField] private Image sliderFace; 
     [SerializeField] private Sprite faceNeutral, faceHappy, faceSad;
 
     private int _customersServed = 0;
+    
     private float _customerSatisfactionCoefficient;
     private float _lastShiftSatisfaction;
     
     private float _score;
     private float _totalScore;
+
+    private List<float> _currentShiftScores = new List<float>();
+
+    public List<float> CurrentShiftScores
+    {
+        get => _currentShiftScores; 
+        private set => _currentShiftScores = value;
+    }
 
     public float Score
     {
@@ -29,7 +40,7 @@ public class ScoreManager : MonoBehaviour
         private set
         {
             _score = value;
-            UpdateScoreValues();
+            UpdateGlobalScoreValues();
         }
     }
 
@@ -38,14 +49,15 @@ public class ScoreManager : MonoBehaviour
         endShiftCanvas.SetActive(false);
         
         GameManager.OnEnter += () => _lastShiftSatisfaction = _customerSatisfactionCoefficient;
-        GameManager.OnScore += DisplayScore;
+        GameManager.OnShiftComplete += DisplayScore;
+        GameManager.OnShiftIncomplete += AddMissedScores;
     }
-
-    private void UpdateScoreValues()
+    
+    private void UpdateGlobalScoreValues()
     {
         _customerSatisfactionCoefficient = _score / _customersServed;
         UpdateSliderVisual(_customerSatisfactionCoefficient);
-        scoreSlider.DOValue(_customerSatisfactionCoefficient, 1f);
+        scoreSlider.value = _customerSatisfactionCoefficient;
     }
 
     private void UpdateSliderVisual(float csc)
@@ -109,17 +121,44 @@ public class ScoreManager : MonoBehaviour
                 break;
         }
         
+        CurrentShiftScores.Add(scoreToAdd);
+        
         Debug.Log($"Added {scoreToAdd} points");
         Score += scoreToAdd * 100f;
         GameManager.CurrentGameState = GameState.Place; 
     }
 
+    private void AddMissedScores()
+    {
+        for (int i = ShiftManager.Instance.ShiftLength - CurrentShiftScores.Count; i > 0; i--)
+        {
+            _customersServed++;
+            Score += 0;
+            CurrentShiftScores.Add(0);
+        }
+        DisplayScore();
+    }
+
     private void DisplayScore()
     {
         endShiftCanvas.SetActive(true);
+        
+        SetTitle();
 
+        scoresText.text = String.Empty;
+        foreach (float scoreValue in CurrentShiftScores)
+        {
+            scoresText.text += $"{scoreValue} / ";
+        }
+        CurrentShiftScores.Clear();
+
+        SetScoreTexts();
+    }
+
+    private void SetScoreTexts()
+    {
         string scoreString = "Customer satisfaction: \n";
-        string numberString = $"{_customerSatisfactionCoefficient} %\n";
+        string numberString = $"{(int)_customerSatisfactionCoefficient} %\n";
 
         string earlyBonusText = "Early bonus: \n";
         string consistencyBonusText = "Consistency bonus: \n";
@@ -145,8 +184,31 @@ public class ScoreManager : MonoBehaviour
 
         bonusesText.text = scoreString;
         bonusesValue.text = numberString;
-        _totalScore += Score * earlyBonus * consistencyBonus;
+        _totalScore += Score * earlyBonus * (1 + consistencyBonus / 100f);
 
         totalScoreText.text = $"SCORE: {(int)_totalScore}";
-}
+    }
+
+    private void SetTitle()
+    {
+        switch (GameManager.CurrentGameState)
+        {
+            case GameState.ShiftComplete:
+                if (_customerSatisfactionCoefficient > 50)
+                {
+                    stateText.text = "SHIFT COMPLETED!";
+                    break;
+                }
+                stateText.text = "YOU'RE FIRED!";
+                break;
+            case GameState.ShiftIncomplete:
+                if (_customerSatisfactionCoefficient > 50)
+                {
+                    stateText.text = "YOU RAN OUT OF TIME!";
+                    break;
+                }
+                stateText.text = "YOU'RE FIRED!";
+                break;
+        }
+    }
 }

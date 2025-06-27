@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -33,6 +34,8 @@ public class Timer : MonoBehaviour
     {
         GameManager.OnEnter += () => Time = 9.0f;
         DialoguePanel.OnEndDialogue += () => StartCoroutine(CountTime());
+        GameManager.OnShiftComplete += StopAllCoroutines;
+        GameManager.OnShiftIncomplete += StopAllCoroutines;
     }
 
     private void Reset()
@@ -43,14 +46,20 @@ public class Timer : MonoBehaviour
 
     private IEnumerator CountTime()
     {
-        yield return new WaitForSecondsRealtime(7.5f);
-        Time += 0.5f;
-        if (Time >= 17.0f)
+        if (Time > 17.0f)
         {
-            GameManager.CurrentGameState = GameState.Score;
+            GameManager.CurrentGameState = GameState.ShiftIncomplete;
             StopCoroutine(CountTime());
             yield break;
         }
+        yield return new WaitForSecondsRealtime(2f);
+        Time += 0.5f;
         StartCoroutine(CountTime());
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnShiftComplete -= StopAllCoroutines;
+        GameManager.OnShiftIncomplete -= StopAllCoroutines;
     }
 }

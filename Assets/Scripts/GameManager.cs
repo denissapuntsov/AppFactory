@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameState
@@ -13,7 +14,8 @@ public enum GameState
     Drag,
     Place,
     Dialogue,
-    Score
+    ShiftComplete,
+    ShiftIncomplete,
 }
 
 public class GameManager : MonoBehaviour
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI stateText;
 
     [SerializeField] private Button resetButton;
+    [SerializeField] private Button quitButton;
     
     private static GameManager _instance;
 
@@ -47,8 +50,11 @@ public class GameManager : MonoBehaviour
     public delegate void OnDialogueHandler();
     public static event OnDialogueHandler OnDialogue;
     
-    public delegate void OnScoreHandler();
-    public static event OnScoreHandler OnScore;
+    public delegate void OnShiftSuccessHandler();
+    public static event OnShiftSuccessHandler OnShiftComplete;
+    
+    public delegate void OnShiftIncompleteHandler();
+    public static event OnShiftIncompleteHandler OnShiftIncomplete;
 
     #endregion
 
@@ -83,8 +89,11 @@ public class GameManager : MonoBehaviour
                 case GameState.Dialogue:
                     OnDialogue?.Invoke();
                     break;
-                case GameState.Score:
-                    OnScore?.Invoke();
+                case GameState.ShiftComplete:
+                    OnShiftComplete?.Invoke();
+                    break;
+                case GameState.ShiftIncomplete:
+                    OnShiftIncomplete?.Invoke();
                     break;
             }
         }
@@ -94,6 +103,7 @@ public class GameManager : MonoBehaviour
     {
         if (!resetButton) return;
         resetButton.onClick.AddListener(() => CurrentGameState = GameState.Enter);
+        quitButton.onClick.AddListener(() => SceneManager.LoadScene(0));
     }
 
     private void Awake()

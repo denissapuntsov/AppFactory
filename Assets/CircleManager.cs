@@ -22,7 +22,15 @@ public class CircleManager : MonoBehaviour
             environmentPool.Remove(newEnvironment);
         }
     }
-    
+
+    public void BlockRandomCircle(int amount)
+    {
+        foreach (Circle circle in _circles) circle.IsBlocked = false;
+        for (int i = 0; i < amount; i++)
+        {
+            _circles[Random.Range(0, _circles.Count)].IsBlocked = true;
+        }
+    }
     
 }
 

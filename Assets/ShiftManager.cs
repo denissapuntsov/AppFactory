@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using Random = UnityEngine.Random;
 
 public class ShiftManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] private Canvas endShiftCanvas;
     
     private DialogueManager _dialogueManager;
+    private ScoreManager _scoreManager;
+    private CircleManager _circleManager;
 
     private int _currentShiftIndex = -1;
     
@@ -41,6 +44,7 @@ public class ShiftManager : MonoBehaviour
     {
         Instance = this;
         _dialogueManager = FindAnyObjectByType<DialogueManager>();
+        _circleManager = FindAnyObjectByType<CircleManager>();
 
         GameManager.OnEnter += InitializeShift;
         GameManager.OnPlace += GetNextCustomer;
@@ -52,14 +56,19 @@ public class ShiftManager : MonoBehaviour
         _currentShiftIndex++;
         CurrentCustomerIndex = 0;
         RandomizeShiftLength();
+
+        if (_currentShiftIndex >= 2)
+        {
+            _circleManager.BlockRandomCircle(1);
+        }
     }
 
     private void GetNextCustomer()
     {
         if (_currentCustomerIndex + 1 == _shiftLength)
         {
-            Debug.Log("Lest customer served; transitioning to scoring");
-            GameManager.CurrentGameState = GameState.Score;
+            Debug.Log("Lest customer served; transitioning to scoring"); 
+            GameManager.CurrentGameState = GameState.ShiftComplete;
             return;
         }
         
