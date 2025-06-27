@@ -29,6 +29,7 @@ public class Customer : MonoBehaviour
 
     [SerializeField] private Image body, currentEyes, currentMouth, currentHorns, currentHat;
     private CustomerAvatar _avatar;
+    private FlavorTextManager _flavorTextManager;
 
     private void OnEnable()
     {
@@ -46,6 +47,7 @@ public class Customer : MonoBehaviour
     private void Start()
     {
         _avatar = GetComponent<CustomerAvatar>();
+        _flavorTextManager = FindAnyObjectByType<FlavorTextManager>();
         Randomise();
     }
 
@@ -72,27 +74,7 @@ public class Customer : MonoBehaviour
             customerInfoText.text = "Target is any circle";
         }
 
-        switch (currentType)
-        {
-            case CustomerType.Neutral:
-                customerInfoText.text = "Wants: anything";
-                break;
-            case CustomerType.Positive:
-                customerInfoText.text = "Wants: ";
-                customerInfoText.text += targetIndex == 1 ? $"{targetEnvironment}" : $"{targetTemperature}";
-                break;
-            case CustomerType.PositiveComplex:
-                customerInfoText.text = $"Wants: {targetTemperature} and {targetEnvironment}";
-                break;
-            case CustomerType.Negative:
-                customerInfoText.text = "Doesn't want: ";
-                customerInfoText.text += targetIndex == 1 ? $"{targetEnvironment}" : $"{targetTemperature}";
-                break;
-            case CustomerType.NegativeComplex:
-                customerInfoText.text = $"Doesn't want: ";
-                customerInfoText.text += $"{targetEnvironment} or {targetTemperature}";
-                break;
-        }
+        customerInfoText.text = _flavorTextManager.GetFlavorText(this);
 
         List<Sprite> sprites = _avatar.GetRandomAvatar();
         
