@@ -1379,7 +1379,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1cb8deb2e46c9489dea5708d90c89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jkljhgf: []
+  neutralTexts:
+  - environment: 0
+    text: I want anything
+  - environment: 0
+    text: Just get me out of here
+  - environment: 0
+    text: I just miss home
+  positiveTemperatureTexts: []
+  negativeTemperatureTexts: []
+  positiveEnvironmentTexts: []
+  negativeEnvironmentTexts: []
 --- !u!1 &457450450
 GameObject:
   m_ObjectHideFlags: 0
