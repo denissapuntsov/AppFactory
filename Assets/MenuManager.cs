@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -6,19 +7,45 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private Button tutorialButton, freePlayButton, settingsButton;
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private GameObject mainGroup, settingsGroup;
     [SerializeField] private MainMenuScroll mainMenuScroll;
+
+    private TextMeshProUGUI _settingsButtonName;
 
     private void OnEnable()
     {
-        tutorialButton.onClick.AddListener(() => { StartCoroutine(SwitchScene(2)); });
-        freePlayButton.onClick.AddListener(() => { StartCoroutine(SwitchScene(1)); });
-        settingsButton.onClick.AddListener(() => { Debug.Log("Opened settings"); });
+        _settingsButtonName = settingsButton.GetComponentInChildren<TextMeshProUGUI>();
+        
+        tutorialButton.onClick.AddListener(() =>
+        {
+            if (!mainMenuScroll.IsOpen) return;
+            StartCoroutine(SwitchScene(2));
+        });
+        freePlayButton.onClick.AddListener(() =>
+        {
+            if (!mainMenuScroll.IsOpen) return;
+            StartCoroutine(SwitchScene(1));
+        });
+        settingsButton.onClick.AddListener(() =>
+        {
+            if (!mainMenuScroll.IsOpen) return;
+            StartCoroutine(ToggleGroup());
+        });
     }
     private IEnumerator SwitchScene(int index)
     {
         mainMenuScroll.Close();
-        yield return new WaitUntil(() => MainMenuScroll.IsOpen == false);
+        yield return new WaitUntil(() => !mainMenuScroll.IsOpen);
         SceneManager.LoadScene(index);
+    }
+
+    private IEnumerator ToggleGroup()
+    {
+        mainMenuScroll.Close();
+        yield return new WaitUntil(() => !mainMenuScroll.IsOpen);
+        mainGroup.SetActive(!mainGroup.activeSelf);
+        settingsGroup.SetActive(!settingsGroup.activeSelf);
+        _settingsButtonName.text = mainGroup.activeSelf ? "Settings" : "Back";
+        mainMenuScroll.Open();
     }
 }

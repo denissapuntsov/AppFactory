@@ -10,27 +10,30 @@ public class MainMenuScroll : MonoBehaviour
 
     private Sequence _openSequence, _closeSequence;
     
-    public static bool IsOpen { get; private set; }
+    public bool IsOpen { get; private set; }
 
     private void Start()
     {
-        _openSequence = DOTween.Sequence();
         _closeSequence = DOTween.Sequence();
         transform.position = startTargetTransform.position;
         Open();
     }
 
-    private void Open()
+    public void Open()
     {
+        _openSequence = DOTween.Sequence();
         _openSequence
-            .Append(transform.DOMove(endTargetTransform.position, 1f))
+            .Append(transform.DOMove(endTargetTransform.position, 0.3f))
             .SetEase(Ease.Linear)
             .OnComplete(() => { IsOpen = true; });
     }
 
     public void Close()
     {
-        transform.DOMove(startTargetTransform.position, 1f)
+        _closeSequence = DOTween.Sequence();
+        _closeSequence
+            .Append(transform.DOMove(startTargetTransform.position, 0.3f))
+            .AppendInterval(0.3f)
             .OnComplete(() =>
             {
                 IsOpen = false;
