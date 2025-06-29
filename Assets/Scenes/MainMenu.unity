@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.65, g: 0.65, b: 0.65, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1557,6 +1557,7 @@ GameObject:
   - component: {fileID: 527365668}
   - component: {fileID: 527365670}
   - component: {fileID: 527365669}
+  - component: {fileID: 527365671}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -1622,6 +1623,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527365667}
   m_CullTransparentMesh: 1
+--- !u!114 &527365671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527365667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: -6, y: -7}
+  m_UseGraphicAlpha: 0
 --- !u!224 &553967485 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 574234083855403850, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
@@ -3945,6 +3961,7 @@ GameObject:
   - component: {fileID: 1606684783}
   - component: {fileID: 1606684785}
   - component: {fileID: 1606684784}
+  - component: {fileID: 1606684786}
   m_Layer: 5
   m_Name: ScrollEnd
   m_TagString: Untagged
@@ -4009,6 +4026,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606684782}
   m_CullTransparentMesh: 1
+--- !u!114 &1606684786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606684782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: -6, y: -7}
+  m_UseGraphicAlpha: 0
 --- !u!1 &1646655096
 GameObject:
   m_ObjectHideFlags: 0

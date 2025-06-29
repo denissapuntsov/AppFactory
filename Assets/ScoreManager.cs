@@ -1,22 +1,21 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Sequence = DG.Tweening.Sequence;
 
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private GameObject endShiftCanvas;
     
-    [SerializeField] private TextMeshProUGUI stateText, scoresText, bonusesText, bonusesValue, totalScoreText;
+    [SerializeField] private TextMeshProUGUI stateText, bonusesText, bonusesValue, totalScoreText;
+    [SerializeField] private HorizontalLayoutGroup scoreMarks;
     [SerializeField] private Slider scoreSlider;
     [SerializeField] private Image sliderFace; 
     [SerializeField] private Sprite faceNeutral, faceHappy, faceSad;
+
+    [SerializeField] private Button nextShiftButton, quitButton;
 
     private int _customersServed = 0;
     
@@ -142,17 +141,30 @@ public class ScoreManager : MonoBehaviour
     private void DisplayScore()
     {
         endShiftCanvas.SetActive(true);
-        
+        Sequence scoreSequence = DOTween.Sequence();
         SetTitle();
-
-        scoresText.text = String.Empty;
-        foreach (float scoreValue in CurrentShiftScores)
+        
+        for (int i = 0; i < CurrentShiftScores.Count; i++)
         {
-            scoresText.text += $"{scoreValue} / ";
+            scoreMarks.GetComponentsInChildren<Image>(includeInactive:true)[i].gameObject.SetActive(true);
+            scoreMarks.GetComponentsInChildren<Image>(includeInactive:true)[i].color = Color.clear;
+            
+            var i1 = i;
+            scoreSequence
+                .AppendCallback(() =>
+                {
+                    Color selectedColor;
+                    if (CurrentShiftScores[i1] == 0) selectedColor = Color.red;
+                    else if (CurrentShiftScores[i1] < 1f) selectedColor = Color.yellow;
+                    else selectedColor = Color.green;
+                    scoreMarks.GetComponentsInChildren<Image>()[i1].color = selectedColor;
+                })
+                .AppendInterval(0.25f);
         }
-        CurrentShiftScores.Clear();
-
-        SetScoreTexts();
+        
+        scoreSequence
+            .AppendInterval(1f)
+            .AppendCallback(SetScoreTexts);
     }
 
     private void SetScoreTexts()
@@ -194,12 +206,15 @@ public class ScoreManager : MonoBehaviour
         switch (GameManager.CurrentGameState)
         {
             case GameState.ShiftComplete:
+                
                 if (_customerSatisfactionCoefficient > 50)
                 {
                     stateText.text = "SHIFT COMPLETED!";
                     break;
                 }
                 stateText.text = "YOU'RE FIRED!";
+                nextShiftButton.gameObject.SetActive(false);
+                quitButton.gameObject.SetActive(true);
                 break;
             case GameState.ShiftIncomplete:
                 if (_customerSatisfactionCoefficient > 50)
