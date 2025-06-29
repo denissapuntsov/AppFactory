@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class MainMenuScroll : MonoBehaviour
+public class MainMenuScroll : MonoBehaviour, IScroll
 {
     private Vector3 _startPosition;
 
