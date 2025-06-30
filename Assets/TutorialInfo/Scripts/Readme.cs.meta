@@ -1,12 +1,20 @@
 fileFormatVersion: 2
 guid: fcf7219bab7fe46a1ad266029b2fee19
+timeCreated: 1484669930
+licenseType: Store
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - icon: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
-  icon: {fileID: 2800000, guid: a186f8a87ca4f4d3aa864638ad5dfb65, type: 3}
+  icon: {fileID: 2800000, guid: ec25e105855e04042a0c86325d0daf1c, type: 3}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 155663
+  packageName: Video Capture Pro
+  packageVersion: 2.5.2
+  assetPath: Assets/TutorialInfo/Scripts/Readme.cs
+  uploadId: 436072

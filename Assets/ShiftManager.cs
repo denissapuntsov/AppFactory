@@ -82,7 +82,7 @@ public class ShiftManager : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.OnEnter -= RandomizeShiftLength;
+        GameManager.OnEnter -= InitializeShift;
         GameManager.OnPlace -= GetNextCustomer;
     }
 }

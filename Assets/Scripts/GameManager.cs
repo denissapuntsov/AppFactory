@@ -13,6 +13,7 @@ public enum GameState
     Select,
     Drag,
     Place,
+    Paused,
     Dialogue,
     ShiftComplete,
     ShiftIncomplete,
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI stateText;
 
     [SerializeField] private Button resetButton;
-    [SerializeField] private Button quitButton;
+    [SerializeField] private Button[] quitButtons;
     
     private static GameManager _instance;
 
@@ -47,6 +48,9 @@ public class GameManager : MonoBehaviour
     public delegate void OnPlaceHandler();
     public static event OnPlaceHandler OnPlace;
     
+    public delegate void OnPausedHandler();
+    public static event OnPausedHandler OnPaused;
+    
     public delegate void OnDialogueHandler();
     public static event OnDialogueHandler OnDialogue;
     
@@ -66,6 +70,7 @@ public class GameManager : MonoBehaviour
         set
         {
             _currentGameState = value;
+            Debug.Log(_currentGameState);
             switch (_currentGameState)
             {
                 case GameState.Start:
@@ -86,6 +91,9 @@ public class GameManager : MonoBehaviour
                 case GameState.Place:
                     OnPlace?.Invoke();
                     break; 
+                case GameState.Paused:
+                    OnPaused?.Invoke();
+                    break;
                 case GameState.Dialogue:
                     OnDialogue?.Invoke();
                     break;
@@ -103,7 +111,11 @@ public class GameManager : MonoBehaviour
     {
         if (!resetButton) return;
         resetButton.onClick.AddListener(() => CurrentGameState = GameState.Enter);
-        quitButton.onClick.AddListener(() => SceneManager.LoadScene(0));
+        foreach (var quitButton in quitButtons) quitButton.onClick.AddListener(() =>
+        {
+            Time.timeScale = 1;
+            SceneManager.LoadScene(0);
+        });
     }
 
     private void Awake()
@@ -117,16 +129,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CurrentGameState = GameState.Start;
-    }
-
-    private void Update()
-    {
-        stateText.text = $"GameState: {_currentGameState.ToString()}";
-    }
-
-    public void SetState(GameState newState)
-    {
-        _currentGameState = newState;
     }
 
     private void OnDisable()

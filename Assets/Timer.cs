@@ -7,15 +7,17 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
 
-    private static float _time;
+    private static float _gameTime;
     private bool _isRunning;
+    private float _innerTime;
+    private float _interpolatedPeriod = 2f;
 
-    public float Time
+    public float GameTime
     {
-        get => _time;
+        get => _gameTime;
         private set
         {
-            _time = value;
+            _gameTime = value;
             
             string halfOfDay = "AM";
             if (Mathf.Floor(value) >= 12) halfOfDay = "PM";
@@ -32,34 +34,62 @@ public class Timer : MonoBehaviour
     
     private void OnEnable()
     {
-        GameManager.OnEnter += () => Time = 9.0f;
-        DialoguePanel.OnEndDialogue += () => StartCoroutine(CountTime());
-        GameManager.OnShiftComplete += StopAllCoroutines;
-        GameManager.OnShiftIncomplete += StopAllCoroutines;
+        GameTime = 9.0f;
+        GameManager.OnEnter += () =>
+        {
+            _isRunning = true;
+            GameTime = 9.0f;
+        };
+        DialoguePanel.OnEndDialogue += Reset;
+        GameManager.OnShiftComplete += () =>
+        {
+            Reset();
+            _isRunning = false;
+        };
+    }
+
+    private void Update()
+    {
+        if (_isRunning)
+        {
+            _innerTime += Time.deltaTime;
+
+            if (_innerTime >= _interpolatedPeriod)
+            {
+                _innerTime = 0f;
+                GameTime += 0.5f;
+                if (GameTime >= 17.0)
+                {
+                    _isRunning = false;
+                    GameManager.CurrentGameState = GameState.ShiftIncomplete;
+                }
+            }
+        }
     }
 
     private void Reset()
     {
-        StopCoroutine(CountTime());
-        Time = 9.0f;
+        _innerTime = 0f;
+        GameTime = 9.0f;
     }
 
-    private IEnumerator CountTime()
+    /*private IEnumerator CountTime()
     {
-        if (Time > 17.0f)
+        while (true)
         {
-            GameManager.CurrentGameState = GameState.ShiftIncomplete;
-            StopCoroutine(CountTime());
-            yield break;
+            if (GameTime >= 17.0f)
+            {
+                GameManager.CurrentGameState = GameState.ShiftIncomplete;
+                StopCoroutine(CountTime());
+                yield break;
+            }
+            yield return new WaitForSeconds(2f);
+            GameTime += 0.5f;
         }
-        yield return new WaitForSecondsRealtime(2f);
-        Time += 0.5f;
-        StartCoroutine(CountTime());
-    }
+    }*/
 
     private void OnDisable()
     {
-        GameManager.OnShiftComplete -= StopAllCoroutines;
-        GameManager.OnShiftIncomplete -= StopAllCoroutines;
+        GameManager.OnShiftComplete -= Reset;
     }
 }

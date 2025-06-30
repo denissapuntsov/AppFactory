@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
@@ -14,6 +15,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Slider scoreSlider;
     [SerializeField] private Image sliderFace; 
     [SerializeField] private Sprite faceNeutral, faceHappy, faceSad;
+    private Stamp[] _stamps;
 
     [SerializeField] private Button nextShiftButton, quitButton;
 
@@ -47,11 +49,21 @@ public class ScoreManager : MonoBehaviour
     {
         endShiftCanvas.SetActive(false);
         
-        GameManager.OnEnter += () => _lastShiftSatisfaction = _customerSatisfactionCoefficient;
+        GameManager.OnEnter += () =>
+        {
+            _lastShiftSatisfaction = _customerSatisfactionCoefficient;
+            CurrentShiftScores = new List<float>();
+        };
         GameManager.OnShiftComplete += DisplayScore;
         GameManager.OnShiftIncomplete += AddMissedScores;
     }
-    
+
+    private void Start()
+    {
+        _stamps = scoreMarks.GetComponentsInChildren<Stamp>(true);
+        foreach (var stamp in _stamps) stamp.gameObject.SetActive(false);
+    }
+
     private void UpdateGlobalScoreValues()
     {
         _customerSatisfactionCoefficient = _score / _customersServed;
@@ -140,31 +152,48 @@ public class ScoreManager : MonoBehaviour
 
     private void DisplayScore()
     {
+        foreach (var stamp in _stamps) stamp.gameObject.SetActive(false);
         endShiftCanvas.SetActive(true);
-        Sequence scoreSequence = DOTween.Sequence();
         SetTitle();
+        Sequence scoreSequence = DOTween.Sequence();
         
+        scoreSequence.AppendInterval(0.5f);
+        // display row of empty stamps
         for (int i = 0; i < CurrentShiftScores.Count; i++)
         {
-            scoreMarks.GetComponentsInChildren<Image>(includeInactive:true)[i].gameObject.SetActive(true);
-            scoreMarks.GetComponentsInChildren<Image>(includeInactive:true)[i].color = Color.clear;
-            
+            _stamps[i].gameObject.SetActive(true);
+        }
+
+        // fill stamps one by one
+        for (int i = 0; i < CurrentShiftScores.Count; i++)
+        {
             var i1 = i;
             scoreSequence
                 .AppendCallback(() =>
                 {
-                    Color selectedColor;
-                    if (CurrentShiftScores[i1] == 0) selectedColor = Color.red;
-                    else if (CurrentShiftScores[i1] < 1f) selectedColor = Color.yellow;
-                    else selectedColor = Color.green;
-                    scoreMarks.GetComponentsInChildren<Image>()[i1].color = selectedColor;
+                    _stamps[i1].DisplayStamp(CurrentShiftScores[i1]);
                 })
                 .AppendInterval(0.25f);
         }
         
+        // display score texts
         scoreSequence
             .AppendInterval(1f)
-            .AppendCallback(SetScoreTexts);
+            .AppendCallback(SetScoreTexts)
+            .AppendInterval(0.5f)
+            .AppendCallback(() =>
+            {
+                if (GameManager.CurrentGameState == GameState.ShiftIncomplete)
+                {
+                    nextShiftButton.gameObject.SetActive(false);
+                    quitButton.gameObject.SetActive(true);
+                }
+                else
+                {
+                    nextShiftButton.gameObject.SetActive(true);
+                    quitButton.gameObject.SetActive(false);
+                }
+            });
     }
 
     private void SetScoreTexts()
@@ -178,7 +207,7 @@ public class ScoreManager : MonoBehaviour
         float earlyBonus = 1f;
         float consistencyBonus = 1f;
 
-        float time = FindAnyObjectByType<Timer>().Time;
+        float time = FindAnyObjectByType<Timer>().GameTime;
 
         if (time <= 15.0f)
         {
@@ -213,8 +242,6 @@ public class ScoreManager : MonoBehaviour
                     break;
                 }
                 stateText.text = "YOU'RE FIRED!";
-                nextShiftButton.gameObject.SetActive(false);
-                quitButton.gameObject.SetActive(true);
                 break;
             case GameState.ShiftIncomplete:
                 if (_customerSatisfactionCoefficient > 50)
