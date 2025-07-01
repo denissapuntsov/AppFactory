@@ -10,13 +10,6 @@ public class FlavorTextManager : MonoBehaviour
         string lineToReturn = null;
         FlavorTextGroup selectedGroup = null;
         selectedGroup = GetGroupByCustomerType(currentCustomer);
-        
-        if (!selectedGroup)
-        {
-            Debug.LogError("No corresponding group found!");
-            return null;
-        }
-
         lineToReturn = GetLineByRequirements(selectedGroup, currentCustomer);
 
         return lineToReturn;

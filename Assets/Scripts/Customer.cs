@@ -128,10 +128,16 @@ public class Customer : MonoBehaviour
             body.color = _avatar.NeutralColor;
         }
 
-        if (currentType is CustomerType.Temp or CustomerType.AntiTemp)
+        if (currentType == CustomerType.Temp)
         {
             targetTemperature = (CircleTemperature)Random.Range(0, Enum.GetNames(typeof(CircleTemperature)).Length);
             body.color = targetTemperature == CircleTemperature.Cold ? _avatar.ColdColor : _avatar.HotColor;
+        }
+
+        if (currentType == CustomerType.AntiTemp)
+        {
+            targetTemperature = (CircleTemperature)Random.Range(0, Enum.GetNames(typeof(CircleTemperature)).Length);
+            body.color = targetTemperature == CircleTemperature.Cold ? _avatar.HotColor : _avatar.ColdColor;
         }
 
         if (currentType is CustomerType.Env or CustomerType.AntiEnv)

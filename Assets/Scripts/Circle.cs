@@ -1,5 +1,7 @@
+using System;
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -42,11 +44,14 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     #endregion
 
+    private void OnEnable()
+    {
+        Index = transform.GetSiblingIndex();
+    }
+
     private void Start()
     {
         _defaultScale = transform.localScale;
-        
-        Index = transform.GetSiblingIndex();
         _scoreManager = FindAnyObjectByType<ScoreManager>();
         _customerUI = FindAnyObjectByType<CustomerUI>();
         _customerPortrait = _customerUI.customerParent;

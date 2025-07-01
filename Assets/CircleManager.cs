@@ -7,16 +7,16 @@ using Random = UnityEngine.Random;
 
 public class CircleManager : MonoBehaviour
 {
-    private List<Circle> _circles = new List<Circle>();
+    [SerializeField] private List<Circle> circles ;
     public static Circle CurrentCircle;
 
     [SerializeField] private List<CircleVisual> circleVisuals;
     
     private void Awake()
     {
-        _circles = FindObjectsByType<Circle>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
         List<CircleEnvironment> environmentPool = new List<CircleEnvironment>();
-        foreach (Circle circle in _circles)
+        CircleEnvironment lastEnvironment = new CircleEnvironment();
+        foreach (Circle circle in circles)
         {
             // assign environments, so that there is at least 1 of each
             if (environmentPool.Count == 0) environmentPool = Enum.GetValues(typeof(CircleEnvironment)).Cast<CircleEnvironment>().ToList();
@@ -39,10 +39,10 @@ public class CircleManager : MonoBehaviour
 
     public void BlockRandomCircle(int amount)
     {
-        foreach (Circle circle in _circles) circle.IsBlocked = false;
+        foreach (Circle circle in circles) circle.IsBlocked = false;
         for (int i = 0; i < amount; i++)
         {
-            _circles[Random.Range(0, _circles.Count)].IsBlocked = true;
+            circles[Random.Range(0, circles.Count)].IsBlocked = true;
         }
     }
     
