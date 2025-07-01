@@ -12,11 +12,14 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] private TextMeshProUGUI indexText;
     [SerializeField] private GameObject startRef, endRef;
     [SerializeField] private GameObject planks;
+    [SerializeField] private Image environmentImage;
     
     private ScoreManager _scoreManager;
+    private CircleManager _circleManager;
     private bool _isOverlappingCustomerIcon;
     private CustomerUI _customerUI;
     private GameObject _customerPortrait;
+
 
     private Vector3 _defaultScale;
 
@@ -47,8 +50,11 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         _scoreManager = FindAnyObjectByType<ScoreManager>();
         _customerUI = FindAnyObjectByType<CustomerUI>();
         _customerPortrait = _customerUI.customerParent;
+        _circleManager = FindAnyObjectByType<CircleManager>();
         
-        temperature = Index <= 3 ? CircleTemperature.Cold : CircleTemperature.Hot; 
+        temperature = Index <= 3 ? CircleTemperature.Cold : CircleTemperature.Hot;
+        
+        environmentImage.sprite = _circleManager.GetCircleSprite(temperature, environment);
         
         indexText.text = $"Index: {Index},\nEnvironment: {environment}\nTemperature: {temperature}";
     }

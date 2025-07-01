@@ -97,7 +97,31 @@ public class ScoreManager : MonoBehaviour
         
         switch (customerType)
         {
-            case CustomerType.Positive:
+            case CustomerType.Neutral:
+                scoreToAdd += 1;
+                break;
+            case CustomerType.Temp:
+                scoreToAdd += customer.targetTemperature == circle.temperature ? 1 : 0;
+                break;
+            case CustomerType.AntiTemp:
+                scoreToAdd +=  customer.targetTemperature == circle.temperature ? 0 : 1;
+                break;
+            case CustomerType.Env:
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 1 : 0;
+                break;
+            case CustomerType.AntiEnv:
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 0 : 1;
+                break;
+            case CustomerType.PositiveComplex:
+                scoreToAdd += customer.targetTemperature == circle.temperature ? 0.5f : 0;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 0.5f : 0;
+                break;
+            case CustomerType.NegativeComplex:
+                scoreToAdd += customer.targetTemperature == circle.temperature ? 0 : 0.5f;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 0 : 0.5f;
+                break;
+            
+            /*case CustomerType.Positive:
                 switch (customer.targetIndex)
                 {
                     case 1:
@@ -129,7 +153,7 @@ public class ScoreManager : MonoBehaviour
             case CustomerType.NegativeComplex:
                 scoreToAdd += customer.targetEnvironment != circle.environment ? 0.75f : 0f;
                 scoreToAdd += customer.targetTemperature != circle.temperature ? 0.25f : 0f;
-                break;
+                break;*/
         }
         
         CurrentShiftScores.Add(scoreToAdd);
@@ -183,17 +207,14 @@ public class ScoreManager : MonoBehaviour
             .AppendInterval(0.5f)
             .AppendCallback(() =>
             {
-                if (GameManager.CurrentGameState == GameState.ShiftIncomplete)
-                {
-                    nextShiftButton.gameObject.SetActive(false);
-                    quitButton.gameObject.SetActive(true);
-                }
-                else
-                {
-                    nextShiftButton.gameObject.SetActive(true);
-                    quitButton.gameObject.SetActive(false);
-                }
+                SetButtons(_customerSatisfactionCoefficient >= 50);
             });
+    }
+
+    private void SetButtons(bool isAboveThreshold)
+    {
+        nextShiftButton.gameObject.SetActive(isAboveThreshold);
+        quitButton.gameObject.SetActive(!isAboveThreshold);
     }
 
     private void SetScoreTexts()

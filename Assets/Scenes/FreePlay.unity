@@ -1740,17 +1740,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1cb8deb2e46c9489dea5708d90c89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neutralTexts:
-  - environment: 0
-    text: I want anything
-  - environment: 0
-    text: Just get me out of here
-  - environment: 0
-    text: I just miss home
-  positiveTemperatureTexts: []
-  negativeTemperatureTexts: []
-  positiveEnvironmentTexts: []
-  negativeEnvironmentTexts: []
+  flavorTextGroups:
+  - {fileID: 11400000, guid: 579d349c80c1a5d4394354b3ada54e1c, type: 2}
+  - {fileID: 11400000, guid: c660db5aa468ca7499a036b7abec21bc, type: 2}
+  - {fileID: 11400000, guid: ff1bb42e6478851408ff2091a0899aa1, type: 2}
+  - {fileID: 11400000, guid: 320ebc2b40b12b0418561f41cf3c565d, type: 2}
+  - {fileID: 11400000, guid: 1a52d36ae8cd3cc418c468e0c0de64a2, type: 2}
+  - {fileID: 11400000, guid: 94d9c94065c77e7448dfccb4a4c39b95, type: 2}
+  - {fileID: 11400000, guid: 83212573de0915440b4420e67c2051fc, type: 2}
 --- !u!1 &457450450
 GameObject:
   m_ObjectHideFlags: 0
@@ -5201,7 +5198,6 @@ MonoBehaviour:
   currentType: 0
   targetEnvironment: 0
   targetTemperature: 0
-  targetIndex: 0
   customerInfoText: {fileID: 1559876636}
   body: {fileID: 465623203}
   currentEyes: {fileID: 1190741723}
@@ -8095,6 +8091,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2172a9513948ecc46aafd03371093c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  circleVisuals:
+  - {fileID: 11400000, guid: 1355433cc93a2cf46b0b12437a99d9ce, type: 2}
+  - {fileID: 11400000, guid: 7ae77243e44afc442aaf5a67be83741d, type: 2}
+  - {fileID: 11400000, guid: cb0b74754a46b6c48aee52f8d1fed957, type: 2}
+  - {fileID: 11400000, guid: 4a88a6c06f7d80541a0c2dce03a050b6, type: 2}
+  - {fileID: 11400000, guid: 4e20227928877164991da6ff4903b10c, type: 2}
+  - {fileID: 11400000, guid: e01557935a8ffca4cad10be0c78864a9, type: 2}
+  - {fileID: 11400000, guid: 5a059ce19e1244f4f9df4dd24895c5fe, type: 2}
+  - {fileID: 11400000, guid: bbbd3e097ee6d974eb31afac06767b58, type: 2}
 --- !u!1 &1624379044
 GameObject:
   m_ObjectHideFlags: 0

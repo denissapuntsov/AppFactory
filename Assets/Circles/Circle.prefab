@@ -76,8 +76,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 0
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -203,6 +203,7 @@ MonoBehaviour:
   startRef: {fileID: 7043636441558236258}
   endRef: {fileID: 9124566412851743295}
   planks: {fileID: 9138566230065088686}
+  environmentImage: {fileID: 9178745234752881667}
   environment: 0
   temperature: 0
 --- !u!1 &4192982314778614263
@@ -382,7 +383,7 @@ RectTransform:
   m_GameObject: {fileID: 5173055437007792399}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1686243397776872693}

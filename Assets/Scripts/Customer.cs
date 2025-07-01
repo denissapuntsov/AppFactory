@@ -9,10 +9,12 @@ using Random = UnityEngine.Random;
 public enum CustomerType
 {
     Neutral,
-    Positive,
-    Negative,
     PositiveComplex,
-    NegativeComplex
+    NegativeComplex,
+    Env,
+    Temp,
+    AntiEnv,
+    AntiTemp
 }
 
 public class Customer : MonoBehaviour
@@ -23,7 +25,6 @@ public class Customer : MonoBehaviour
 
     public CircleEnvironment targetEnvironment;
     public CircleTemperature targetTemperature;
-    public int targetIndex; // 1 = environment, 2 = temperature
 
     [SerializeField] private TextMeshProUGUI customerInfoText;
 
@@ -54,9 +55,22 @@ public class Customer : MonoBehaviour
     private void Randomise()
     {
         Debug.Log("Randomised");
+        
+        List<Sprite> sprites = _avatar.GetRandomAvatar();
+        
+        currentEyes.sprite = sprites[0];
+        currentMouth.sprite = sprites[1];
+        currentHorns.sprite = sprites[2];
+        currentHorns.color = _avatar.HornColor;
+        
         currentType = (CustomerType)Random.Range(0, Enum.GetNames(typeof(CustomerType)).Length);
         
-        // 1 -> environment, 2 -> temperature
+        AssignSpecifications();
+        
+        customerInfoText.text = _flavorTextManager.GetFlavorText(this);
+
+        // old system
+        /*// 1 -> environment, 2 -> temperature
         if (currentType is CustomerType.Negative or CustomerType.Positive)
         {
             targetIndex = Random.Range(1, 3);
@@ -104,7 +118,41 @@ public class Customer : MonoBehaviour
                 break;
         }
         
-        if (targetIndex == 1 || currentType == CustomerType.Neutral) body.color = _avatar.NeutralColor;
+        if (targetIndex == 1 || currentType == CustomerType.Neutral) body.color = _avatar.NeutralColor;*/
+    }
+
+    private void AssignSpecifications()
+    {
+        if (currentType == CustomerType.Neutral) 
+        {
+            body.color = _avatar.NeutralColor;
+        }
+
+        if (currentType is CustomerType.Temp or CustomerType.AntiTemp)
+        {
+            targetTemperature = (CircleTemperature)Random.Range(0, Enum.GetNames(typeof(CircleTemperature)).Length);
+            body.color = targetTemperature == CircleTemperature.Cold ? _avatar.ColdColor : _avatar.HotColor;
+        }
+
+        if (currentType is CustomerType.Env or CustomerType.AntiEnv)
+        {
+            body.color = _avatar.NeutralColor;
+            targetEnvironment = (CircleEnvironment)Random.Range(0, Enum.GetNames(typeof(CircleEnvironment)).Length);
+        }
+
+        if (currentType == CustomerType.PositiveComplex)
+        {
+            targetTemperature = (CircleTemperature)Random.Range(0, Enum.GetNames(typeof(CircleTemperature)).Length);
+            body.color = targetTemperature == CircleTemperature.Cold ? _avatar.ColdColor : _avatar.HotColor;
+            targetEnvironment = (CircleEnvironment)Random.Range(0, Enum.GetNames(typeof(CircleEnvironment)).Length);
+        }
+
+        if (currentType == CustomerType.NegativeComplex)
+        {
+            targetTemperature = (CircleTemperature)Random.Range(0, Enum.GetNames(typeof(CircleTemperature)).Length);
+            body.color = targetTemperature == CircleTemperature.Hot ? _avatar.ColdColor : _avatar.HotColor;
+            targetEnvironment = (CircleEnvironment)Random.Range(0, Enum.GetNames(typeof(CircleEnvironment)).Length);
+        }
     }
 
     private void OnDisable()

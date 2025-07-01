@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4bff9f416ea705439781740b2045a0d, type: 3}
+  m_Name: NegativeComp
+  m_EditorClassIdentifier: 
+  targetType: 2
+  flavorTextEnvs: []
+  flavorTextTemps: []
+  flavorTextComplexes:
+  - environment: 0
+    temperature: 0
+    text: Hate cold plains
+  - environment: 1
+    temperature: 0
+    text: Hate cold cliffs
+  - environment: 2
+    temperature: 0
+    text: Hate cold lakes
+  - environment: 3
+    temperature: 0
+    text: Hate cold caverns
+  - environment: 3
+    temperature: 1
+    text: Hate hot caverns
+  - environment: 0
+    temperature: 1
+    text: Hate hot plains
+  - environment: 1
+    temperature: 1
+    text: Hate hot cliffs
+  - environment: 2
+    temperature: 1
+    text: Hate hot lakes
+  - environment: 3
+    temperature: 1
+    text: Hate hot caverns

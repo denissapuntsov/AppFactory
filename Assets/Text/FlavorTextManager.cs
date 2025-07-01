@@ -3,52 +3,75 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class FlavorTextManager : MonoBehaviour
 {
-    public List<FlavorText> neutralTexts, positiveTemperatureTexts, negativeTemperatureTexts, positiveEnvironmentTexts, negativeEnvironmentTexts;
+    [SerializeField] private List<FlavorTextGroup> flavorTextGroups;
 
     public string GetFlavorText(Customer currentCustomer)
     {
-        string textToReturn = null;
-        switch (currentCustomer.currentType)
+        string lineToReturn = null;
+        FlavorTextGroup selectedGroup = null;
+        selectedGroup = GetGroupByCustomerType(currentCustomer);
+        
+        if (!selectedGroup)
+        {
+            Debug.LogError("No corresponding group found!");
+            return null;
+        }
+
+        lineToReturn = GetLineByRequirements(selectedGroup, currentCustomer);
+
+        return lineToReturn;
+    }
+
+    private string GetLineByRequirements(FlavorTextGroup selectedGroup, Customer currentCustomer)
+    {
+        List<string> lines = new List<string>();
+        
+        switch (selectedGroup.targetType)
         {
             case CustomerType.Neutral:
-                textToReturn = GetText();
+                lines = selectedGroup.neutralLines;
                 break;
-            case CustomerType.Positive:
-                textToReturn = "Wants: ";
-                textToReturn += currentCustomer.targetIndex == 1
-                    ? $"{currentCustomer.targetEnvironment}"
-                    : $"{currentCustomer.targetTemperature}";
+            
+            case CustomerType.Env:
+            case CustomerType.AntiEnv:
+                foreach (FlavorTextEnv flavorText in selectedGroup.flavorTextEnvs)
+                {
+                    if (flavorText.environment == currentCustomer.targetEnvironment) lines.Add(flavorText.text);
+                }
+
                 break;
-            case CustomerType.PositiveComplex:
-                textToReturn = "Wants: ";
-                textToReturn += $"{currentCustomer.targetTemperature} and {currentCustomer.targetEnvironment}";
+
+            case CustomerType.Temp:
+            case CustomerType.AntiTemp:
+                foreach (FlavorTextTemp flavorText in selectedGroup.flavorTextTemps)
+                {
+                    if (flavorText.temperature == currentCustomer.targetTemperature) lines.Add(flavorText.text);
+                }
+
                 break;
-            case CustomerType.Negative:
-                textToReturn = "Doesn't want: ";
-                textToReturn += currentCustomer.targetIndex == 1
-                    ? $"{currentCustomer.targetEnvironment}"
-                    : $"{currentCustomer.targetTemperature}";
-                break;
+
             case CustomerType.NegativeComplex:
-                textToReturn = "Doesn't want: ";
-                textToReturn += $"{currentCustomer.targetTemperature} and {currentCustomer.targetEnvironment}";
+            case CustomerType.PositiveComplex:
+                foreach (FlavorTextComplex flavorText in selectedGroup.flavorTextComplexes)
+                {
+                    if (flavorText.temperature == currentCustomer.targetTemperature &&
+                        flavorText.environment == currentCustomer.targetEnvironment) 
+                        lines.Add(flavorText.text);
+                }
+
                 break;
         }
-        return textToReturn;
+        
+        return lines[Random.Range(0, lines.Count)];
     }
 
-    private string GetText(bool positive, CircleEnvironment environment)
+    private FlavorTextGroup GetGroupByCustomerType(Customer customer)
     {
+        foreach (FlavorTextGroup group in flavorTextGroups)
+        {
+            if (group.targetType == customer.currentType) return group;
+        }
+
         return null;
-    }
-
-    private string GetText(bool positive, CircleTemperature temperature)
-    {
-        return null;
-    }
-
-    private string GetText()
-    {
-        return neutralTexts[Random.Range(0, neutralTexts.Count)].text;
     }
 }
