@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
 
     private static float _gameTime;
-    private bool _isRunning;
+    private bool _isRunning = false;
     private float _innerTime;
     private float _interpolatedPeriod = 2f;
 
@@ -37,10 +37,13 @@ public class Timer : MonoBehaviour
         GameTime = 9.0f;
         GameManager.OnEnter += () =>
         {
-            _isRunning = true;
             GameTime = 9.0f;
         };
-        DialoguePanel.OnEndDialogue += Reset;
+        DialoguePanel.OnEndDialogue += () =>
+        {
+            Reset();
+            _isRunning = true;
+        };
         GameManager.OnShiftComplete += () =>
         {
             Reset();

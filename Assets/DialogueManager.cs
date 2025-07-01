@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] private List<BlockOfLines> tutorialBlocks, regularBlocks;
+    public BlockOfLines firstShiftBlock, secondShiftBlock, planksWarningBlock;
+    [SerializeField] private CanvasGroup dialogueFocusCanvasGroup;
     private BlockOfLines _currentBlock;
     private int _currentLineIndex;
     private DialoguePanel _dialoguePanel;
@@ -14,15 +16,22 @@ public class DialogueManager : MonoBehaviour
     private void OnEnable()
     {
         DialoguePanel.OnClick += ProcessCurrentBlock;
+        GameManager.OnDialogue += ToggleCanvasGroup;
         
         _dialoguePanel = FindAnyObjectByType<DialoguePanel>();
         _dialogueText = _dialoguePanel.GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    private void ToggleCanvasGroup()
+    {
+        dialogueFocusCanvasGroup.DOFade(1, 0.5f);
     }
 
     private void ProcessCurrentBlock()
     {
         if (_dialogueText.text == _currentBlock.lines[^1])
         {
+            dialogueFocusCanvasGroup.DOFade(0, 0.5f);
             _dialoguePanel.Exit();
             return;
         }
@@ -37,17 +46,9 @@ public class DialogueManager : MonoBehaviour
         _currentLineIndex = 0;
     }
 
-    public void SetNextTutorialBlock()
+    public void SetBlock(BlockOfLines newBlock)
     {
-        BlockOfLines nextBlock = tutorialBlocks[0];
-        tutorialBlocks.RemoveAt(0);
-        _currentBlock = nextBlock;
-        ResetDialogueText();
-    }
-
-    public void SetRegularBlock()
-    {
-        _currentBlock = regularBlocks[Random.Range(0, regularBlocks.Count)];
+        _currentBlock = newBlock;
         ResetDialogueText();
     }
 

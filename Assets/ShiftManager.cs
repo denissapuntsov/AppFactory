@@ -11,11 +11,14 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] private Canvas endShiftCanvas;
     
     private DialogueManager _dialogueManager;
+    private DialoguePanel  _dialoguePanel;
     private ScoreManager _scoreManager;
     private CircleManager _circleManager;
 
     private int _currentShiftIndex = -1;
     
+    public int CurrentShiftIndex => _currentShiftIndex;
+
     private int _currentCustomerIndex;
     
     public static ShiftManager Instance;
@@ -44,6 +47,7 @@ public class ShiftManager : MonoBehaviour
     {
         Instance = this;
         _dialogueManager = FindAnyObjectByType<DialogueManager>();
+        _dialoguePanel = FindAnyObjectByType<DialoguePanel>();
         _circleManager = FindAnyObjectByType<CircleManager>();
 
         GameManager.OnEnter += InitializeShift;
@@ -52,8 +56,21 @@ public class ShiftManager : MonoBehaviour
 
     private void InitializeShift()
     {
-        _dialogueManager.SetRegularBlock();
         _currentShiftIndex++;
+
+        switch (_currentShiftIndex)
+        {
+            case 0: 
+                _dialogueManager.SetBlock(_dialogueManager.firstShiftBlock);
+                break;
+            case 1:
+                _dialogueManager.SetBlock(_dialogueManager.secondShiftBlock);
+                break;
+            case 2:
+                _dialogueManager.SetBlock(_dialogueManager.planksWarningBlock);
+                break;
+        }
+        
         CurrentCustomerIndex = 0;
         RandomizeShiftLength();
 

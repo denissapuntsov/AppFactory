@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: NegativeComp
   m_EditorClassIdentifier: 
   targetType: 2
+  neutralLines: []
   flavorTextEnvs: []
   flavorTextTemps: []
   flavorTextComplexes:
@@ -40,6 +41,3 @@ MonoBehaviour:
   - environment: 2
     temperature: 1
     text: Hate hot lakes
-  - environment: 3
-    temperature: 1
-    text: Hate hot caverns
