@@ -27,6 +27,7 @@ public class FreePlayScroll : MonoBehaviour, IScroll
         _audioSource.Play();
         
         _openSequence = DOTween.Sequence();
+        _openSequence.SetLink(gameObject);
         _openSequence
             .Append(transform.DOMove(endTargetTransform.position, 1f))
             .SetEase(Ease.Linear)
