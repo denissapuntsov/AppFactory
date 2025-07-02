@@ -21,6 +21,9 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     private bool _isOverlappingCustomerIcon;
     private CustomerUI _customerUI;
     private GameObject _customerPortrait;
+    private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip dropSound, blockedSound;
 
 
     private Vector3 _defaultScale;
@@ -51,6 +54,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _defaultScale = transform.localScale;
         _scoreManager = FindAnyObjectByType<ScoreManager>();
         _customerUI = FindAnyObjectByType<CustomerUI>();
@@ -69,6 +73,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         if (GameManager.CurrentGameState != GameState.Drag) return;
         if (IsBlocked) return;
         
+        _audioSource.PlayOneShot(dropSound);
         transform.DOScale(_defaultScale, 0.2f);
         eventData.pointerDrag = null;
         _scoreManager.AddPoints(Customer.Instance, circle: this);
@@ -77,7 +82,11 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState != GameState.Drag) return;
-        if (IsBlocked) return;
+        if (IsBlocked)
+        {
+            _audioSource.PlayOneShot(blockedSound);
+            return;
+        }
 
         _customerPortrait.transform.SetParent(transform.GetComponentInChildren<Mask>().transform, true);
         _customerPortrait.transform.SetAsLastSibling();

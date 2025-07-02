@@ -36,6 +36,7 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
+        _dialoguePanel.audioSource.PlayOneShot(_dialoguePanel.panelSwitch);
         _currentLineIndex++;
         _dialogueText.text = _currentBlock.lines[_currentLineIndex];
     }

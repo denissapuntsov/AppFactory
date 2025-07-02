@@ -18,6 +18,11 @@ public class ScoreManager : MonoBehaviour
     private Stamp[] _stamps;
 
     [SerializeField] private Button nextShiftButton, quitButton;
+    
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip pointSound, winSting, loseSting, timerGoingOff;
+
+    [SerializeField] private AudioSource musicAudioSource;
 
     private int _customersServed = 0;
     
@@ -48,6 +53,8 @@ public class ScoreManager : MonoBehaviour
     private void OnEnable()
     {
         endShiftCanvas.SetActive(false);
+        
+        _audioSource = GetComponent<AudioSource>();
         
         GameManager.OnEnter += () =>
         {
@@ -120,40 +127,6 @@ public class ScoreManager : MonoBehaviour
                 scoreToAdd += customer.targetTemperature == circle.temperature ? 0 : 0.5f;
                 scoreToAdd += customer.targetEnvironment == circle.environment ? 0 : 0.5f;
                 break;
-            
-            /*case CustomerType.Positive:
-                switch (customer.targetIndex)
-                {
-                    case 1:
-                        scoreToAdd += customer.targetEnvironment == circle.environment ? 1f : 0;
-                        break;
-                    case 2:
-                        scoreToAdd += customer.targetTemperature == circle.temperature ? 1f : 0;
-                        break;
-                }
-                break;
-            case CustomerType.Negative:
-                switch (customer.targetIndex)
-                {
-                    case 1:
-                        scoreToAdd += customer.targetEnvironment == circle.environment ? 0 : 1f;
-                        break;
-                    case 2:
-                        scoreToAdd += customer.targetTemperature == circle.temperature ? 0 : 1f;
-                        break;  
-                }
-                break;
-            case CustomerType.Neutral:
-                scoreToAdd += 1;
-                break;
-            case CustomerType.PositiveComplex:
-                scoreToAdd += customer.targetEnvironment == circle.environment ? 0.75f : 0;
-                scoreToAdd += customer.targetTemperature == circle.temperature ? 0.25f : 0;
-                break;
-            case CustomerType.NegativeComplex:
-                scoreToAdd += customer.targetEnvironment != circle.environment ? 0.75f : 0f;
-                scoreToAdd += customer.targetTemperature != circle.temperature ? 0.25f : 0f;
-                break;*/
         }
         
         CurrentShiftScores.Add(scoreToAdd);
@@ -176,39 +149,57 @@ public class ScoreManager : MonoBehaviour
 
     private void DisplayScore()
     {
+        PlayScoreStinger(_customerSatisfactionCoefficient > 50);
         foreach (var stamp in _stamps) stamp.gameObject.SetActive(false);
         endShiftCanvas.SetActive(true);
+        
+        // celar bonuses text boxes
+        bonusesText.text = string.Empty;
+        bonusesValue.text = string.Empty;
+        
+        // clear buttons
+        nextShiftButton.gameObject.SetActive(false);
+        quitButton.gameObject.SetActive(false);
+        
         SetTitle();
         Sequence scoreSequence = DOTween.Sequence();
         
-        scoreSequence.AppendInterval(0.5f);
+        Sequence pointSequence = DOTween.Sequence();
+        
+        pointSequence.AppendInterval(0.5f);
         // display row of empty stamps
         for (int i = 0; i < CurrentShiftScores.Count; i++)
         {
             _stamps[i].gameObject.SetActive(true);
         }
-
+        // reset pitch of audio source just in case
+        _audioSource.pitch = 1;
+        
         // fill stamps one by one
         for (int i = 0; i < CurrentShiftScores.Count; i++)
         {
             var i1 = i;
-            scoreSequence
+            pointSequence
                 .AppendCallback(() =>
                 {
                     _stamps[i1].DisplayStamp(CurrentShiftScores[i1]);
+                    _audioSource.pitch = 1 + 0.1f * i1;
+                    _audioSource.PlayOneShot(pointSound);
                 })
                 .AppendInterval(0.25f);
         }
         
-        // display score texts
-        scoreSequence
-            .AppendInterval(1f)
+        Sequence syncedSequence = DOTween.Sequence();
+
+        syncedSequence
+            .AppendInterval(_customerSatisfactionCoefficient >= 50 ? 3.45f : 2f)
             .AppendCallback(SetScoreTexts)
-            .AppendInterval(0.5f)
-            .AppendCallback(() =>
-            {
-                SetButtons(_customerSatisfactionCoefficient >= 50);
-            });
+            .AppendInterval(_customerSatisfactionCoefficient >= 50 ? 0.85f : 1.6f)
+            .AppendCallback(() => SetButtons(_customerSatisfactionCoefficient >= 50));
+        
+        scoreSequence
+            .Join(pointSequence)
+            .Join(syncedSequence);
     }
 
     private void SetButtons(bool isAboveThreshold)
@@ -265,6 +256,7 @@ public class ScoreManager : MonoBehaviour
                 stateText.text = "YOU'RE FIRED!";
                 break;
             case GameState.ShiftIncomplete:
+                _audioSource.PlayOneShot(timerGoingOff);
                 if (_customerSatisfactionCoefficient > 50)
                 {
                     stateText.text = "YOU RAN OUT OF TIME!";
@@ -273,5 +265,10 @@ public class ScoreManager : MonoBehaviour
                 stateText.text = "YOU'RE FIRED!";
                 break;
         }
+    }
+
+    private void PlayScoreStinger(bool isWin = true)
+    {
+        musicAudioSource.PlayOneShot(isWin ? winSting : loseSting);
     }
 }

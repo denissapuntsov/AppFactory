@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class DialoguePanel : MonoBehaviour, IPointerClickHandler
 {
@@ -12,15 +13,20 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
     
     [SerializeField] private RectTransform zeroTransform, exitTransform;
     private Vector3 _startPosition;
+    public AudioSource audioSource;
+    [SerializeField] private AudioClip panelIn, panelOut;
+    public AudioClip panelSwitch;
     
     private void OnEnable()
     {
+        audioSource = GetComponent<AudioSource>();
         GameManager.OnEnter += Enter;
         _startPosition = GetComponent<RectTransform>().position;
     }
 
     private void Enter()
     {
+        audioSource.PlayOneShot(panelIn);
         Sequence enterSequence = DOTween.Sequence();
         enterSequence
             .Append(transform.DOMove(zeroTransform.position, 0.5f))
@@ -29,6 +35,7 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
 
     public void Exit()
     {
+        audioSource.PlayOneShot(panelOut);
         Sequence exitSequence = DOTween.Sequence();
         exitSequence 
             .Append(transform.DOMove(exitTransform.position, 0.5f))

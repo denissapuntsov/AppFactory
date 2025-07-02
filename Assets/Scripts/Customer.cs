@@ -68,57 +68,7 @@ public class Customer : MonoBehaviour
         AssignSpecifications();
         
         customerInfoText.text = _flavorTextManager.GetFlavorText(this);
-
-        // old system
-        /*// 1 -> environment, 2 -> temperature
-        if (currentType is CustomerType.Negative or CustomerType.Positive)
-        {
-            targetIndex = Random.Range(1, 3);
-        }
-        else targetIndex = 0;
         
-        // randomize preferred temperature, environment
-        
-        targetTemperature = (CircleTemperature)Random.Range(0, Enum.GetNames(typeof(CircleTemperature)).Length);
-        targetEnvironment = (CircleEnvironment)Random.Range(0, Enum.GetNames(typeof(CircleEnvironment)).Length);
-
-
-        if (currentType == CustomerType.Neutral)
-        {
-            customerInfoText.text = "Target is any circle";
-        }
-
-        customerInfoText.text = _flavorTextManager.GetFlavorText(this);
-
-        List<Sprite> sprites = _avatar.GetRandomAvatar();
-        
-        currentEyes.sprite = sprites[0];
-        currentMouth.sprite = sprites[1];
-        currentHorns.sprite = sprites[2];
-        currentHorns.color = _avatar.HornColor;
-
-        switch (targetTemperature)
-        {
-            case CircleTemperature.Cold:
-                if (currentType is CustomerType.Positive or CustomerType.PositiveComplex)
-                {
-                    body.color = _avatar.ColdColor;
-                    break;
-                }
-                body.color = _avatar.HotColor;
-                break;
-
-            case CircleTemperature.Hot:
-                if (currentType is CustomerType.Positive or CustomerType.PositiveComplex)
-                {
-                    body.color = _avatar.HotColor;
-                    break;
-                }
-                body.color = _avatar.ColdColor;
-                break;
-        }
-        
-        if (targetIndex == 1 || currentType == CustomerType.Neutral) body.color = _avatar.NeutralColor;*/
     }
 
     private void AssignSpecifications()

@@ -22,9 +22,13 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     // wow, this format sucks
     
     private Vector3 _defaultCustomerScale;
+    
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip tapSound;
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         transform.parent.position = panelStart.position;
         _defaultCustomerScale = customerParent.transform.localScale;
         question.position  = questionStart.position;
@@ -75,6 +79,7 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
     {
         if (GameManager.CurrentGameState != GameState.Idle) return;
         
+        _audioSource.PlayOneShot(tapSound);
         SetCustomerLayerToDrag();
         customerParent.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.2f);
     }
