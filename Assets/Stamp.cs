@@ -13,12 +13,9 @@ public class Stamp : MonoBehaviour
 
     public void DisplayStamp(float score)
     {
-        stampFace.color = score switch
-        {
-            0 => Color.red,
-            > 0.75f => Color.green,
-            _ => Color.yellow
-        };
+        if (score <= 0) stampFace.color = Color.red;
+        else if (score > 0.75f) stampFace.color = Color.green;
+        else stampFace.color = Color.yellow;
         
         stampFace.gameObject.transform.localPosition = new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0);
     }

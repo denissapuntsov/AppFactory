@@ -52,6 +52,7 @@ public class ShiftManager : MonoBehaviour
         Instance = this;
         _dialogueManager = FindAnyObjectByType<DialogueManager>();
         _circleManager = FindAnyObjectByType<CircleManager>();
+        _timer = FindAnyObjectByType<Timer>();
 
         GameManager.OnEnter += InitializeShift;
         GameManager.OnPlace += GetNextCustomer;

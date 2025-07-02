@@ -45,7 +45,7 @@ public class MenuManager : MonoBehaviour
         yield return new WaitUntil(() => !mainMenuScroll.IsOpen);
         mainGroup.SetActive(!mainGroup.activeSelf);
         settingsGroup.SetActive(!settingsGroup.activeSelf);
-        _settingsButtonName.text = mainGroup.activeSelf ? "Settings" : "Back";
+        _settingsButtonName.text = mainGroup.activeSelf ? "SETTINGS" : "BACK";
         mainMenuScroll.Open();
     }
 }

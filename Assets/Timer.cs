@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
         get => _interpolatedPeriod;
         set
         {
-            if (value < 1) value = 1;
+            if (value < 1f) value = 1f;
             _interpolatedPeriod = value;
         }
     }

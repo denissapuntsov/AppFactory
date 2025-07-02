@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Sequence = DG.Tweening.Sequence;
 
@@ -23,7 +21,7 @@ public class ScoreManager : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField] private AudioClip pointSound, winSting, loseSting, timerGoingOff;
     
-    [SerializeField] private AudioSource musicAudioSource;
+    private AudioSource _musicAudioSource;
 
     private int _customersServed = 0;
     
@@ -69,6 +67,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
+        _musicAudioSource = FindAnyObjectByType<AudioManager>().stingerAudioSource;
         _stamps = scoreMarks.GetComponentsInChildren<Stamp>(true);
         foreach (var stamp in _stamps) stamp.gameObject.SetActive(false);
     }
@@ -166,8 +165,10 @@ public class ScoreManager : MonoBehaviour
         
         SetTitle();
         Sequence scoreSequence = DOTween.Sequence();
+        scoreSequence.SetLink(gameObject);
         
         Sequence pointSequence = DOTween.Sequence();
+        pointSequence.SetLink(gameObject);
         
         pointSequence.AppendInterval(0.5f);
         // display row of empty stamps
@@ -193,12 +194,13 @@ public class ScoreManager : MonoBehaviour
         }
         
         Sequence syncedSequence = DOTween.Sequence();
+        syncedSequence.SetLink(gameObject);
 
         syncedSequence
             .AppendInterval(_customerSatisfactionCoefficient >= 50 ? 3.45f : 2f)
             .AppendCallback(SetScoreTexts)
             .AppendInterval(_customerSatisfactionCoefficient >= 50 ? 0.85f : 1.6f)
-            .AppendCallback(() => SetButtons(_customerSatisfactionCoefficient >= 50));
+            .AppendCallback(() => SetButtons(_customerSatisfactionCoefficient > 50));
         
         scoreSequence
             .Join(pointSequence)
@@ -272,6 +274,6 @@ public class ScoreManager : MonoBehaviour
 
     private void PlayScoreStinger(bool isWin = true)
     {
-        musicAudioSource.PlayOneShot(isWin ? winSting : loseSting);
+        _musicAudioSource.PlayOneShot(isWin ? winSting : loseSting);
     }
 }

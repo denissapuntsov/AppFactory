@@ -27,6 +27,7 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
     {
         audioSource.PlayOneShot(panelIn);
         Sequence enterSequence = DOTween.Sequence();
+        enterSequence.SetLink(gameObject);
         enterSequence
             .Append(transform.DOMove(zeroTransform.position, 0.5f))
             .OnComplete(() => GameManager.CurrentGameState = GameState.Dialogue);
@@ -43,6 +44,7 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
     {
         audioSource.PlayOneShot(panelOut);
         Sequence exitSequence = DOTween.Sequence();
+        exitSequence.SetLink(gameObject);
         exitSequence 
             .Append(transform.DOMove(exitTransform.position, 0.5f))
             .OnComplete(() =>

@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -9,20 +10,21 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private Toggle musicToggle, SFXToggle;
     [SerializeField] private AudioMixer mixer;
-    public AudioSource globalMusicAudioSource;
+    public AudioSource globalMusicAudioSource, stingerAudioSource;
 
     private void OnEnable()
     {
-        GameManager.OnStart += SetVolumeToZero;
+        FilterMusicOff();
+        if (FindAnyObjectByType<GameManager>()) GameManager.OnStart += SetVolumeToZero;
         
         musicToggle.onValueChanged.AddListener(ToggleMusic);
         SFXToggle.onValueChanged.AddListener(ToggleSFX);
         
-        ToggleMusic(musicToggle.isOn);
-        ToggleSFX(musicToggle.isOn);
-        
         musicToggle.isOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
         SFXToggle.isOn = PlayerPrefs.GetInt("SFXOn", 1) == 1;
+        
+        ToggleMusic(musicToggle.isOn);
+        ToggleSFX(musicToggle.isOn);
     }
 
     private void ToggleMusic(bool isOn)
@@ -56,7 +58,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnDisable()
     {
-        GameManager.OnStart -= SetVolumeToZero;
+        if (FindAnyObjectByType<GameManager>())  GameManager.OnStart -= SetVolumeToZero;
         
         musicToggle.onValueChanged.RemoveListener(ToggleMusic);
         SFXToggle.onValueChanged.RemoveListener(ToggleSFX);
