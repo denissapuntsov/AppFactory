@@ -20,17 +20,23 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
     private void OnEnable()
     {
         audioSource = GetComponent<AudioSource>();
-        GameManager.OnEnter += Enter;
         _startPosition = GetComponent<RectTransform>().position;
     }
 
-    private void Enter()
+    public void Enter()
     {
         audioSource.PlayOneShot(panelIn);
         Sequence enterSequence = DOTween.Sequence();
         enterSequence
             .Append(transform.DOMove(zeroTransform.position, 0.5f))
             .OnComplete(() => GameManager.CurrentGameState = GameState.Dialogue);
+    }
+
+    public void Skip()
+    {
+        Debug.Log("!ShiftManager.Instance.shiftHasDialogue");
+        OnEndDialogue?.Invoke();
+        GameManager.CurrentGameState = GameState.Idle;
     }
 
     public void Exit()

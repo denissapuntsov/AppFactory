@@ -54,6 +54,24 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-2977645889315772556
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: c1b46a26d07f8164583b6fbe032a91fd
+  m_EffectName: Lowpass
+  m_MixLevel: 646e89de144490a4e915a0ac49602c71
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 14f2177bb303a6247bd1680fa3b5daad
+  - m_ParameterName: Resonance
+    m_GUID: 3e4c34f332f8e76418a4a8580a174824
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-2665040518435477247
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -123,6 +141,8 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 14f2177bb303a6247bd1680fa3b5daad
+    name: MasterLPF
   - guid: b38cea073328a934398ddbacd3f396f4
     name: VolumeMusic
   - guid: 98b3329653d4e0c4892f327dde6a84e1
@@ -155,6 +175,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
+  - {fileID: -2977645889315772556}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -183,7 +204,10 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 467309fb45bc15c4187e2c8811aa7075
   m_FloatValues:
+    6059d0a40a47a6a4b92922f71a114262: 1
+    b4fd0836858dab84e9b1aa45e34fe3df: 700
     6d8f90e8f79df3549bb1008372b0d580: 0.07540998
+    14f2177bb303a6247bd1680fa3b5daad: 22000
     784ed97dd432da84885762b3578cc35a: 0.025578512
   m_TransitionOverrides: {}
 --- !u!243 &1074516053658042197

@@ -12,6 +12,16 @@ public class Timer : MonoBehaviour
     private float _innerTime;
     private float _interpolatedPeriod = 2f;
 
+    public float InterpolatedPeriod
+    {
+        get => _interpolatedPeriod;
+        set
+        {
+            if (value < 1) value = 1;
+            _interpolatedPeriod = value;
+        }
+    }
+
     public float GameTime
     {
         get => _gameTime;

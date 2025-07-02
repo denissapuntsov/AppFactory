@@ -14,8 +14,12 @@ public class FreePlayScroll : MonoBehaviour, IScroll
     private void OnEnable()
     {
         _audioSource = GetComponent<AudioSource>();
-        transform.position = startTargetTransform.position;
         DialoguePanel.OnEndDialogue += Open;
+    }
+
+    private void Awake()
+    {
+        transform.position = startTargetTransform.position;
     }
 
     public void Open()

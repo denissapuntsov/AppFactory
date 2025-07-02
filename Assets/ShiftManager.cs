@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,10 +11,13 @@ public class ShiftManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI shiftInfoField;
     [SerializeField] private Canvas endShiftCanvas;
     
+    public bool shiftHasDialogue;
+    
     private DialogueManager _dialogueManager;
-    private DialoguePanel  _dialoguePanel;
     private ScoreManager _scoreManager;
     private CircleManager _circleManager;
+    private Timer _timer;
+    [SerializeField] private AudioManager _audioManager;
 
     private int _currentShiftIndex = -1;
     
@@ -47,7 +51,6 @@ public class ShiftManager : MonoBehaviour
     {
         Instance = this;
         _dialogueManager = FindAnyObjectByType<DialogueManager>();
-        _dialoguePanel = FindAnyObjectByType<DialoguePanel>();
         _circleManager = FindAnyObjectByType<CircleManager>();
 
         GameManager.OnEnter += InitializeShift;
@@ -56,20 +59,15 @@ public class ShiftManager : MonoBehaviour
 
     private void InitializeShift()
     {
+        _audioManager.globalMusicAudioSource.mute = false;
+        _audioManager.globalMusicAudioSource.volume = 0f;
+        _audioManager.globalMusicAudioSource.DOFade(1f, 1f);
         _currentShiftIndex++;
 
-        switch (_currentShiftIndex)
-        {
-            case 0: 
-                _dialogueManager.SetBlock(_dialogueManager.firstShiftBlock);
-                break;
-            case 1:
-                _dialogueManager.SetBlock(_dialogueManager.secondShiftBlock);
-                break;
-            case 2:
-                _dialogueManager.SetBlock(_dialogueManager.planksWarningBlock);
-                break;
-        }
+        // gradually reduce time on subsequent shifts
+        _timer.InterpolatedPeriod -= _currentShiftIndex / 10f;
+        
+        _dialogueManager.ConfigurePanel(_currentShiftIndex);
         
         CurrentCustomerIndex = 0;
         RandomizeShiftLength();

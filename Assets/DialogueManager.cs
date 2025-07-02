@@ -22,6 +22,28 @@ public class DialogueManager : MonoBehaviour
         _dialogueText = _dialoguePanel.GetComponentInChildren<TextMeshProUGUI>();
     }
 
+    public void ConfigurePanel(int shiftIndex)
+    {
+        switch (shiftIndex)
+        {
+            case 0:
+                SetBlock(firstShiftBlock);
+                _dialoguePanel.Enter();
+                break;
+            case 1:
+                SetBlock(secondShiftBlock);
+                _dialoguePanel.Enter();
+                break;
+            case 2:
+                SetBlock(planksWarningBlock);
+                _dialoguePanel.Enter();
+                break;
+            default:
+                _dialoguePanel.Skip();
+                break;
+        }
+    }
+
     private void ToggleCanvasGroup()
     {
         dialogueFocusCanvasGroup.DOFade(1, 0.5f);

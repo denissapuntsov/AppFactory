@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Sequence = DG.Tweening.Sequence;
 
@@ -21,7 +22,7 @@ public class ScoreManager : MonoBehaviour
     
     private AudioSource _audioSource;
     [SerializeField] private AudioClip pointSound, winSting, loseSting, timerGoingOff;
-
+    
     [SerializeField] private AudioSource musicAudioSource;
 
     private int _customersServed = 0;
@@ -45,6 +46,7 @@ public class ScoreManager : MonoBehaviour
         get => _score;
         private set
         {
+            if (value < 0) value = 0;
             _score = value;
             UpdateGlobalScoreValues();
         }
@@ -108,24 +110,24 @@ public class ScoreManager : MonoBehaviour
                 scoreToAdd += 1;
                 break;
             case CustomerType.Temp:
-                scoreToAdd += customer.targetTemperature == circle.temperature ? 1 : 0;
+                scoreToAdd += customer.targetTemperature == circle.temperature ? 1 : -0.5f;
                 break;
             case CustomerType.AntiTemp:
-                scoreToAdd +=  customer.targetTemperature == circle.temperature ? 0 : 1;
+                scoreToAdd +=  customer.targetTemperature == circle.temperature ? -0.5f : 1;
                 break;
             case CustomerType.Env:
-                scoreToAdd += customer.targetEnvironment == circle.environment ? 1 : 0;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 1 : -0.5f;
                 break;
             case CustomerType.AntiEnv:
-                scoreToAdd += customer.targetEnvironment == circle.environment ? 0 : 1;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? -0.5f : 1;
                 break;
             case CustomerType.PositiveComplex:
-                scoreToAdd += customer.targetTemperature == circle.temperature ? 0.5f : 0;
-                scoreToAdd += customer.targetEnvironment == circle.environment ? 0.5f : 0;
+                scoreToAdd += customer.targetTemperature == circle.temperature ? 1f : -0.5f;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 1f : -0.5f;
                 break;
             case CustomerType.NegativeComplex:
-                scoreToAdd += customer.targetTemperature == circle.temperature ? 0 : 0.5f;
-                scoreToAdd += customer.targetEnvironment == circle.environment ? 0 : 0.5f;
+                scoreToAdd += customer.targetTemperature == circle.temperature ? -0.5f : 1f;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? -0.5f : 1f;
                 break;
         }
         
@@ -149,6 +151,7 @@ public class ScoreManager : MonoBehaviour
 
     private void DisplayScore()
     {
+        FindAnyObjectByType<AudioManager>().globalMusicAudioSource.mute = true;
         PlayScoreStinger(_customerSatisfactionCoefficient > 50);
         foreach (var stamp in _stamps) stamp.gameObject.SetActive(false);
         endShiftCanvas.SetActive(true);
