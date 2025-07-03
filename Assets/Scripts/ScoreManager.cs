@@ -115,24 +115,24 @@ public class ScoreManager : MonoBehaviour
                 scoreToAdd += 1;
                 break;
             case CustomerType.Temp:
-                scoreToAdd += customer.targetTemperature == circle.temperature ? 1 : -0.5f;
+                scoreToAdd += customer.targetTemperature == circle.temperature ? 1 : -1f;
                 break;
             case CustomerType.AntiTemp:
-                scoreToAdd +=  customer.targetTemperature == circle.temperature ? -0.5f : 1;
+                scoreToAdd +=  customer.targetTemperature == circle.temperature ? -1f : 1;
                 break;
             case CustomerType.Env:
-                scoreToAdd += customer.targetEnvironment == circle.environment ? 1 : -0.5f;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 1 : -1f;
                 break;
             case CustomerType.AntiEnv:
-                scoreToAdd += customer.targetEnvironment == circle.environment ? -0.5f : 1;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? -1f : 1;
                 break;
             case CustomerType.PositiveComplex:
-                scoreToAdd += customer.targetTemperature == circle.temperature ? 1f : -0.5f;
-                scoreToAdd += customer.targetEnvironment == circle.environment ? 1f : -0.5f;
+                scoreToAdd += customer.targetTemperature == circle.temperature ? 0.5f : -0.5f;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? 0.5f : -0.5f;
                 break;
             case CustomerType.NegativeComplex:
-                scoreToAdd += customer.targetTemperature == circle.temperature ? -0.5f : 1f;
-                scoreToAdd += customer.targetEnvironment == circle.environment ? -0.5f : 1f;
+                scoreToAdd += customer.targetTemperature == circle.temperature ? -0.5f : 0.5f;
+                scoreToAdd += customer.targetEnvironment == circle.environment ? -0.5f : 0.5f;
                 break;
         }
         
