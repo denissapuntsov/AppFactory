@@ -3029,6 +3029,7 @@ MonoBehaviour:
   SFXToggle: {fileID: 695995354}
   mixer: {fileID: 24100000, guid: 13aa288197aa1ae4b80d017c6eb09c1c, type: 2}
   globalMusicAudioSource: {fileID: 0}
+  stingerAudioSource: {fileID: 0}
 --- !u!4 &679517251
 Transform:
   m_ObjectHideFlags: 0
@@ -3677,6 +3678,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806663157}
   m_CullTransparentMesh: 1
+--- !u!1 &812168695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812168697}
+  - component: {fileID: 812168696}
+  m_Layer: 0
+  m_Name: PersistentShiftInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &812168696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812168695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd784c5d18e945d47aa5e92900ad7ddd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &812168697
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812168695}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1276.5386, y: 639.38214, z: 16.635199}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &827185154
 GameObject:
   m_ObjectHideFlags: 0
@@ -7893,7 +7938,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLAY
+  m_text: FREE PLAY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f2d428f41421934e8743a1c2e82f1bd, type: 2}
   m_sharedMaterial: {fileID: -8871112031160016838, guid: 1f2d428f41421934e8743a1c2e82f1bd, type: 2}
@@ -7920,8 +7965,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5.08
-  m_fontSizeBase: 5.08
+  m_fontSize: 4.01
+  m_fontSizeBase: 4.01
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8342,3 +8387,4 @@ SceneRoots:
   - {fileID: 1453972419}
   - {fileID: 1630517854}
   - {fileID: 679517251}
+  - {fileID: 812168697}

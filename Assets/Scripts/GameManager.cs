@@ -22,7 +22,6 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI stateText;
-
     [SerializeField] private Button resetButton;
     [SerializeField] private Button[] quitButtons;
     

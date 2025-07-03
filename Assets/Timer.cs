@@ -108,7 +108,7 @@ public class Timer : MonoBehaviour
 
     private void OnDisable()
     {
-        if (!timerUI) timerUI.SetActive(false);
+        if (timerUI) timerUI.SetActive(false);
         GameManager.OnShiftComplete -= Reset;
     }
 }

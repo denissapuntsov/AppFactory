@@ -28,7 +28,7 @@ public class Customer : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI customerInfoText;
 
-    private List<CustomerType> _currentPool = new List<CustomerType>();
+    public List<CustomerType> currentPool;
 
     [SerializeField] private Image body, currentEyes, currentMouth, currentHorns, currentHat;
     private CustomerAvatar _avatar;
@@ -36,7 +36,12 @@ public class Customer : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.OnPlace += () => Randomise(_currentPool);
+        GameManager.OnPlace += Randomise;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnPlace -= Randomise;
     }
 
     private void Awake()
@@ -53,7 +58,7 @@ public class Customer : MonoBehaviour
         _flavorTextManager = FindAnyObjectByType<FlavorTextManager>();
     }
 
-    public void Randomise(List<CustomerType> customerTypePool)
+    public void Randomise()
     {
         List<Sprite> sprites = _avatar.GetRandomAvatar();
         
@@ -62,8 +67,7 @@ public class Customer : MonoBehaviour
         currentHorns.sprite = sprites[2];
         currentHorns.color = _avatar.HornColor;
         
-        _currentPool = customerTypePool;
-        currentType = _currentPool[Random.Range(0, customerTypePool.Count)];
+        currentType = currentPool[Random.Range(0, currentPool.Count)];
         
         AssignSpecifications();
         

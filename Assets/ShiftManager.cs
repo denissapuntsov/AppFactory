@@ -59,7 +59,11 @@ public class ShiftManager : MonoBehaviour
         _timer = FindAnyObjectByType<Timer>();
         _questionButtonImage = FindAnyObjectByType<InfoTrigger>().GetComponent<Image>();
         _customer =  FindAnyObjectByType<Customer>();
-        _currentShiftIndex = PlayerPrefs.GetInt("ShiftIndex", 3);
+        if (PersistentShiftInfo.Instance != null)
+        {
+            _currentShiftIndex = -1;
+        }
+        else _currentShiftIndex = PersistentShiftInfo.Instance.isTutorial ? -1 : 3;
 
         GameManager.OnEnter += InitializeShift;
     }
@@ -135,7 +139,9 @@ public class ShiftManager : MonoBehaviour
                 _timer.InterpolatedPeriod -= (_currentShiftIndex - 3) / 10f;
                 break;
         }
-        _customer.Randomise(customerTypePool);
+
+        _customer.currentPool = customerTypePool;
+        _customer.Randomise();
 
         // gradually reduce time on subsequent shifts
         
