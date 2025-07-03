@@ -559,7 +559,7 @@ MonoBehaviour:
   stampAudioSource: {fileID: 1974696182}
   pointSound: {fileID: 8300000, guid: 5f4326ae7d47c64409c2375c79f7b390, type: 3}
   winSting: {fileID: 8300000, guid: e5f367ae54601cc45870ee954673839f, type: 3}
-  loseSting: {fileID: 8300000, guid: c9244d97dee6ec24b9a84d376c11cc34, type: 3}
+  loseSting: {fileID: 8300000, guid: 950a1b925d5e53b4a83758a343b80a4b, type: 3}
   timerGoingOff: {fileID: 8300000, guid: 693a99f5ae1f70240b86c9fc87ddcd02, type: 3}
 --- !u!82 &107287940
 AudioSource:
@@ -7994,6 +7994,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstShiftBlock: {fileID: 11400000, guid: 723398e05008c77488e4c637dda47bcf, type: 2}
   secondShiftBlock: {fileID: 11400000, guid: 03156e024fc3448498dc94970cb75618, type: 2}
+  thirdShiftBlock: {fileID: 11400000, guid: 04baeece4f1a12b4b9db2ea1e605e3e6, type: 2}
   planksWarningBlock: {fileID: 11400000, guid: 8ce0e5dd0d60f8547be7bac204aad646, type: 2}
   dialogueFocusCanvasGroup: {fileID: 480818919}
 --- !u!1 &1360354676
@@ -9079,7 +9080,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -148.36578}
+  m_AnchoredPosition: {x: 21, y: -148.36578}
   m_SizeDelta: {x: 460.03412, y: 471}
   m_Pivot: {x: 0.25, y: 0.5}
 --- !u!222 &1503119622
@@ -9143,10 +9144,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4912676653385463132, guid: 13aa288197aa1ae4b80d017c6eb09c1c, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5d88dd3b697eb98478f28337a7d2c91e, type: 3}
-  m_Resource: {fileID: 8300000, guid: 5d88dd3b697eb98478f28337a7d2c91e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e9d822c781c50244da02e1de0b0e23b4, type: 3}
+  m_Resource: {fileID: 8300000, guid: e9d822c781c50244da02e1de0b0e23b4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.736
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -9257,7 +9258,7 @@ RectTransform:
   m_GameObject: {fileID: 1539254141}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999227, w: 0.012441322}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4341736, y: 0.95, z: 1.0663}
+  m_LocalScale: {x: 1.9836055, y: 1.313945, z: 1.4747996}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1742205178}
@@ -9339,7 +9340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.317}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.0000763, y: 16.999992}
+  m_AnchoredPosition: {x: -6.0000916, y: 16.999992}
   m_SizeDelta: {x: 14.830704, y: 99.7137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559876636
@@ -9427,7 +9428,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -6.1636353, y: 69.79134, z: -6.5520096, w: 43.75447}
+  m_margin: {x: 43.246124, y: 114.50498, z: 57.668068, w: 70.825294}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9748,11 +9749,11 @@ AudioSource:
   m_GameObject: {fileID: 1587665885}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -4912676653385463132, guid: 13aa288197aa1ae4b80d017c6eb09c1c, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.85
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10569,8 +10570,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 237.3279, y: -243}
-  m_SizeDelta: {x: 264.11, y: 87.5}
+  m_AnchoredPosition: {x: 239, y: -243}
+  m_SizeDelta: {x: 500, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1742205179
 MonoBehaviour:
@@ -11359,7 +11360,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 70}
+  m_AnchoredPosition: {x: 21, y: 75.000015}
   m_SizeDelta: {x: 460.03406, y: 471}
   m_Pivot: {x: 0.25, y: 0.5}
 --- !u!222 &1957494677

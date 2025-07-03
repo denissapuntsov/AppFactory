@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: SecondShift
   m_EditorClassIdentifier: 
   lines:
-  - Well, look at you, you natural-born travel agent!
-  - Actually, I'm not sure exactly how well you're doing. But good enough to keep
-    the job.
-  - So keep on not being fired, champ!
+  - Now that you've got used to the office, we'll send you more... particular clients.
+  - You might have noticed each circle has a name of its Environment on it.
+  - 'A lot of demons have a preference for a particular Environment, and will need
+    to be sent there. '
+  - Others might be the opposite, and know exactly where they DON'T want to go.
+  - Careful not to send them to their least favorite circle!
+  - '*To get hints about where to send a Customer, hold the (?) button in the upper-left
+    corner.*'
+  - Alright, that about covers it. Good luck!

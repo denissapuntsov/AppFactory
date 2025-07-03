@@ -13,13 +13,19 @@ MonoBehaviour:
   m_Name: FirstShift
   m_EditorClassIdentifier: 
   lines:
-  - 'Well, look who it is! Our newest travel manager. '
-  - Allow me to formally welcome you to Nine Circles of Home, the first demonic tourism
-    agency.
-  - Folks are really excited to go back home after being stranded here on Earth for
-    so long.
-  - Problem is, no one really remembers which circle they're from.
-  - So your job is to talk to them and find whatever clues you can to pick the right
-    destination...
-  - 'Sounds stressful? You bet! '
-  - You've got this, though. Or, you know, you're fired.
+  - Well, look who it is! You must be our newest Travel Manager.
+  - My name is Dean Fernal, I'm the Managing Director here at 9 Circles Of Home.
+  - We're the first firm to help demons travel from Earth back to Hell...
+  - ...and with so many poor devils stuck here after the invasion, we always have
+    plenty of customers.
+  - Anyway! I'll be showing you around during your first few days here.
+  - Your job is picking the right Circle of Hell for each customer.
+  - For your first shift, we're sending you our least picky clientele, so it will
+    be as easy as matching colors.
+  - Red customers need to be sent to Hot circles, Blue to Cold, and Purple like it
+    anywhere.
+  - '*Drag and drop a Customer over a Circle to send them to it.*'
+  - The meter under the Customer shows your total success rate.
+  - If you send someone where they don't want to go, it will drop.
+  - Keep the meter above 50%, and you'll have nothing to worry about!
+  - Right, enough chat. Get to it!
