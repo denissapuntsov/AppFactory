@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   neutralLines:
-  - Don't care
+  - One ticket out of here, please.
   - Just get me out there, coach!
-  - Anywhere is good
+  - 'Anywhere in hell is better than here! '
+  - "If I have to stay here for one more minute, I\u2019ll start screaming."
   flavorTextEnvs: []
   flavorTextTemps: []
   flavorTextComplexes: []

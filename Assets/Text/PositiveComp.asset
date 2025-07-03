@@ -13,30 +13,57 @@ MonoBehaviour:
   m_Name: PositiveComp
   m_EditorClassIdentifier: 
   targetType: 1
+  neutralLines: []
   flavorTextEnvs: []
   flavorTextTemps: []
   flavorTextComplexes:
-  - environment: 0
-    temperature: 0
-    text: Love cold plains
-  - environment: 1
-    temperature: 0
-    text: Love cold cliffs
-  - environment: 2
-    temperature: 0
-    text: Love cold lakes
-  - environment: 3
-    temperature: 0
-    text: Love cold caverns
   - environment: 3
     temperature: 1
-    text: Love hot caverns
+    text: "I don\u2019t remember my address. But it\u2019s a big fiery cave. Everyone
+      knows it."
+  - environment: 3
+    temperature: 1
+    text: "Home was so dark and lovely. Everything here hurts my eyes, and I\u2019m
+      cold all the time."
   - environment: 2
     temperature: 1
-    text: Love hot lakes
+    text: 117 million lakes on Earth, and barely any filled with lava. I feel cheated.
+  - environment: 3
+    temperature: 1
+    text: "Home was so dark and lovely. Everything here hurts my eyes, and I\u2019m
+      cold all the time."
+  - environment: 3
+    temperature: 0
+    text: "I don\u2019t remember my address. It\u2019s a big icy cave. Everyone knows
+      it."
+  - environment: 3
+    temperature: 0
+    text: Nothing like a long nap in a freezing cave. I miss home.
+  - environment: 2
+    temperature: 1
+    text: I just miss a good old lava bath, you know?
   - environment: 0
     temperature: 1
-    text: Love hot plains
+    text: ' I like things plain. Home is just so perfect with all its vast empty
+      space.'
+  - environment: 0
+    temperature: 0
+    text: I like things plain. Home is just so perfect with all its vast empty space.
   - environment: 1
     temperature: 1
-    text: Love hot cliffs
+    text: I like rocks and I like them tall and spiky. Just give me some of that.
+  - environment: 1
+    temperature: 0
+    text: I like rocks and I like them tall and spiky. Just give me some of that.
+  - environment: 1
+    temperature: 0
+    text: I miss living somewhere high up, where I can see everything and no-one
+      can bother me.
+  - environment: 1
+    temperature: 1
+    text: I miss living somewhere high up, where I can see everything and no-one
+      can bother me.
+  - environment: 1
+    temperature: 1
+    text: I miss living somewhere high up, where I can see everything and no-one
+      can bother me.

@@ -13,14 +13,18 @@ MonoBehaviour:
   m_Name: AntiTemp
   m_EditorClassIdentifier: 
   targetType: 6
+  neutralLines: []
   flavorTextEnvs: []
   flavorTextTemps:
   - temperature: 0
-    text: Too cold here!
+    text: 'I had a bath in a volcano one time, and it was the best I''ve felt here.
+      Earth is just way too cold. '
   - temperature: 0
-    text: Way too cold here!
+    text: You can't tell, but I'm shivering. I need somewhere, anywhere, with a nice
+      hot climate.
   - temperature: 1
-    text: Too hot here!
+    text: I've been living in a place humans used to call "Texas" for the past month.
+      I need a break from the heat.
   - temperature: 1
-    text: Way too hot here!
+    text: I miss frost. And the cold. And the ice. You get it.
   flavorTextComplexes: []

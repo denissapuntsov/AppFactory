@@ -932,6 +932,62 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circle (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.998426
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.056085862
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 14.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -46.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 6.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.002168
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99766403
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.06831134
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -45.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 7.834
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_text
+      value: HOT CAVERNS
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.x
+      value: -88.53017
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.z
+      value: -55.38698
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1169,6 +1225,14 @@ PrefabInstance:
     - target: {fileID: 1416880192349705591, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Name
       value: Circle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4062566
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_text
+      value: ICE LAKES
       objectReference: {fileID: 0}
     - target: {fileID: 9178745234752881667, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Sprite
@@ -2154,6 +2218,34 @@ PrefabInstance:
     - target: {fileID: 1416880192349705591, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Name
       value: Circle (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5334967
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.38548303
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_text
+      value: COLD PEAKS
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_fontSize
+      value: 34.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.x
+      value: -48.42147
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.z
+      value: -20.846252
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 34.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5987,6 +6079,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Circle (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5221064
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_text
+      value: DRY PLAINS
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.x
+      value: -77.66159
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.z
+      value: -60.66649
+      objectReference: {fileID: 0}
     - target: {fileID: 9178745234752881667, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Color.b
       value: 0.755
@@ -6481,6 +6589,42 @@ PrefabInstance:
     - target: {fileID: 1416880192349705591, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Name
       value: Circle (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99993676
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.011244612
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.7998815
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -47.89995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1.289
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.100565
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_text
+      value: COLD CAVERNS
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.x
+      value: -108.99263
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.z
+      value: -53.60164
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9331,16 +9475,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559876634}
-  m_LocalRotation: {x: -0, y: -0, z: 0.0027645116, w: 0.9999962}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0004478203, w: 0.9999999}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1742205178}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.317}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.051}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.0000916, y: 16.999992}
+  m_AnchoredPosition: {x: -6.0000916, y: 17.000427}
   m_SizeDelta: {x: 14.830704, y: 99.7137}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1559876636
@@ -9390,15 +9534,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.62
-  m_fontSizeBase: 17.62
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -9428,7 +9572,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 43.246124, y: 114.50498, z: 57.668068, w: 70.825294}
+  m_margin: {x: 61.174713, y: 108.6105, z: 75.36082, w: 70.825294}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9629,6 +9773,10 @@ PrefabInstance:
       propertyPath: environment
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 39113704931591117, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: temperature
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 574234083855403850, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9712,6 +9860,42 @@ PrefabInstance:
     - target: {fileID: 1416880192349705591, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Name
       value: Circle (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.999971
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.007620021
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000014781952
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48.29972
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0.873
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.1401248
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_text
+      value: HOTTER CAVERNS
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.x
+      value: -106.27345
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.z
+      value: -85.229965
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9947,6 +10131,10 @@ PrefabInstance:
     - target: {fileID: 1416880192349705591, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Name
       value: Circle (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_text
+      value: HOT PEAKS
       objectReference: {fileID: 0}
     - target: {fileID: 9178745234752881667, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Color.b
@@ -10516,6 +10704,42 @@ PrefabInstance:
     - target: {fileID: 1416880192349705591, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Name
       value: Circle (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99993944
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.011012064
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00004287064
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48.30006
+      objectReference: {fileID: 0}
+    - target: {fileID: 3473304809173307547, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 1.262
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.9338946
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_text
+      value: LAVA LAKES
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.x
+      value: -89.58266
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.z
+      value: -60.173424
       objectReference: {fileID: 0}
     - target: {fileID: 9178745234752881667, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Color.b
@@ -11898,6 +12122,34 @@ PrefabInstance:
     - target: {fileID: 1416880192349705591, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
       propertyPath: m_Name
       value: Circle (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.608855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149792975371710067, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.38238803
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_text
+      value: WINDY PLAINS
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_fontSize
+      value: 29.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.x
+      value: -59.727074
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_margin.z
+      value: -23.340439
+      objectReference: {fileID: 0}
+    - target: {fileID: 7199300242240594691, guid: b57156d79899c0a4f8c4f4049b76eddd, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 29.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

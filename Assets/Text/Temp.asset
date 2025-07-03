@@ -17,7 +17,15 @@ MonoBehaviour:
   flavorTextEnvs: []
   flavorTextTemps:
   - temperature: 0
-    text: Love the cold
+    text: Anything will do, as long as I get to freeze over.
+  - temperature: 0
+    text: I've been living in a place humans used to call "Texas" for the past month.
+      I need a break from the heat.
+  - temperature: 0
+    text: I miss frost. And the cold. And the ice. You get it.
   - temperature: 1
-    text: Love the heat
+    text: I miss warmth. And lava. And smoke. Brimstone and fire. That kind of thing.
+  - temperature: 1
+    text: Nothing could have prepared me for how underwheming the heatwaves here
+      get. The sky wasn't even on fire!
   flavorTextComplexes: []

@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour
     private static float _gameTime;
     private bool _isRunning = false;
     private float _innerTime;
-    private float _interpolatedPeriod = 2f;
+    private float _interpolatedPeriod = 3.5f;
 
     public float InterpolatedPeriod
     {

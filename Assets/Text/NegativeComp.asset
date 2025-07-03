@@ -17,27 +17,55 @@ MonoBehaviour:
   flavorTextEnvs: []
   flavorTextTemps: []
   flavorTextComplexes:
-  - environment: 0
-    temperature: 0
-    text: Hate cold plains
-  - environment: 1
-    temperature: 0
-    text: Hate cold cliffs
-  - environment: 2
-    temperature: 0
-    text: Hate cold lakes
   - environment: 3
     temperature: 0
-    text: Hate cold caverns
+    text: "Can\u2019t believe some demons miss their caves. Worst place in all of
+      hell."
   - environment: 3
     temperature: 1
-    text: Hate hot caverns
-  - environment: 0
+    text: "Can\u2019t believe some demons miss their caves. Worst place in all of
+      hell."
+  - environment: 3
+    temperature: 0
+    text: "Do I look like someone who enjoys dark caverns? Don\u2019t insult me.
+      I have taste."
+  - environment: 3
     temperature: 1
-    text: Hate hot plains
+    text: "Do I look like someone who enjoys dark caverns? Don\u2019t insult me.
+      I have taste."
   - environment: 1
     temperature: 1
-    text: Hate hot cliffs
+    text: "I don\u2019t know, just send me to hell and I\u2019ll find my way home.
+      As long as it\u2019s not in the mountains."
+  - environment: 1
+    temperature: 0
+    text: "I don\u2019t know, just send me to hell and I\u2019ll find my way home.
+      As long as it\u2019s not in the mountains."
   - environment: 2
     temperature: 1
-    text: Hate hot lakes
+    text: Hell is so cosy and homely! Except for the lakes.
+  - environment: 2
+    temperature: 0
+    text: Hell is so cosy and homely! Except for the lakes.
+  - environment: 2
+    temperature: 1
+    text: "Lakes make me shudder. Do you ever think about what\u2019s in the deep
+      there?"
+  - environment: 2
+    temperature: 0
+    text: "Lakes make me shudder. Do you ever think about what\u2019s in the deep
+      there?"
+  - environment: 0
+    temperature: 0
+    text: Anywhere but the plains, please. Can't stand open spaces.
+  - environment: 0
+    temperature: 1
+    text: Anywhere but the plains, please. Can't stand open spaces.
+  - environment: 0
+    temperature: 1
+    text: Large empty spaces fill me with dread. My demonologist says it stems from
+      my early childhood.
+  - environment: 0
+    temperature: 1
+    text: Large empty spaces fill me with dread. My demonologist says it stems from
+      my early childhood.
