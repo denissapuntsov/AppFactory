@@ -59,7 +59,7 @@ public class ShiftManager : MonoBehaviour
         _timer = FindAnyObjectByType<Timer>();
         _questionButtonImage = FindAnyObjectByType<InfoTrigger>().GetComponent<Image>();
         _customer =  FindAnyObjectByType<Customer>();
-        if (PersistentShiftInfo.Instance != null)
+        if (PersistentShiftInfo.Instance == null)
         {
             _currentShiftIndex = -1;
         }
