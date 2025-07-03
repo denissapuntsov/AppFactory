@@ -19,13 +19,13 @@ public class MenuManager : MonoBehaviour
         tutorialButton.onClick.AddListener(() =>
         {
             if (!mainMenuScroll.IsOpen) return;
-            PersistentShiftInfo.Instance.isTutorial = true;
+            PersistentGameInfo.Instance.isTutorial = true;
             StartCoroutine(SwitchScene(1));
         });
         freePlayButton.onClick.AddListener(() =>
         {
             if (!mainMenuScroll.IsOpen) return;
-            PersistentShiftInfo.Instance.isTutorial = false;
+            PersistentGameInfo.Instance.isTutorial = false;
             StartCoroutine(SwitchScene(1));
         });
         settingsButton.onClick.AddListener(() =>

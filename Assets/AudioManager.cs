@@ -1,14 +1,11 @@
 using System;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] private Toggle musicToggle, SFXToggle;
+    [SerializeField] private Toggle musicToggle, sfxToggle;
     [SerializeField] private AudioMixer mixer;
     public AudioSource globalMusicAudioSource, stingerAudioSource;
 
@@ -18,27 +15,25 @@ public class AudioManager : MonoBehaviour
         if (FindAnyObjectByType<GameManager>()) GameManager.OnStart += SetVolumeToZero;
         
         musicToggle.onValueChanged.AddListener(ToggleMusic);
-        SFXToggle.onValueChanged.AddListener(ToggleSFX);
-        
-        musicToggle.isOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
-        SFXToggle.isOn = PlayerPrefs.GetInt("SFXOn", 1) == 1;
-        
-        ToggleMusic(musicToggle.isOn);
-        ToggleSFX(musicToggle.isOn);
+        sfxToggle.onValueChanged.AddListener(ToggleSFX);
+    }
+
+    private void Start()
+    {
+        musicToggle.onValueChanged.Invoke(PersistentGameInfo.Instance.isMusicOn);
+        sfxToggle.onValueChanged.Invoke(PersistentGameInfo.Instance.isSfxOn);
     }
 
     private void ToggleMusic(bool isOn)
     {
-        PlayerPrefs.SetInt("MusicOn",  isOn ? 1 : 0);
-        PlayerPrefs.Save();
-        mixer.SetFloat("VolumeMusic", PlayerPrefs.GetInt("MusicOn") == 1 ? 0f : -80f);
+        PersistentGameInfo.Instance.isMusicOn = isOn;
+        mixer.SetFloat("VolumeMusic", PersistentGameInfo.Instance.isMusicOn ? 0f : -80f);
     }
 
     private void ToggleSFX(bool isOn)
     {
-        PlayerPrefs.SetInt("SFXOn",  isOn ? 1 : 0);
-        PlayerPrefs.Save();
-        mixer.SetFloat("VolumeSFX", PlayerPrefs.GetInt("SFXOn") == 1 ? 0f : -80f);
+        PersistentGameInfo.Instance.isSfxOn = isOn;
+        mixer.SetFloat("VolumeSFX", PersistentGameInfo.Instance.isSfxOn ? 0f : -80f);
     }
 
     public void FilterMusicOn()
@@ -56,11 +51,11 @@ public class AudioManager : MonoBehaviour
         globalMusicAudioSource.volume = 0;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        if (FindAnyObjectByType<GameManager>())  GameManager.OnStart -= SetVolumeToZero;
+        if (FindAnyObjectByType<GameManager>()) GameManager.OnStart -= SetVolumeToZero;
         
         musicToggle.onValueChanged.RemoveListener(ToggleMusic);
-        SFXToggle.onValueChanged.RemoveListener(ToggleSFX);
+        sfxToggle.onValueChanged.RemoveListener(ToggleSFX);
     }
 }

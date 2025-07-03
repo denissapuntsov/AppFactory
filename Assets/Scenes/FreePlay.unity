@@ -8826,7 +8826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicToggle: {fileID: 1124712431}
-  SFXToggle: {fileID: 1288999877}
+  sfxToggle: {fileID: 1288999877}
   mixer: {fileID: 24100000, guid: 13aa288197aa1ae4b80d017c6eb09c1c, type: 2}
   globalMusicAudioSource: {fileID: 1523857097}
   stingerAudioSource: {fileID: 1587665886}

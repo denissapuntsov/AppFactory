@@ -2,10 +2,12 @@ using System;
 using UnityEngine;
 
 
-public class PersistentShiftInfo : MonoBehaviour
+public class PersistentGameInfo : MonoBehaviour
 {
-    public static PersistentShiftInfo Instance { get; private set; }
+    public static PersistentGameInfo Instance { get; private set; }
 
+    public bool isTutorial = false;
+    public bool isSfxOn, isMusicOn;
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -16,5 +18,4 @@ public class PersistentShiftInfo : MonoBehaviour
         Instance = this;
     }
 
-    public bool isTutorial = false;
 }
