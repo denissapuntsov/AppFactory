@@ -40,7 +40,6 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
             .OnComplete(() =>
             {
                 GameManager.CurrentGameState = GameState.Enter;
-                Appear();
                 question.transform.DOMove(questionEnd.position, 1f);
                 counter.transform.DOMove(counterEnd.position, 1f);
             });
@@ -94,7 +93,7 @@ public class CustomerUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler,
         Appear();
     }
 
-    private void Appear()
+    public void Appear()
     {
         HideCustomer();
         
