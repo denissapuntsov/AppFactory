@@ -65,6 +65,12 @@ public class ScoreManager : MonoBehaviour
         GameManager.OnShiftIncomplete += AddMissedScores;
     }
 
+    private void OnDisable()
+    {
+        GameManager.OnShiftComplete -= DisplayScore;
+        GameManager.OnShiftIncomplete -= AddMissedScores;
+    }
+
     private void Start()
     {
         _musicAudioSource = FindAnyObjectByType<AudioManager>().stingerAudioSource;
