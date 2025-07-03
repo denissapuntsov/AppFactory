@@ -16,6 +16,11 @@ public class InfoTrigger : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private Sequence _popupSequence;
 
+    private void OnEnable()
+    {
+        
+    }
+
     private void Start()
     {
         infoFieldUI.transform.position = startPosition.position;

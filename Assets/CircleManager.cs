@@ -11,20 +11,6 @@ public class CircleManager : MonoBehaviour
     public static Circle CurrentCircle;
 
     [SerializeField] private List<CircleVisual> circleVisuals;
-    
-    private void Awake()
-    {
-        /*List<CircleEnvironment> environmentPool = new List<CircleEnvironment>();
-        CircleEnvironment lastEnvironment = new CircleEnvironment();
-        foreach (Circle circle in circles)
-        {
-            // assign environments, so that there is at least 1 of each
-            if (environmentPool.Count == 0) environmentPool = Enum.GetValues(typeof(CircleEnvironment)).Cast<CircleEnvironment>().ToList();
-            CircleEnvironment newEnvironment = environmentPool[Random.Range(0, environmentPool.Count)];
-            circle.environment = newEnvironment;
-            environmentPool.Remove(newEnvironment);
-        }*/
-    }
 
     public Sprite GetCircleSprite(CircleTemperature temperature, CircleEnvironment environment)
     {
@@ -51,7 +37,7 @@ public class CircleManager : MonoBehaviour
 public enum CircleEnvironment 
 {
     Plains,
-    Cliffs,
+    Peaks,
     Lakes,
     Caverns
 }

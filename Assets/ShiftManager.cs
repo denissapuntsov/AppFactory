@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class ShiftManager : MonoBehaviour
@@ -17,6 +18,7 @@ public class ShiftManager : MonoBehaviour
     private ScoreManager _scoreManager;
     private CircleManager _circleManager;
     private Timer _timer;
+    private Image _questionButtonImage;
     [SerializeField] private AudioManager _audioManager;
 
     private int _currentShiftIndex = -1;
@@ -53,6 +55,7 @@ public class ShiftManager : MonoBehaviour
         _dialogueManager = FindAnyObjectByType<DialogueManager>();
         _circleManager = FindAnyObjectByType<CircleManager>();
         _timer = FindAnyObjectByType<Timer>();
+        _questionButtonImage = FindAnyObjectByType<InfoTrigger>().GetComponent<Image>();
 
         GameManager.OnEnter += InitializeShift;
         GameManager.OnPlace += GetNextCustomer;
@@ -65,6 +68,31 @@ public class ShiftManager : MonoBehaviour
         _audioManager.globalMusicAudioSource.DOFade(1f, 1f);
         _currentShiftIndex++;
 
+        // first shift: no timer, no question button, only neutral and temp/anti-temp demons
+        // second shift: no timer, question button, all kinds of demons
+        // third shift: add timer
+        // fourth shift: start blocking circles
+        
+        switch (_currentShiftIndex)
+        {
+            case 0:
+                _timer.gameObject.SetActive(true);
+                _questionButtonImage.enabled = false;
+                break;
+            case 1:
+                _timer.gameObject.SetActive(false);
+                _questionButtonImage.enabled = true;
+                break;
+            case 2: 
+                _timer.gameObject.SetActive(true);
+                _questionButtonImage.enabled = true;
+                break;
+            default:
+                _timer.gameObject.SetActive(true);
+                _questionButtonImage.enabled = true;
+                break;
+        }
+
         // gradually reduce time on subsequent shifts
         _timer.InterpolatedPeriod -= _currentShiftIndex / 10f;
         
@@ -73,7 +101,7 @@ public class ShiftManager : MonoBehaviour
         CurrentCustomerIndex = 0;
         RandomizeShiftLength();
 
-        if (_currentShiftIndex >= 2)
+        if (_currentShiftIndex > 2)
         {
             _circleManager.BlockRandomCircle(1);
         }

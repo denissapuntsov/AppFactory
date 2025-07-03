@@ -9,7 +9,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     #region Fields and Properties
 
-    [SerializeField] private TextMeshProUGUI indexText;
+    [SerializeField] private TextMeshProUGUI indexText, nameText;
     [SerializeField] private GameObject startRef, endRef;
     [SerializeField] private GameObject planks;
     [SerializeField] private Image environmentImage;
@@ -64,6 +64,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         environmentImage.sprite = _circleManager.GetCircleSprite(temperature, environment);
         
         indexText.text = $"Index: {Index},\nEnvironment: {environment}\nTemperature: {temperature}";
+        nameText.text = environment.ToString().ToUpper();
     }
 
     public void OnDrop(PointerEventData eventData)

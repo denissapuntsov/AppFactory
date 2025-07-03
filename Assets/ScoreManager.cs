@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Sequence = DG.Tweening.Sequence;
 
@@ -18,10 +19,11 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] private Button nextShiftButton, quitButton;
     
-    private AudioSource _audioSource;
+    [SerializeField] private AudioSource ringingAudioSource;
+    [SerializeField] private AudioSource stampAudioSource;
     [SerializeField] private AudioClip pointSound, winSting, loseSting, timerGoingOff;
     
-    private AudioSource _musicAudioSource;
+    private AudioSource _stingerAudioSource;
 
     private int _customersServed = 0;
     
@@ -54,8 +56,6 @@ public class ScoreManager : MonoBehaviour
     {
         endShiftCanvas.SetActive(false);
         
-        _audioSource = GetComponent<AudioSource>();
-        
         GameManager.OnEnter += () =>
         {
             _lastShiftSatisfaction = _customerSatisfactionCoefficient;
@@ -73,7 +73,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        _musicAudioSource = FindAnyObjectByType<AudioManager>().stingerAudioSource;
+        _stingerAudioSource = FindAnyObjectByType<AudioManager>().stingerAudioSource;
         _stamps = scoreMarks.GetComponentsInChildren<Stamp>(true);
         foreach (var stamp in _stamps) stamp.gameObject.SetActive(false);
     }
@@ -183,7 +183,7 @@ public class ScoreManager : MonoBehaviour
             _stamps[i].gameObject.SetActive(true);
         }
         // reset pitch of audio source just in case
-        _audioSource.pitch = 1;
+        stampAudioSource.pitch = 1;
         
         // fill stamps one by one
         for (int i = 0; i < CurrentShiftScores.Count; i++)
@@ -193,8 +193,8 @@ public class ScoreManager : MonoBehaviour
                 .AppendCallback(() =>
                 {
                     _stamps[i1].DisplayStamp(CurrentShiftScores[i1]);
-                    _audioSource.pitch = 1 + 0.1f * i1;
-                    _audioSource.PlayOneShot(pointSound);
+                    stampAudioSource.pitch = 1 + 0.1f * i1;
+                    stampAudioSource.PlayOneShot(pointSound);
                 })
                 .AppendInterval(0.25f);
         }
@@ -267,7 +267,7 @@ public class ScoreManager : MonoBehaviour
                 stateText.text = "YOU'RE FIRED!";
                 break;
             case GameState.ShiftIncomplete:
-                _audioSource.PlayOneShot(timerGoingOff);
+                ringingAudioSource.PlayOneShot(timerGoingOff);
                 if (_customerSatisfactionCoefficient > 50)
                 {
                     stateText.text = "YOU RAN OUT OF TIME!";
@@ -280,6 +280,6 @@ public class ScoreManager : MonoBehaviour
 
     private void PlayScoreStinger(bool isWin = true)
     {
-        _musicAudioSource.PlayOneShot(isWin ? winSting : loseSting);
+        _stingerAudioSource.PlayOneShot(isWin ? winSting : loseSting);
     }
 }

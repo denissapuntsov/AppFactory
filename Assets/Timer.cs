@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private GameObject timerUI;
+    private TextMeshProUGUI _timerText;
 
     private static float _gameTime;
     private bool _isRunning = false;
@@ -38,12 +40,15 @@ public class Timer : MonoBehaviour
             if (Mathf.Floor(value) > 12) value -= 12;
             hours = $"{Mathf.Floor(value)}";
             
-            timerText.text = $"{hours}:{minutes} {halfOfDay}";
+            _timerText.text = $"{hours}:{minutes} {halfOfDay}";
         }
     }
     
     private void OnEnable()
     {
+        timerUI.SetActive(true);
+        _timerText = timerUI.GetComponentInChildren<TextMeshProUGUI>();
+        
         GameTime = 9.0f;
         GameManager.OnEnter += () =>
         {
@@ -103,6 +108,7 @@ public class Timer : MonoBehaviour
 
     private void OnDisable()
     {
+        timerUI.SetActive(false);
         GameManager.OnShiftComplete -= Reset;
     }
 }
