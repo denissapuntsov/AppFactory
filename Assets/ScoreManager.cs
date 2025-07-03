@@ -138,7 +138,6 @@ public class ScoreManager : MonoBehaviour
         
         CurrentShiftScores.Add(scoreToAdd);
         
-        Debug.Log($"Added {scoreToAdd} points");
         Score += scoreToAdd * 100f;
         GameManager.CurrentGameState = GameState.Place; 
     }
@@ -230,14 +229,18 @@ public class ScoreManager : MonoBehaviour
         float earlyBonus = 1f;
         float consistencyBonus = 1f;
 
-        float time = FindAnyObjectByType<Timer>().GameTime;
-
-        if (time <= 15.0f)
+        if (FindAnyObjectByType<Timer>())
         {
-            scoreString += earlyBonusText;
-            earlyBonus = 1 + (17.0f - time) / 16f;
-            numberString += $"{(int)(earlyBonus * 100)}%\n";
+            float time = FindAnyObjectByType<Timer>().GameTime;
+            
+                    if (time <= 15.0f)
+                    {
+                        scoreString += earlyBonusText;
+                        earlyBonus = 1 + (17.0f - time) / 16f;
+                        numberString += $"{(int)(earlyBonus * 100)}%\n";
+                    }
         }
+        
 
         if (_lastShiftSatisfaction >= 75 && _customerSatisfactionCoefficient >= 75)
         {

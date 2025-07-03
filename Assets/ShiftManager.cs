@@ -23,7 +23,7 @@ public class ShiftManager : MonoBehaviour
     private Image _questionButtonImage;
     [SerializeField] private AudioManager _audioManager;
 
-    private int _currentShiftIndex = -1;
+    private int _currentShiftIndex;
     
     public int CurrentShiftIndex => _currentShiftIndex;
 
@@ -59,22 +59,23 @@ public class ShiftManager : MonoBehaviour
         _timer = FindAnyObjectByType<Timer>();
         _questionButtonImage = FindAnyObjectByType<InfoTrigger>().GetComponent<Image>();
         _customer =  FindAnyObjectByType<Customer>();
+        _currentShiftIndex = PlayerPrefs.GetInt("ShiftIndex", 3);
 
         GameManager.OnEnter += InitializeShift;
+    }
+
+    private void Awake()
+    {
         GameManager.OnPlace += GetNextCustomer;
     }
 
     private void InitializeShift()
     {
+        Debug.Log("Initializing Shift");
         _audioManager.globalMusicAudioSource.mute = false;
         _audioManager.globalMusicAudioSource.volume = 0f;
         _audioManager.globalMusicAudioSource.DOFade(1f, 1f);
         _currentShiftIndex++;
-
-        // first shift: no timer, no question button, only neutral and temp/anti-temp demons
-        // second shift: no timer, question button, all kinds of demons
-        // third shift: add timer
-        // fourth shift: start blocking circles
         
         List<CustomerType> customerTypePool;
         
@@ -82,7 +83,7 @@ public class ShiftManager : MonoBehaviour
         {
             case 0:
                 // disable timer and info button, use only temperature-relevant customer types
-                _timer.gameObject.SetActive(false);
+                _timer.enabled = false;
                 _questionButtonImage.enabled = false;
                 customerTypePool = new List<CustomerType>()
                 {
@@ -105,7 +106,7 @@ public class ShiftManager : MonoBehaviour
                 break;
             case 2: 
                 //enable timer, use all customer types
-                _timer.gameObject.SetActive(true);
+                _timer.enabled = true;
                 customerTypePool = new List<CustomerType>()
                 {
                     CustomerType.Neutral,
@@ -118,7 +119,7 @@ public class ShiftManager : MonoBehaviour
                 };
                 break;
             default:
-                _timer.gameObject.SetActive(true);
+                _timer.enabled = true;
                 _questionButtonImage.enabled = true;
                 _circleManager.BlockRandomCircle(1);
                 customerTypePool = new List<CustomerType>()
@@ -131,12 +132,12 @@ public class ShiftManager : MonoBehaviour
                     CustomerType.NegativeComplex,
                     CustomerType.PositiveComplex
                 };
+                _timer.InterpolatedPeriod -= (_currentShiftIndex - 3) / 10f;
                 break;
         }
         _customer.Randomise(customerTypePool);
 
         // gradually reduce time on subsequent shifts
-        _timer.InterpolatedPeriod -= _currentShiftIndex / 10f;
         
         _dialogueManager.ConfigurePanel(_currentShiftIndex);
         FindAnyObjectByType<CustomerUI>().Appear();
@@ -147,6 +148,7 @@ public class ShiftManager : MonoBehaviour
 
     private void GetNextCustomer()
     {
+        Debug.Log("GetNextCustomer");
         if (_currentCustomerIndex + 1 == _shiftLength)
         {
             Debug.Log("Lest customer served; transitioning to scoring"); 
@@ -162,9 +164,13 @@ public class ShiftManager : MonoBehaviour
         ShiftLength = Random.Range(5, 9);
     }
 
+    private void OnDestroy()
+    {
+        GameManager.OnPlace -= GetNextCustomer;
+    }
+
     private void OnDisable()
     {
         GameManager.OnEnter -= InitializeShift;
-        GameManager.OnPlace -= GetNextCustomer;
     }
 }

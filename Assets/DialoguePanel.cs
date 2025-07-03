@@ -55,11 +55,6 @@ public class DialoguePanel : MonoBehaviour, IPointerClickHandler
             });
     }
 
-    private void OnDisable()
-    {
-        GameManager.OnEnter -= Enter;
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         if (GameManager.CurrentGameState == GameState.Dialogue) OnClick?.Invoke();

@@ -19,11 +19,15 @@ public class MenuManager : MonoBehaviour
         tutorialButton.onClick.AddListener(() =>
         {
             if (!mainMenuScroll.IsOpen) return;
-            StartCoroutine(SwitchScene(2));
+            PlayerPrefs.SetInt("ShiftIndex", -1);
+            PlayerPrefs.Save();
+            StartCoroutine(SwitchScene(1));
         });
         freePlayButton.onClick.AddListener(() =>
         {
             if (!mainMenuScroll.IsOpen) return;
+            PlayerPrefs.SetInt("ShiftIndex", 3);
+            PlayerPrefs.Save();
             StartCoroutine(SwitchScene(1));
         });
         settingsButton.onClick.AddListener(() =>

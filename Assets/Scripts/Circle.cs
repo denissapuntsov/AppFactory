@@ -75,6 +75,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         _audioSource.PlayOneShot(dropSound);
         transform.DOScale(_defaultScale, 0.2f);
         eventData.pointerDrag = null;
+        Debug.Log("Dropped");
         _scoreManager.AddPoints(Customer.Instance, circle: this);
     }
 
