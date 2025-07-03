@@ -14,7 +14,7 @@ public class CircleManager : MonoBehaviour
     
     private void Awake()
     {
-        List<CircleEnvironment> environmentPool = new List<CircleEnvironment>();
+        /*List<CircleEnvironment> environmentPool = new List<CircleEnvironment>();
         CircleEnvironment lastEnvironment = new CircleEnvironment();
         foreach (Circle circle in circles)
         {
@@ -23,7 +23,7 @@ public class CircleManager : MonoBehaviour
             CircleEnvironment newEnvironment = environmentPool[Random.Range(0, environmentPool.Count)];
             circle.environment = newEnvironment;
             environmentPool.Remove(newEnvironment);
-        }
+        }*/
     }
 
     public Sprite GetCircleSprite(CircleTemperature temperature, CircleEnvironment environment)

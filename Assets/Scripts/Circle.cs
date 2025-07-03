@@ -1,7 +1,5 @@
-using System;
 using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -61,7 +59,7 @@ public class Circle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         _customerPortrait = _customerUI.customerParent;
         _circleManager = FindAnyObjectByType<CircleManager>();
         
-        temperature = Index <= 3 ? CircleTemperature.Cold : CircleTemperature.Hot;
+        temperature = Index <= 4 ? CircleTemperature.Cold : CircleTemperature.Hot;
         
         environmentImage.sprite = _circleManager.GetCircleSprite(temperature, environment);
         
