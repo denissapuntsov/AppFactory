@@ -54,7 +54,8 @@ public class FlavorTextManager : MonoBehaviour
 
                 break;
         }
-        
+
+        if (lines.Count == 0) return string.Empty;
         return lines[Random.Range(0, lines.Count)];
     }
 
