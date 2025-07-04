@@ -62,7 +62,7 @@ MonoBehaviour:
     temperature: 1
     text: Anywhere but the plains, please. Can't stand open spaces.
   - environment: 0
-    temperature: 1
+    temperature: 0
     text: Large empty spaces fill me with dread. My demonologist says it stems from
       my early childhood.
   - environment: 0

@@ -1,0 +1,1807 @@
+fileFormatVersion: 2
+guid: 7ea7a4944e6c2214293cda75f6421f79
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 747095562721989324
+    second: NFTS Games White (1)_0
+  - first:
+      213: -8467962267314284072
+    second: NFTS Games White (1)_1
+  - first:
+      213: -9196746245689145078
+    second: NFTS Games White (1)_2
+  - first:
+      213: 4838679269453292505
+    second: NFTS Games White (1)_3
+  - first:
+      213: -5154021963931493693
+    second: NFTS Games White (1)_4
+  - first:
+      213: 8258782470850466229
+    second: NFTS Games White (1)_5
+  - first:
+      213: 4652509184948257388
+    second: NFTS Games White (1)_6
+  - first:
+      213: -1810276574723222372
+    second: NFTS Games White (1)_7
+  - first:
+      213: 3882225666791589478
+    second: NFTS Games White (1)_8
+  - first:
+      213: -6227263216001906697
+    second: NFTS Games White (1)_9
+  - first:
+      213: 8480051799261966124
+    second: NFTS Games White (1)_10
+  - first:
+      213: 2715892398144860844
+    second: NFTS Games White (1)_11
+  - first:
+      213: -5955547428686345389
+    second: NFTS Games White (1)_12
+  - first:
+      213: 4153302837993336348
+    second: NFTS Games White (1)_13
+  - first:
+      213: -8859571933650951765
+    second: NFTS Games White (1)_14
+  - first:
+      213: 9065292311306562362
+    second: NFTS Games White (1)_15
+  - first:
+      213: 8759016791656020861
+    second: NFTS Games White (1)_16
+  - first:
+      213: 5695289845323743776
+    second: NFTS Games White (1)_17
+  - first:
+      213: 1519936012348506176
+    second: NFTS Games White (1)_18
+  - first:
+      213: -5095894674010114494
+    second: NFTS Games White (1)_19
+  - first:
+      213: -3123206658432787025
+    second: NFTS Games White (1)_20
+  - first:
+      213: -7376632114592275292
+    second: NFTS Games White (1)_21
+  - first:
+      213: -2676593146904055040
+    second: NFTS Games White (1)_22
+  - first:
+      213: -1841760097496653287
+    second: NFTS Games White (1)_23
+  - first:
+      213: -6943488786496432143
+    second: NFTS Games White (1)_24
+  - first:
+      213: -2610645625630658121
+    second: NFTS Games White (1)_25
+  - first:
+      213: -3445138891941375787
+    second: NFTS Games White (1)_26
+  - first:
+      213: 1791775160776823952
+    second: NFTS Games White (1)_27
+  - first:
+      213: -147876333925993385
+    second: NFTS Games White (1)_28
+  - first:
+      213: 4731449178571767888
+    second: NFTS Games White (1)_29
+  - first:
+      213: -3590480672402895587
+    second: NFTS Games White (1)_30
+  - first:
+      213: 6690368603653077184
+    second: NFTS Games White (1)_31
+  - first:
+      213: 6969045609965191794
+    second: NFTS Games White (1)_32
+  - first:
+      213: 720866039661712588
+    second: NFTS Games White (1)_33
+  - first:
+      213: 5138452474978955431
+    second: NFTS Games White (1)_34
+  - first:
+      213: -3907672230468520599
+    second: NFTS Games White (1)_35
+  - first:
+      213: -2894681205518078627
+    second: NFTS Games White (1)_36
+  - first:
+      213: -7448460252287380489
+    second: NFTS Games White (1)_37
+  - first:
+      213: -5284826243961062062
+    second: NFTS Games White (1)_38
+  - first:
+      213: -5816153320392977963
+    second: NFTS Games White (1)_39
+  - first:
+      213: 8052681622192462478
+    second: NFTS Games White (1)_40
+  - first:
+      213: -591704903592329592
+    second: NFTS Games White (1)_41
+  - first:
+      213: 5998099283733607097
+    second: NFTS Games White (1)_42
+  - first:
+      213: 2766638802894600698
+    second: NFTS Games White (1)_43
+  - first:
+      213: -3160294600909526411
+    second: NFTS Games White (1)_44
+  - first:
+      213: -8881217558330395666
+    second: NFTS Games White (1)_45
+  - first:
+      213: -8253982748121549138
+    second: NFTS Games White (1)_46
+  - first:
+      213: 8050485639184875381
+    second: NFTS Games White (1)_47
+  - first:
+      213: 3772915337929437499
+    second: NFTS Games White (1)_48
+  - first:
+      213: -7218369429264439030
+    second: NFTS Games White (1)_49
+  - first:
+      213: 8666021040666863071
+    second: NFTS Games White (1)_50
+  - first:
+      213: 2800615362350749746
+    second: NFTS Games White (1)_51
+  - first:
+      213: 7265905014477994862
+    second: NFTS Games White (1)_52
+  - first:
+      213: 6718739602373790133
+    second: NFTS Games White (1)_53
+  - first:
+      213: 2682373384736827564
+    second: NFTS Games White (1)_54
+  - first:
+      213: 4426539747179124007
+    second: NFTS Games White (1)_55
+  - first:
+      213: 321330096740358180
+    second: NFTS Games White (1)_56
+  - first:
+      213: -8634061122751650810
+    second: NFTS Games White (1)_57
+  - first:
+      213: -6951339398135654766
+    second: NFTS Games White (1)_58
+  - first:
+      213: 5089110121370620512
+    second: NFTS Games White (1)_59
+  - first:
+      213: -8033549664741060710
+    second: NFTS Games White (1)_60
+  - first:
+      213: 1612604873318498406
+    second: NFTS Games White (1)_61
+  - first:
+      213: -1210288848360254376
+    second: NFTS Games White (1)_62
+  - first:
+      213: -4982354060280801956
+    second: NFTS Games White (1)_63
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NFTS Games White (1)_0
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 1126
+        width: 102
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc2905db4773e5a00800000000000000
+      internalID: 747095562721989324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_1
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1126
+        width: 121
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d9125dde21cb7a80800000000000000
+      internalID: -8467962267314284072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_2
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 1126
+        width: 95
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a098a4814089e5080800000000000000
+      internalID: -9196746245689145078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_3
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 1126
+        width: 33
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d36fcdb821762340800000000000000
+      internalID: 4838679269453292505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_4
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 1123
+        width: 116
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ca5d4bb45c3978b0800000000000000
+      internalID: -5154021963931493693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_5
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 1126
+        width: 102
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b1d34c76e61d9270800000000000000
+      internalID: 8258782470850466229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_6
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 1126
+        width: 121
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6245132478019040800000000000000
+      internalID: 4652509184948257388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_7
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 1126
+        width: 83
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c94596aeb0b90e6e0800000000000000
+      internalID: -1810276574723222372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_8
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 1126
+        width: 87
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 666440fccaf60e530800000000000000
+      internalID: 3882225666791589478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_9
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 1126
+        width: 33
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f7895739115499a0800000000000000
+      internalID: -6227263216001906697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_10
+      rect:
+        serializedVersion: 2
+        x: 1128
+        y: 1126
+        width: 83
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2febe3ae223fa570800000000000000
+      internalID: 8480051799261966124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_11
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 1126
+        width: 114
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca2bb972fb9c0b520800000000000000
+      internalID: 2715892398144860844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_12
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 1123
+        width: 102
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35bc82eda25a95da0800000000000000
+      internalID: -5955547428686345389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_13
+      rect:
+        serializedVersion: 2
+        x: 1532
+        y: 1126
+        width: 95
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1ee63f0dee73a930800000000000000
+      internalID: 4153302837993336348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_14
+      rect:
+        serializedVersion: 2
+        x: 1637
+        y: 1126
+        width: 88
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba1e6b0344a7c0580800000000000000
+      internalID: -8859571933650951765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_15
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 1126
+        width: 83
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3be180c3536ecd70800000000000000
+      internalID: 9065292311306562362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_16
+      rect:
+        serializedVersion: 2
+        x: 1829
+        y: 1126
+        width: 88
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7bb6506d574e8970800000000000000
+      internalID: 8759016791656020861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_17
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1125
+        width: 115
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 022496b70fbb90f40800000000000000
+      internalID: 5695289845323743776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_18
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 1126
+        width: 33
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0404b5110c5e71510800000000000000
+      internalID: 1519936012348506176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_19
+      rect:
+        serializedVersion: 2
+        x: 2084
+        y: 1124
+        width: 94
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24672de0bceb749b0800000000000000
+      internalID: -5095894674010114494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_20
+      rect:
+        serializedVersion: 2
+        x: 2189
+        y: 1126
+        width: 33
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fad9af3771428a4d0800000000000000
+      internalID: -3123206658432787025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_21
+      rect:
+        serializedVersion: 2
+        x: 2234
+        y: 1123
+        width: 116
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a42df2cc20f0a990800000000000000
+      internalID: -7376632114592275292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_22
+      rect:
+        serializedVersion: 2
+        x: 2363
+        y: 1126
+        width: 102
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 003f98ec6b4dadad0800000000000000
+      internalID: -2676593146904055040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_23
+      rect:
+        serializedVersion: 2
+        x: 2514
+        y: 1124
+        width: 94
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 912293b03f0c076e0800000000000000
+      internalID: -1841760097496653287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_24
+      rect:
+        serializedVersion: 2
+        x: 2616
+        y: 1123
+        width: 104
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f7d8f2acb5c3af90800000000000000
+      internalID: -6943488786496432143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_25
+      rect:
+        serializedVersion: 2
+        x: 2729
+        y: 1126
+        width: 98
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b17bd1a2af15cbd0800000000000000
+      internalID: -2610645625630658121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_26
+      rect:
+        serializedVersion: 2
+        x: 2839
+        y: 1123
+        width: 116
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d093ff4e686030d0800000000000000
+      internalID: -3445138891941375787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_27
+      rect:
+        serializedVersion: 2
+        x: 2963
+        y: 1123
+        width: 116
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0949877f30aadd810800000000000000
+      internalID: 1791775160776823952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_28
+      rect:
+        serializedVersion: 2
+        x: 3092
+        y: 1126
+        width: 83
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75477adf143a2fdf0800000000000000
+      internalID: -147876333925993385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_29
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 986
+        width: 56
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0508599a5fb79a140800000000000000
+      internalID: 4731449178571767888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_30
+      rect:
+        serializedVersion: 2
+        x: 914
+        y: 1040
+        width: 56
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d05840adc0c2ec0800000000000000
+      internalID: -3590480672402895587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_31
+      rect:
+        serializedVersion: 2
+        x: 1451
+        y: 986
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c8fa254cc6f8dc50800000000000000
+      internalID: 6690368603653077184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_32
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 1040
+        width: 56
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27288750f0607b060800000000000000
+      internalID: 6969045609965191794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_33
+      rect:
+        serializedVersion: 2
+        x: 2798
+        y: 986
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc4dda008d7010a00800000000000000
+      internalID: 720866039661712588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_34
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 286
+        width: 594
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a0f8522d437f4740800000000000000
+      internalID: 5138452474978955431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_35
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 286
+        width: 595
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965f3446fc825c9c0800000000000000
+      internalID: -3907672230468520599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_36
+      rect:
+        serializedVersion: 2
+        x: 1398
+        y: 286
+        width: 594
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5d681fb7c604d7d0800000000000000
+      internalID: -2894681205518078627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_37
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 286
+        width: 487
+        height: 648
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f35bca3dd0c1a890800000000000000
+      internalID: -7448460252287380489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_38
+      rect:
+        serializedVersion: 2
+        x: 2583
+        y: 284
+        width: 595
+        height: 649
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25df905088688a6b0800000000000000
+      internalID: -5284826243961062062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_39
+      rect:
+        serializedVersion: 2
+        x: 3230
+        y: 822
+        width: 55
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d194c2de5fd84fa0800000000000000
+      internalID: -5816153320392977963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 555
+        width: 56
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a191c354fd0cf60800000000000000
+      internalID: 8052681622192462478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_41
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 187
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88eb5817687d9c7f0800000000000000
+      internalID: -591704903592329592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_42
+      rect:
+        serializedVersion: 2
+        x: 2151
+        y: 187
+        width: 56
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b2777ee4878d3350800000000000000
+      internalID: 5998099283733607097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_43
+      rect:
+        serializedVersion: 2
+        x: 3013
+        y: 187
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af9385c3553156620800000000000000
+      internalID: 2766638802894600698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_44
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 2
+        width: 134
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57ae33fedc06424d0800000000000000
+      internalID: -3160294600909526411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_45
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 2
+        width: 115
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee331c67fa39fb480800000000000000
+      internalID: -8881217558330395666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_46
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 0
+        width: 124
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea6330c0c66f37d80800000000000000
+      internalID: -8253982748121549138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_47
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 2
+        width: 42
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57f7ff8190219bf60800000000000000
+      internalID: 8050485639184875381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_48
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 0
+        width: 139
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3138e492861c5430800000000000000
+      internalID: 3772915337929437499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_49
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 2
+        width: 134
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a096727af3333db90800000000000000
+      internalID: -7218369429264439030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_50
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 0
+        width: 134
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd56201d834e34870800000000000000
+      internalID: 8666021040666863071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_51
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 2
+        width: 134
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2381b6175d8cdd620800000000000000
+      internalID: 2800615362350749746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_52
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 2
+        width: 115
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6bb0bf3d1ea5d460800000000000000
+      internalID: 7265905014477994862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_53
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 1
+        width: 151
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b9c6d92212cd3d50800000000000000
+      internalID: 6718739602373790133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_54
+      rect:
+        serializedVersion: 2
+        x: 1622
+        y: 2
+        width: 115
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca86330b164b93520800000000000000
+      internalID: 2682373384736827564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_55
+      rect:
+        serializedVersion: 2
+        x: 1758
+        y: 2
+        width: 108
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72552ce727a3e6d30800000000000000
+      internalID: 4426539747179124007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_56
+      rect:
+        serializedVersion: 2
+        x: 1879
+        y: 0
+        width: 152
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428d9df3508957400800000000000000
+      internalID: 321330096740358180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_57
+      rect:
+        serializedVersion: 2
+        x: 2052
+        y: 2
+        width: 121
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 604a0617727ad2880800000000000000
+      internalID: -8634061122751650810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_58
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 2
+        width: 150
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29652fca5a1e78f90800000000000000
+      internalID: -6951339398135654766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_59
+      rect:
+        serializedVersion: 2
+        x: 2366
+        y: 2
+        width: 115
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 062142f21b620a640800000000000000
+      internalID: 5089110121370620512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_60
+      rect:
+        serializedVersion: 2
+        x: 2502
+        y: 2
+        width: 134
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9f86abb429138090800000000000000
+      internalID: -8033549664741060710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_61
+      rect:
+        serializedVersion: 2
+        x: 2653
+        y: 2
+        width: 125
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 660863d969f116610800000000000000
+      internalID: 1612604873318498406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_62
+      rect:
+        serializedVersion: 2
+        x: 2855
+        y: 2
+        width: 150
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 854dedd64b0343fe0800000000000000
+      internalID: -1210288848360254376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NFTS Games White (1)_63
+      rect:
+        serializedVersion: 2
+        x: 3020
+        y: 2
+        width: 158
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c55dcbb316f1bdab0800000000000000
+      internalID: -4982354060280801956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      NFTS Games White (1)_0: 747095562721989324
+      NFTS Games White (1)_1: -8467962267314284072
+      NFTS Games White (1)_10: 8480051799261966124
+      NFTS Games White (1)_11: 2715892398144860844
+      NFTS Games White (1)_12: -5955547428686345389
+      NFTS Games White (1)_13: 4153302837993336348
+      NFTS Games White (1)_14: -8859571933650951765
+      NFTS Games White (1)_15: 9065292311306562362
+      NFTS Games White (1)_16: 8759016791656020861
+      NFTS Games White (1)_17: 5695289845323743776
+      NFTS Games White (1)_18: 1519936012348506176
+      NFTS Games White (1)_19: -5095894674010114494
+      NFTS Games White (1)_2: -9196746245689145078
+      NFTS Games White (1)_20: -3123206658432787025
+      NFTS Games White (1)_21: -7376632114592275292
+      NFTS Games White (1)_22: -2676593146904055040
+      NFTS Games White (1)_23: -1841760097496653287
+      NFTS Games White (1)_24: -6943488786496432143
+      NFTS Games White (1)_25: -2610645625630658121
+      NFTS Games White (1)_26: -3445138891941375787
+      NFTS Games White (1)_27: 1791775160776823952
+      NFTS Games White (1)_28: -147876333925993385
+      NFTS Games White (1)_29: 4731449178571767888
+      NFTS Games White (1)_3: 4838679269453292505
+      NFTS Games White (1)_30: -3590480672402895587
+      NFTS Games White (1)_31: 6690368603653077184
+      NFTS Games White (1)_32: 6969045609965191794
+      NFTS Games White (1)_33: 720866039661712588
+      NFTS Games White (1)_34: 5138452474978955431
+      NFTS Games White (1)_35: -3907672230468520599
+      NFTS Games White (1)_36: -2894681205518078627
+      NFTS Games White (1)_37: -7448460252287380489
+      NFTS Games White (1)_38: -5284826243961062062
+      NFTS Games White (1)_39: -5816153320392977963
+      NFTS Games White (1)_4: -5154021963931493693
+      NFTS Games White (1)_40: 8052681622192462478
+      NFTS Games White (1)_41: -591704903592329592
+      NFTS Games White (1)_42: 5998099283733607097
+      NFTS Games White (1)_43: 2766638802894600698
+      NFTS Games White (1)_44: -3160294600909526411
+      NFTS Games White (1)_45: -8881217558330395666
+      NFTS Games White (1)_46: -8253982748121549138
+      NFTS Games White (1)_47: 8050485639184875381
+      NFTS Games White (1)_48: 3772915337929437499
+      NFTS Games White (1)_49: -7218369429264439030
+      NFTS Games White (1)_5: 8258782470850466229
+      NFTS Games White (1)_50: 8666021040666863071
+      NFTS Games White (1)_51: 2800615362350749746
+      NFTS Games White (1)_52: 7265905014477994862
+      NFTS Games White (1)_53: 6718739602373790133
+      NFTS Games White (1)_54: 2682373384736827564
+      NFTS Games White (1)_55: 4426539747179124007
+      NFTS Games White (1)_56: 321330096740358180
+      NFTS Games White (1)_57: -8634061122751650810
+      NFTS Games White (1)_58: -6951339398135654766
+      NFTS Games White (1)_59: 5089110121370620512
+      NFTS Games White (1)_6: 4652509184948257388
+      NFTS Games White (1)_60: -8033549664741060710
+      NFTS Games White (1)_61: 1612604873318498406
+      NFTS Games White (1)_62: -1210288848360254376
+      NFTS Games White (1)_63: -4982354060280801956
+      NFTS Games White (1)_7: -1810276574723222372
+      NFTS Games White (1)_8: 3882225666791589478
+      NFTS Games White (1)_9: -6227263216001906697
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

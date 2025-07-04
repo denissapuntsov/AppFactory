@@ -63,7 +63,7 @@ MonoBehaviour:
     temperature: 1
     text: I miss living somewhere high up, where I can see everything and no-one
       can bother me.
-  - environment: 1
-    temperature: 1
-    text: I miss living somewhere high up, where I can see everything and no-one
-      can bother me.
+  - environment: 2
+    temperature: 0
+    text: I live for the simple things. Like an fully frozen body of water. Yeah.
+      That really does it for me.
